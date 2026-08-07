@@ -1,0 +1,16 @@
+.about-mission { padding-top: 0; padding-bottom: 2rem; }
+.about-mission__inner { max-width: 780px; margin: 0 auto; text-align: center; }
+.about-mission__quote {
+  color: var(--white);
+  font-style: normal;
+  line-height: 1.3;
+  position: relative;
+  padding: 0 1rem;
+}
+.about-mission__quote::before,
+.about-mission__quote::after {
+  color: var(--gold);
+  opacity: 0.5;
+}
+.about-mission__quote::before { content: '\201C'; }
+.about-mission__quote::after { content: '\201D'; }

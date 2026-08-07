@@ -1,0 +1,125 @@
+.audience-selector {
+  background: linear-gradient(180deg, #0a1735 0%, #0d1e47 100%);
+  overflow: hidden;
+}
+
+.audience-selector__headline {
+  letter-spacing: -0.02em;
+}
+
+.audience-selector__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 960px;
+  margin: 0 auto 2rem;
+}
+
+.audience-card {
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.audience-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--aud-color, #4F6FBF) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.audience-card:hover, .audience-card--active {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.4), 0 0 0 1.5px var(--aud-color, #4F6FBF);
+  border-color: var(--aud-color, #4F6FBF);
+}
+
+.audience-card:hover::before,
+.audience-card--active::before {
+  opacity: 0.05;
+}
+
+.audience-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.audience-card__emoji {
+  font-size: 2.8rem;
+  line-height: 1;
+  display: block;
+}
+
+.audience-card__badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 100px;
+}
+
+.audience-card__title {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.audience-card__subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.85rem;
+}
+
+.audience-card__desc {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.25rem;
+  line-height: 1.65;
+}
+
+.audience-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.audience-card__tag {
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.audience-card__cta {
+  width: 100%;
+  justify-content: center;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.audience-card__cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.audience-selector__note {
+  text-align: center;
+  color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 700px) {
+  .audience-selector__cards { grid-template-columns: 1fr; gap: 1.25rem; }
+  .audience-card { padding: 1.5rem; }
+}

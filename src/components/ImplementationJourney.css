@@ -1,0 +1,181 @@
+.implementation {
+  background: linear-gradient(180deg, #0c1d48 0%, #0a1735 100%);
+  overflow: hidden;
+}
+
+.impl__layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Step buttons column */
+.impl__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.impl__step-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.impl__step-btn:hover { background: rgba(255,255,255,0.04); }
+.impl__step-btn--active { background: rgba(255,255,255,0.05); }
+
+.impl__step-dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.impl__step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.4rem;
+}
+
+.impl__step-num {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.impl__step-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+
+.impl__step-connector {
+  position: absolute;
+  left: calc(1rem + 21px);
+  top: calc(42px + 0.75rem);
+  width: 1px;
+  height: calc(100% - 42px - 0.75rem + 0.75rem);
+  background: linear-gradient(to bottom, var(--step-color, var(--blue)), rgba(79,111,191,0.15));
+  pointer-events: none;
+}
+
+/* Detail panel */
+.impl__detail {
+  border-radius: 20px;
+  padding: 2.25rem;
+  min-height: 360px;
+}
+
+.impl__detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.impl__detail-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+.impl__detail-heading {
+  margin-top: 0.5rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+}
+
+.impl__detail-desc {
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.impl__detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.impl__detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(79,111,191,0.1);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.impl__progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.impl__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, width 0.2s ease;
+  padding: 0;
+}
+
+.impl__dot--active {
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .impl__layout {
+    grid-template-columns: 1fr;
+  }
+  .impl__steps {
+    position: static;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .impl__step-btn {
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem;
+    min-width: 90px;
+  }
+  .impl__step-info { align-items: center; }
+  .impl__step-connector { display: none; }
+}
+
+@media (max-width: 600px) {
+  .impl__detail { padding: 1.5rem 1.25rem; }
+}

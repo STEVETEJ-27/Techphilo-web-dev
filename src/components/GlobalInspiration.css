@@ -1,0 +1,21 @@
+.global-inspiration__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.global-inspiration__card {
+  background: rgba(17, 34, 80, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.global-inspiration__country {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold);
+}
+@media (max-width: 900px) { .global-inspiration__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .global-inspiration__grid { grid-template-columns: 1fr; } }
