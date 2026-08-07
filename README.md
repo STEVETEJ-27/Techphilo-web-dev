@@ -1,4 +1,4 @@
-# TechPhilo (TPLander) — Futuristic EdTech SaaS & Scrollytelling Platform
+# TechPhilo — Futuristic EdTech SaaS & Scrollytelling Platform
 
 **TechPhilo** is a multi-page EdTech SaaS platform designed to transform STEM, AI, and Robotics education for schools, educators, and students.
 
