@@ -1,6 +1,6 @@
-.showcase {
-  background: linear-gradient(180deg, #0f1e4a 0%, #0a1735 100%);
-  overflow: hidden;
+.student-showcase {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  position: relative;
 }
 
 .showcase__grid {

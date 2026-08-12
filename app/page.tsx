@@ -14,19 +14,20 @@ import FinalCTA from "@/components/FinalCTA";
 export default function HomePage() {
   const containerRef = useRef<HTMLElement>(null);
 
-  // Master scroll progress for the canvas animation sequence
+  // Master scroll progress — Lenis provides the smoothing,
+  // no additional useSpring needed (double-smoothing causes oscillation/lag)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
   return (
-    <div style={{ backgroundColor: "#0a1735" }}>
-      {/* ─── SCROLL SEQUENCE — locked for 600vh ─── */}
+    <div style={{ backgroundColor: "#ffffff" }}>
+      {/* ─── SCROLL SEQUENCE — 320vh for 300 preloaded frames ─── */}
       <section
         ref={containerRef}
         id="story"
-        style={{ height: "600vh", position: "relative" }}
+        style={{ height: "320vh", position: "relative" }}
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Layer 0: Canvas z-0, cover-fit rendering 300 preloaded frames */}
@@ -36,7 +37,7 @@ export default function HomePage() {
             imageFolderPath="/images/story-sequence"
           />
 
-          {/* Layer 1: Scrim overlay for text readability */}
+          {/* Layer 1: Scrim overlay — slightly faded, feathered black vignette for cinematic depth */}
           <div
             style={{
               position: "absolute",
@@ -44,7 +45,7 @@ export default function HomePage() {
               zIndex: 5,
               pointerEvents: "none",
               background:
-                "linear-gradient(to bottom, rgba(10,23,53,0.40) 0%, transparent 20%, transparent 70%, rgba(10,23,53,0.75) 100%), linear-gradient(to right, rgba(10,23,53,0.45) 0%, transparent 40%)",
+                "radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.45) 100%), linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, transparent 20%, transparent 70%, rgba(0,0,0,0.65) 100%), linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 40%)",
             }}
           />
 

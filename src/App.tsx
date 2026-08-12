@@ -19,7 +19,6 @@ import StudentsCertificates from './views/StudentsCertificates'
 import About from './views/About'
 import AboutTeam from './views/AboutTeam'
 import Contact from './views/Contact'
-import Login from './views/Login'
 import BookDemo from './views/BookDemo'
 import NotFound from './views/NotFound'
 
@@ -38,7 +37,6 @@ const routes: { path: string; element: React.ReactNode }[] = [
   { path: '/about', element: <About /> },
   { path: '/about/team', element: <AboutTeam /> },
   { path: '/contact', element: <Contact /> },
-  { path: '/login', element: <Login /> },
   { path: '/book-demo', element: <BookDemo /> },
 ]
 

@@ -1,6 +1,6 @@
 .why-evolve {
-  background: linear-gradient(180deg, #0d1e47 0%, #0a1735 100%);
-  overflow: hidden;
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  position: relative;
 }
 
 .why-evolve__header {

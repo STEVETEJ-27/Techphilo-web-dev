@@ -1,5 +1,52 @@
-.book-demo__card {
-  max-width: 520px;
+.book-demo__wrapper {
+  min-height: 100vh;
+  background: #F8FAFC;
+  /* Add a subtle top gradient pattern if desired */
+  background-image: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+}
+
+.book-demo__compact-card {
+  max-width: 480px;
   width: 100%;
-  padding: 2.25rem;
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 4px 6px rgba(15, 23, 42, 0.02);
+  border-radius: 16px;
+  position: relative;
+}
+
+.book-demo__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748B;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.book-demo__back:hover {
+  color: #2563EB;
+  transform: translateX(-4px);
+}
+
+.book-demo__header {
+  margin-bottom: 0.75rem;
+}
+
+/* Compact form overrides for Book Demo */
+.book-demo__compact-card .contact__form {
+  gap: 0.5rem;
+}
+
+.book-demo__compact-card .contact__field {
+  gap: 0.25rem;
+}
+
+.book-demo__compact-card .contact__field input {
+  padding: 0.5rem 0.75rem;
 }

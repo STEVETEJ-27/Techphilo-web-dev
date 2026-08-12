@@ -1,6 +1,6 @@
-.tech-ecosystem {
-  background: linear-gradient(180deg, #0a1735 0%, #0c1d48 100%);
-  overflow: hidden;
+.technology-ecosystem {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  position: relative;
 }
 
 .tech-ecosystem__layout {

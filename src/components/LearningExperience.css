@@ -1,6 +1,6 @@
-.learning {
-  background: linear-gradient(180deg, #0a1735 0%, #0f1e4a 100%);
-  overflow: hidden;
+.learning-experience {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  position: relative;
 }
 
 .learning__layout {

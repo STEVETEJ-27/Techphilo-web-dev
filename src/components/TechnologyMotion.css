@@ -1,8 +1,8 @@
 .tech-motion {
   position: relative;
-  padding: 5rem 0;
-  background: linear-gradient(180deg, #0a1735 0%, #0e2158 50%, #0a1735 100%);
   overflow: hidden;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  padding: 3rem 0;
   border-top: 1px solid rgba(79,111,191,0.1);
   border-bottom: 1px solid rgba(79,111,191,0.1);
 }
@@ -71,6 +71,7 @@
   font-size: 1.1rem;
   line-height: 1;
 }
+
 
 .motion-item__label {
   font-family: var(--font-display);

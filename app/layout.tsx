@@ -45,12 +45,53 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
-      <body>
+    <html lang="en" className={`${syne.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var clean = function(el) {
+                    if (!el || !el.attributes) return;
+                    for (var i = el.attributes.length - 1; i >= 0; i--) {
+                      var attr = el.attributes[i].name;
+                      if (attr === 'bis_skin_checked' || attr === 'bis_register' || attr.indexOf('__processed') === 0) {
+                        el.removeAttribute(attr);
+                      }
+                    }
+                  };
+                  var observer = new MutationObserver(function(mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                      var m = mutations[i];
+                      if (m.type === 'attributes') {
+                        clean(m.target);
+                      } else if (m.type === 'childList') {
+                        for (var j = 0; j < m.addedNodes.length; j++) {
+                          var node = m.addedNodes[j];
+                          if (node.nodeType === 1) {
+                            clean(node);
+                            var children = node.querySelectorAll('*');
+                            for (var k = 0; k < children.length; k++) {
+                              clean(children[k]);
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                  observer.observe(document, { attributes: true, childList: true, subtree: true });
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
         <SmoothScrollProvider>
-          <div className="noise-overlay" aria-hidden="true" />
+          <div className="noise-overlay" aria-hidden="true" suppressHydrationWarning />
           <Navbar />
-          <main style={{ minHeight: "80vh" }}>{children}</main>
+          <main style={{ minHeight: "80vh" }} suppressHydrationWarning>{children}</main>
           <Footer />
         </SmoothScrollProvider>
       </body>

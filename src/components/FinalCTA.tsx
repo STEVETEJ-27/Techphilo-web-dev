@@ -29,7 +29,7 @@ export default function FinalCTA() {
         >
           <motion.div
             className="label-tag"
-            style={{ marginBottom: '2rem' }}
+            style={{ marginBottom: '2rem', display: 'inline-flex', alignSelf: 'center' }}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.1 }}
@@ -39,7 +39,7 @@ export default function FinalCTA() {
 
           <motion.h2
             id="cta-heading"
-            className="display-xl final-cta__headline"
+            className="display-xl final-cta__headline text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}

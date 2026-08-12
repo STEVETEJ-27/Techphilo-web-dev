@@ -1,6 +1,6 @@
-.implementation {
-  background: linear-gradient(180deg, #0c1d48 0%, #0a1735 100%);
-  overflow: hidden;
+.implementation-journey {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  position: relative;
 }
 
 .impl__layout {

@@ -9,24 +9,24 @@
 }
 
 :root {
-  /* Brand Colors */
-  --navy: #112250;
-  --navy-deep: #0a1735;
-  --navy-mid: #1a2f6b;
-  --blue: #4F6FBF;
-  --blue-light: #6b88d4;
-  --blue-dim: #3a5499;
-  --gold: #F5CB70;
-  --gold-dim: #d4a843;
-  --gold-glow: rgba(245, 203, 112, 0.2);
-  --white: #FFFFFF;
-  --charcoal: #2d3748;
-  --charcoal-light: #4a5568;
-  --charcoal-muted: #718096;
-  --surface: rgba(17, 34, 80, 0.6);
-  --surface-light: rgba(79, 111, 191, 0.1);
-  --border: rgba(79, 111, 191, 0.2);
-  --border-gold: rgba(245, 203, 112, 0.3);
+  /* Brand Colors — Light Theme */
+  --navy: #F8FAFC;
+  --navy-deep: #FFFFFF;
+  --navy-mid: #F1F5F9;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --blue-dim: #1D4ED8;
+  --gold: #D97706;
+  --gold-dim: #B45309;
+  --gold-glow: rgba(217, 119, 6, 0.1);
+  --white: #0F172A;
+  --charcoal: #F1F5F9;
+  --charcoal-light: #E2E8F0;
+  --charcoal-muted: #64748B;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-light: rgba(37, 99, 235, 0.05);
+  --border: rgba(203, 213, 225, 0.7);
+  --border-gold: rgba(217, 119, 6, 0.3);
 
   /* Typography */
   --font-display: 'Syne', system-ui, sans-serif;
@@ -47,7 +47,7 @@
 
   /* Scroll bar */
   scrollbar-width: thin;
-  scrollbar-color: var(--blue) var(--navy-deep);
+  scrollbar-color: var(--blue) #F1F5F9;
 }
 
 html {

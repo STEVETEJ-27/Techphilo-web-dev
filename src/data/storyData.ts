@@ -54,11 +54,11 @@ export const storyData = {
     {
       id: "horizon",
       scrollRange: [0.75, 1.0] as [number, number],
-      label: "04 / THE HORIZON",
-      title: "THE FUTURE OF EDTECH",
-      subtitle: "INSPIRE. EDUCATE. TRANSFORM.",
+      label: "",
+      title: "",
+      subtitle: "",
       description:
-        "Graduation is just the beginning — TechPhilo equips schools, teachers, and students for lifelong leadership.",
+        "",
     },
   ] satisfies Phase[],
 

@@ -1,6 +1,6 @@
-.partnership {
-  background: linear-gradient(180deg, #0a1735 0%, #0c1d48 60%, #0a1735 100%);
-  overflow: hidden;
+.partnership-section {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #FFFFFF 100%);
+  position: relative;
 }
 
 /* Ecosystem connector */

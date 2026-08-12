@@ -8,8 +8,9 @@
   position: relative;
   text-align: center;
   padding: 1.75rem 1rem;
-  background: rgba(17, 34, 80, 0.35);
-  border: 1px solid var(--border);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
   border-radius: 14px;
   transition: transform 0.3s var(--ease-out), border-color 0.3s ease;
 }

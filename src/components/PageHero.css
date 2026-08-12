@@ -1,8 +1,8 @@
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(8rem, 16vh, 11rem) 0 clamp(3rem, 6vh, 4.5rem);
-  background: linear-gradient(160deg, #0a1735 0%, #112250 45%, #0d1a40 100%);
+  padding: 8rem 0 4rem;
+  background: linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 45%, #F1F5F9 100%);
 }
 
 .page-hero__inner {

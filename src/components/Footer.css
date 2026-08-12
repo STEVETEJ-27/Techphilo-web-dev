@@ -1,12 +1,12 @@
 .footer {
-  background: #112250; /* Brand Dark Blue */
-  border-top: 1px solid rgba(79,111,191,0.2); /* Brand Medium Blue */
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
   position: relative;
 }
 
 .footer__top-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #F5CB70, transparent); /* Brand Gold */
+  background: linear-gradient(90deg, transparent, #2563EB, transparent);
   opacity: 0.5;
 }
 
@@ -40,11 +40,11 @@
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: var(--white);
+  color: #0F172A;
 }
 
 .footer__tagline {
-  color: rgba(255,255,255,0.7);
+  color: #475569;
   line-height: 1.6;
   font-size: 0.95rem;
   text-align: left;
@@ -62,7 +62,7 @@
 .footer__nav-title {
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #F5CB70; /* Brand Gold */
+  color: #2563EB;
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
@@ -77,7 +77,7 @@
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.65);
+  color: #475569;
   text-align: left;
   padding: 0.15rem 0;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -86,13 +86,13 @@
 }
 
 .footer__nav-link:hover, .footer__contact-link:hover { 
-  color: #fff;
+  color: #2563EB;
   transform: translateX(3px); 
 }
 
 /* Bottom bar */
 .footer__bottom {
-  border-top: 1px solid rgba(79,111,191,0.15);
+  border-top: 1px solid #E2E8F0;
   padding: 1.5rem 0;
 }
 
@@ -105,7 +105,7 @@
 }
 
 .footer__copy { 
-  color: rgba(255,255,255,0.4); 
+  color: #64748B; 
   font-size: 0.85rem;
 }
 
@@ -115,14 +115,14 @@
 }
 
 .footer__bottom-link {
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
   font-size: 0.85rem;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer__bottom-link:hover {
-  color: #F5CB70;
+  color: #2563EB;
 }
 
 @media (max-width: 768px) {

@@ -139,7 +139,6 @@ export default function Navbar() {
           </nav>
 
           <div className="navbar__actions">
-            <Link to="/login" className="btn btn-outline btn-sm">Login</Link>
             <Link to="/book-demo" className="btn btn-primary btn-sm">
               Book Demo <ArrowRight size={14} />
             </Link>
@@ -238,9 +237,6 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <button className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }} onClick={() => navigate('/login')}>
-                  Login
-                </button>
                 <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => navigate('/book-demo')}>
                   Book Demo <ArrowRight size={16} />
                 </button>

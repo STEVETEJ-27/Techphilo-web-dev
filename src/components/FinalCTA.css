@@ -1,10 +1,7 @@
 .final-cta {
   position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
   overflow: hidden;
-  background: linear-gradient(180deg, #0a1735 0%, #081230 100%);
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
 }
 
 .final-cta__bg {
@@ -44,12 +41,16 @@
 }
 
 .final-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .final-cta__headline {
+  text-align: center;
   margin-bottom: 1.5rem;
   line-height: 1.0;
 }
@@ -61,7 +62,7 @@
   flex-wrap: wrap;
   gap: 0.3rem 1.25rem;
   margin-bottom: 2.5rem;
-  color: rgba(255,255,255,0.4);
+  color: #64748B;
 }
 
 .final-cta__tagline::after {
@@ -80,12 +81,13 @@
 }
 
 .final-cta__btn-primary {
-  font-size: 1.05rem;
-  padding: 1rem 2.5rem;
-  box-shadow: 0 8px 40px rgba(245,203,112,0.35);
+  font-size: 0.95rem;
+  padding: 0.85rem 2.25rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
 }
 .final-cta__btn-primary:hover {
-  box-shadow: 0 12px 56px rgba(245,203,112,0.5);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.4);
 }
 
 /* Journey bar */
@@ -113,7 +115,7 @@
 }
 
 .final-cta__stage-label {
-  color: rgba(255,255,255,0.35);
+  color: #94A3B8;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;

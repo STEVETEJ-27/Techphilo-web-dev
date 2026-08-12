@@ -9,6 +9,7 @@ const quickLinks = [
   { label: 'About', href: '/about' },
   { label: 'Courses', href: '/courses' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Book a Demo', href: '/book-demo' },
 ]
 
 export default function Footer() {

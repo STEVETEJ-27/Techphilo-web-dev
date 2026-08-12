@@ -9,197 +9,216 @@ interface StoryScrollCanvasProps {
   imageFolderPath: string;
 }
 
-function drawCover(
-  ctx: CanvasRenderingContext2D,
-  img: HTMLImageElement,
-  cssWidth: number,
-  cssHeight: number
-) {
-  const imgRatio = img.width / img.height;
-  const canvasRatio = cssWidth / cssHeight;
-  let drawWidth: number,
-    drawHeight: number,
-    offsetX: number,
-    offsetY: number;
-
-  if (canvasRatio > imgRatio) {
-    drawWidth = cssWidth;
-    drawHeight = cssWidth / imgRatio;
-    offsetX = 0;
-    offsetY = (cssHeight - drawHeight) / 2;
-  } else {
-    drawHeight = cssHeight;
-    drawWidth = cssHeight * imgRatio;
-    offsetX = (cssWidth - drawWidth) / 2;
-    offsetY = 0;
-  }
-  ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-}
-
 export default function StoryScrollCanvas({
   scrollYProgress,
   totalFrames,
   imageFolderPath,
 }: StoryScrollCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const currentFrameRef = useRef<number>(-1);
   const imagesRef = useRef<HTMLImageElement[]>([]);
+  const pendingFrameRef = useRef<number | null>(null);
+  const rafIdRef = useRef<number>(0);
+  const dimensionsRef = useRef({ w: 0, h: 0, dpr: 1 });
+
   const [loadProgress, setLoadProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [firstFrameReady, setFirstFrameReady] = useState(false);
 
-  // Transform scroll progress → frame index (0 to totalFrames - 1)
-  const frameIndex = useTransform(scrollYProgress, [0, 1], [0, totalFrames - 1]);
+  // Transform scroll progress → frame index
+  const frameIndex = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, totalFrames - 1]
+  );
 
-  // Draw function
+  // Cache canvas context and dimensions — only recalculate on resize
+  const setupCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) return;
+    ctxRef.current = ctx;
+
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const w = Math.round(rect.width * dpr);
+    const h = Math.round(rect.height * dpr);
+
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    dimensionsRef.current = { w: rect.width, h: rect.height, dpr };
+  }, []);
+
+  // Ultra-fast draw — no getBoundingClientRect, no getContext, no allocations
   const drawFrame = useCallback(
     (index: number) => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
+      const ctx = ctxRef.current;
       if (!ctx) return;
 
-      const roundedIndex = Math.round(index);
-      const clampedIndex = Math.max(0, Math.min(roundedIndex, totalFrames - 1));
+      const clamped = Math.max(
+        0,
+        Math.min(Math.round(index), totalFrames - 1)
+      );
+      if (clamped === currentFrameRef.current) return;
+      currentFrameRef.current = clamped;
 
-      // Only redraw when frame actually changes
-      if (clampedIndex === currentFrameRef.current) return;
-      currentFrameRef.current = clampedIndex;
+      const img = imagesRef.current[clamped];
+      if (!img || !img.complete || img.naturalWidth === 0) return;
 
-      const img = imagesRef.current[clampedIndex];
-      if (!img || !img.complete) return;
+      const { w, h } = dimensionsRef.current;
+      if (w === 0 || h === 0) return;
 
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-
-      // Only resize canvas buffer if dimensions changed
-      const targetWidth = Math.round(rect.width * dpr);
-      const targetHeight = Math.round(rect.height * dpr);
-
-      if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
-        canvas.width = targetWidth;
-        canvas.height = targetHeight;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Cover-fit math (inlined for zero overhead)
+      const imgR = img.naturalWidth / img.naturalHeight;
+      const canR = w / h;
+      let dw: number, dh: number, ox: number, oy: number;
+      if (canR > imgR) {
+        dw = w;
+        dh = w / imgR;
+        ox = 0;
+        oy = (h - dh) / 2;
+      } else {
+        dh = h;
+        dw = h * imgR;
+        ox = (w - dw) / 2;
+        oy = 0;
       }
 
-      ctx.clearRect(0, 0, rect.width, rect.height);
-      drawCover(ctx, img, rect.width, rect.height);
+      ctx.drawImage(img, ox, oy, dw, dh);
     },
     [totalFrames]
   );
 
-  // Preload all images
+  // RAF-gated render loop — coalesces rapid scroll events into single draws
+  const scheduleFrame = useCallback(
+    (index: number) => {
+      pendingFrameRef.current = index;
+
+      if (rafIdRef.current) return; // already scheduled
+
+      rafIdRef.current = requestAnimationFrame(() => {
+        rafIdRef.current = 0;
+        if (pendingFrameRef.current !== null) {
+          drawFrame(pendingFrameRef.current);
+          pendingFrameRef.current = null;
+        }
+      });
+    },
+    [drawFrame]
+  );
+
+  // Preload images in batches to avoid network congestion
   useEffect(() => {
     let cancelled = false;
     const images: HTMLImageElement[] = new Array(totalFrames);
     let loadedCount = 0;
+    const BATCH_SIZE = 20;
 
-    // Load first frame immediately for quick first paint
-    const firstImg = new Image();
-    firstImg.src = `${imageFolderPath}/ezgif-frame-001.jpg`;
-    firstImg.onload = () => {
+    const onLoad = (i: number, img: HTMLImageElement) => {
       if (cancelled) return;
-      images[0] = firstImg;
-      imagesRef.current = images;
-      setFirstFrameReady(true);
-      // Draw frame 0 immediately
-      currentFrameRef.current = -1; // Force redraw
-      drawFrame(0);
+      images[i] = img;
+      loadedCount++;
+
+      // Throttle progress updates to avoid excessive re-renders
+      if (loadedCount % 10 === 0 || loadedCount === totalFrames) {
+        setLoadProgress(loadedCount);
+      }
+
+      if (i === 0) {
+        imagesRef.current = images;
+        setFirstFrameReady(true);
+      }
+
+      if (loadedCount === totalFrames) {
+        imagesRef.current = images;
+        setIsLoaded(true);
+      }
     };
 
-    // Then preload all frames
-    for (let i = 0; i < totalFrames; i++) {
-      const img = new Image();
-      const frameNum = String(i + 1).padStart(3, "0");
-      img.src = `${imageFolderPath}/ezgif-frame-${frameNum}.jpg`;
+    const loadBatch = (startIdx: number) => {
+      if (cancelled || startIdx >= totalFrames) return;
+      const end = Math.min(startIdx + BATCH_SIZE, totalFrames);
 
-      img.onload = () => {
-        if (cancelled) return;
-        images[i] = img;
-        loadedCount++;
-        setLoadProgress(loadedCount);
+      for (let i = startIdx; i < end; i++) {
+        const img = new Image();
+        const frameNum = String(i + 1).padStart(3, "0");
+        img.src = `${imageFolderPath}/ezgif-frame-${frameNum}.jpg`;
+        img.onload = () => onLoad(i, img);
+        img.onerror = () => {
+          if (cancelled) return;
+          loadedCount++;
+          if (loadedCount % 10 === 0 || loadedCount === totalFrames) {
+            setLoadProgress(loadedCount);
+          }
+          if (loadedCount === totalFrames) {
+            imagesRef.current = images;
+            setIsLoaded(true);
+          }
+        };
+      }
 
-        if (loadedCount === totalFrames) {
-          imagesRef.current = images;
-          setIsLoaded(true);
-        }
-      };
+      // Schedule next batch after a microtask to avoid blocking main thread
+      setTimeout(() => loadBatch(end), 0);
+    };
 
-      img.onerror = () => {
-        if (cancelled) return;
-        loadedCount++;
-        setLoadProgress(loadedCount);
-        if (loadedCount === totalFrames) {
-          imagesRef.current = images;
-          setIsLoaded(true);
-        }
-      };
-    }
+    loadBatch(0);
 
     return () => {
       cancelled = true;
     };
-  }, [totalFrames, imageFolderPath, drawFrame]);
+  }, [totalFrames, imageFolderPath]);
 
-  // Subscribe to frame changes
+  // Initialize canvas on mount and first frame ready
+  useEffect(() => {
+    if (firstFrameReady) {
+      setupCanvas();
+      currentFrameRef.current = -1;
+      drawFrame(frameIndex.get());
+    }
+  }, [firstFrameReady, setupCanvas, drawFrame, frameIndex]);
+
+  // Subscribe to scroll changes — uses RAF-gated scheduling
   useEffect(() => {
     const unsubscribe = frameIndex.on("change", (latest) => {
-      drawFrame(latest);
+      scheduleFrame(latest);
     });
-    return () => unsubscribe();
-  }, [frameIndex, drawFrame]);
+    return () => {
+      unsubscribe();
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = 0;
+      }
+    };
+  }, [frameIndex, scheduleFrame]);
 
-  // ResizeObserver for responsive redraw
+  // ResizeObserver — recache dimensions, then redraw
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const observer = new ResizeObserver(() => {
+      setupCanvas();
       currentFrameRef.current = -1;
       drawFrame(frameIndex.get());
     });
 
     observer.observe(canvas);
     return () => observer.disconnect();
-  }, [drawFrame, frameIndex]);
+  }, [setupCanvas, drawFrame, frameIndex]);
 
   return (
     <div className="absolute inset-0 z-0">
-      {/* Loading Overlay */}
-      {!isLoaded && (
-        <div
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-900/90 backdrop-blur-md text-white"
-        >
-          <div className="flex flex-col items-center gap-6">
-            {/* Logo mark */}
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-xl text-white bg-blue-600 shadow-lg shadow-blue-500/30">
-              T
-            </div>
 
-            {/* Loading label */}
-            <span className="font-display text-xs tracking-[0.3em] font-semibold text-blue-200">
-              LOADING EXPERIENCE
-            </span>
-
-            {/* Progress bar */}
-            <div className="w-48 h-[2px] rounded-full overflow-hidden bg-white/20">
-              <div
-                className="h-full rounded-full transition-all duration-150 ease-out bg-blue-500"
-                style={{
-                  width: `${(loadProgress / totalFrames) * 100}%`,
-                }}
-              />
-            </div>
-
-            {/* Count */}
-            <span className="font-display text-xs tabular-nums tracking-wider text-slate-400">
-              {loadProgress} / {totalFrames}
-            </span>
-          </div>
-        </div>
-      )}
-
-      {/* Canvas */}
+      {/* Canvas — alpha: false for GPU compositing boost */}
       <canvas
         ref={canvasRef}
         style={{
