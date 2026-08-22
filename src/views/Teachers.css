@@ -14,9 +14,9 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1.1rem;
-  background: rgba(79, 111, 191, 0.16);
-  border: 1px solid rgba(79, 111, 191, 0.3);
-  color: var(--blue-light);
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  color: var(--brand-bright);
 }
 
 .teacher-pillar h3 { margin-bottom: 0.5rem; }
@@ -46,13 +46,13 @@
 .teacher-dashboard__bar {
   height: 8px;
   border-radius: 100px;
-  background: rgba(255,255,255,0.08);
+  background: var(--surface-alt);
   overflow: hidden;
   margin-top: -0.75rem;
 }
 .teacher-dashboard__bar div {
   height: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
+  background: linear-gradient(90deg, var(--brand), var(--accent));
   border-radius: 100px;
 }
 

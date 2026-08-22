@@ -1,43 +1,44 @@
 import { useRef } from 'react'
+import { Bot, Globe2, Shuffle, Sprout, Trophy, Users } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './WhyEvolve.css'
 
 const challenges = [
   {
-    icon: '🤖',
+    Icon: Bot,
     title: 'AI Is Transforming Every Industry',
     desc: 'Automation is reshaping the economy. Students who understand AI and technology will have a decisive advantage. Those who don\'t, may be left behind.',
-    accent: '#4F6FBF',
+    accent: 'var(--brand)',
   },
   {
-    icon: '🏆',
+    Icon: Trophy,
     title: 'Employers Value Skills Over Memorisation',
     desc: 'Hiring managers increasingly seek problem-solvers, communicators and creative thinkers — not just candidates who scored well in exams.',
-    accent: '#F5CB70',
+    accent: 'var(--accent)',
   },
   {
-    icon: '🔀',
+    Icon: Shuffle,
     title: 'Future Careers Cross Multiple Disciplines',
     desc: 'The most exciting careers of tomorrow don\'t fit inside one subject. They combine technology, creativity, communication and entrepreneurial thinking.',
-    accent: '#43B89C',
+    accent: 'var(--hue-teal)',
   },
   {
-    icon: '👨‍👩‍👧',
+    Icon: Users,
     title: 'Parents Expect Schools to Prepare Children for Life',
     desc: 'Today\'s parents understand that classroom knowledge alone is not enough. They want schools that develop the whole child — curious, capable and confident.',
-    accent: '#FF9F43',
+    accent: 'var(--hue-amber)',
   },
   {
-    icon: '🌍',
+    Icon: Globe2,
     title: 'The World is More Connected Than Ever',
     desc: 'Collaboration, cultural awareness and global communication are no longer optional skills. They are essential for students entering a borderless economy.',
-    accent: '#7C83FD',
+    accent: 'var(--hue-violet)',
   },
   {
-    icon: '🌱',
+    Icon: Sprout,
     title: 'Students Need Adaptability and Resilience',
     desc: 'Change is the only constant. The most successful students will be those equipped to learn, unlearn and relearn throughout their entire lives.',
-    accent: '#FF7AA2',
+    accent: 'var(--hue-rose)',
   },
 ]
 
@@ -80,8 +81,8 @@ export default function WhyEvolve() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: (i % 3) * 0.1 + 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="challenge-card__icon-wrap" style={{ background: `${ch.accent}18`, border: `1px solid ${ch.accent}30` }}>
-                <span className="challenge-card__icon">{ch.icon}</span>
+              <div className="challenge-card__icon-wrap" style={{ background: `color-mix(in srgb, ${ch.accent} 9%, transparent)`, border: `1px solid color-mix(in srgb, ${ch.accent} 19%, transparent)` }}>
+                <span className="challenge-card__icon"><ch.Icon size={20} strokeWidth={1.7} /></span>
               </div>
               <div className="challenge-card__body">
                 <h3 className="challenge-card__title" style={{ color: ch.accent }}>{ch.title}</h3>

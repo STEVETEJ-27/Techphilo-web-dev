@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { HeartPulse, MessageSquare, Package, PenLine, Plane, ShoppingCart } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './StudentShowcase.css'
 
@@ -8,54 +9,54 @@ const showcaseProjects = [
     domain: 'Healthcare × AI',
     tech: ['Python', 'TensorFlow', 'Computer Vision'],
     outcome: 'Detects anomalies in X-ray images with high accuracy',
-    gradient: 'linear-gradient(135deg, #0d47a1, #1565c0)',
-    accent: '#4F6FBF',
-    icon: '🏥',
+    gradient: 'linear-gradient(135deg, var(--brand-strong), var(--brand))',
+    accent: 'var(--brand)',
+    Icon: HeartPulse,
   },
   {
     title: 'Smart Inventory System',
     domain: 'Retail × Machine Learning',
     tech: ['Python', 'Scikit-learn', 'React'],
     outcome: 'Reduces overstock by predicting demand patterns',
-    gradient: 'linear-gradient(135deg, #1b5e20, #2e7d32)',
-    accent: '#43B89C',
-    icon: '📦',
+    gradient: 'linear-gradient(135deg, var(--hue-green), var(--hue-green))',
+    accent: 'var(--hue-teal)',
+    Icon: Package,
   },
   {
     title: 'Sentiment Analysis Dashboard',
     domain: 'NLP × Data Science',
     tech: ['Python', 'BERT', 'Plotly'],
     outcome: 'Analyses customer reviews across thousands of products',
-    gradient: 'linear-gradient(135deg, #4a148c, #6a1b9a)',
-    accent: '#7C83FD',
-    icon: '💬',
+    gradient: 'linear-gradient(135deg, var(--hue-violet), var(--hue-violet))',
+    accent: 'var(--hue-violet)',
+    Icon: MessageSquare,
   },
   {
     title: 'Autonomous Drone Navigation',
     domain: 'Computer Vision × Robotics',
     tech: ['Python', 'OpenCV', 'ROS'],
     outcome: 'Real-time obstacle avoidance for indoor environments',
-    gradient: 'linear-gradient(135deg, #e65100, #ef6c00)',
-    accent: '#FF9F43',
-    icon: '🚁',
+    gradient: 'linear-gradient(135deg, var(--accent-strong), var(--accent-strong))',
+    accent: 'var(--hue-amber)',
+    Icon: Plane,
   },
   {
     title: 'E-Commerce Platform',
     domain: 'Full Stack × Cloud',
     tech: ['React', 'Node.js', 'MongoDB'],
     outcome: 'Full-featured platform with payments and real-time inventory',
-    gradient: 'linear-gradient(135deg, #006064, #00838f)',
-    accent: '#61DAFB',
-    icon: '🛒',
+    gradient: 'linear-gradient(135deg, var(--hue-teal), var(--hue-teal))',
+    accent: 'var(--hue-blue)',
+    Icon: ShoppingCart,
   },
   {
     title: 'AI Writing Companion',
     domain: 'Generative AI × Productivity',
     tech: ['Python', 'LangChain', 'Streamlit'],
     outcome: 'Helps students draft, revise and improve written work',
-    gradient: 'linear-gradient(135deg, #880e4f, #ad1457)',
-    accent: '#FF7AA2',
-    icon: '✍️',
+    gradient: 'linear-gradient(135deg, var(--hue-rose), var(--hue-rose))',
+    accent: 'var(--hue-rose)',
+    Icon: PenLine,
   },
 ]
 
@@ -96,7 +97,7 @@ export default function StudentShowcase() {
               transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="showcase-card__visual" style={{ background: proj.gradient }}>
-                <span className="showcase-card__icon">{proj.icon}</span>
+                <span className="showcase-card__icon"><proj.Icon size={20} strokeWidth={1.7} /></span>
                 <div className="showcase-card__visual-accent" style={{ borderColor: proj.accent }} />
               </div>
 
@@ -109,7 +110,7 @@ export default function StudentShowcase() {
 
                 <div className="showcase-card__tags">
                   {proj.tech.map(t => (
-                    <span key={t} className="tech-tag" style={{ color: proj.accent, borderColor: `${proj.accent}30`, background: `${proj.accent}12` }}>
+                    <span key={t} className="tech-tag" style={{ color: proj.accent, borderColor: `color-mix(in srgb, ${proj.accent} 19%, transparent)`, background: `color-mix(in srgb, ${proj.accent} 7%, transparent)` }}>
                       {t}
                     </span>
                   ))}

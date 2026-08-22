@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, BarChart3, Car, Eye, Globe, HeartPulse, Sparkles } from 'lucide-react'
 import './ProjectShowcase.css'
 
 const projects = [
@@ -10,9 +10,9 @@ const projects = [
     category: 'Artificial Intelligence',
     tags: ['Python', 'NLP', 'Machine Learning'],
     desc: 'An intelligent assistant that helps patients understand symptoms, schedule consultations, and navigate healthcare information using natural language.',
-    gradient: 'linear-gradient(135deg, #1a237e 0%, #283593 40%, #1565c0 100%)',
-    accent: '#4F6FBF',
-    icon: '🏥',
+    gradient: 'linear-gradient(135deg, var(--brand-strong) 0%, var(--brand-strong) 40%, var(--brand) 100%)',
+    accent: 'var(--brand)',
+    Icon: HeartPulse,
     size: 'large',
   },
   {
@@ -21,9 +21,9 @@ const projects = [
     category: 'Machine Learning',
     tags: ['Python', 'Scikit-learn', 'Pandas'],
     desc: 'Predictive model trained on ride data to accurately forecast taxi fares using regression and feature engineering techniques.',
-    gradient: 'linear-gradient(135deg, #1b5e20 0%, #2e7d32 60%, #388e3c 100%)',
-    accent: '#43B89C',
-    icon: '🚕',
+    gradient: 'linear-gradient(135deg, var(--hue-green) 0%, var(--hue-green) 60%, var(--hue-green) 100%)',
+    accent: 'var(--hue-teal)',
+    Icon: Car,
     size: 'medium',
   },
   {
@@ -32,9 +32,9 @@ const projects = [
     category: 'Data Science',
     tags: ['Python', 'Plotly', 'Dash', 'SQL'],
     desc: 'Interactive analytics dashboard that visualises business metrics, sales trends, and KPI performance in real-time.',
-    gradient: 'linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%)',
-    accent: '#7C83FD',
-    icon: '📊',
+    gradient: 'linear-gradient(135deg, var(--hue-violet) 0%, var(--hue-violet) 50%, var(--hue-violet) 100%)',
+    accent: 'var(--hue-violet)',
+    Icon: BarChart3,
     size: 'medium',
   },
   {
@@ -43,9 +43,9 @@ const projects = [
     category: 'Computer Vision',
     tags: ['Python', 'OpenCV', 'TensorFlow', 'YOLO'],
     desc: 'Real-time object detection and image classification system capable of identifying objects in live video streams.',
-    gradient: 'linear-gradient(135deg, #e65100 0%, #f57c00 50%, #ff9800 100%)',
-    accent: '#FF9F43',
-    icon: '👁️',
+    gradient: 'linear-gradient(135deg, var(--accent-strong) 0%, var(--hue-amber) 50%, var(--hue-amber) 100%)',
+    accent: 'var(--hue-amber)',
+    Icon: Eye,
     size: 'large',
   },
   {
@@ -54,9 +54,9 @@ const projects = [
     category: 'Full Stack',
     tags: ['React', 'Node.js', 'MongoDB', 'Express'],
     desc: 'End-to-end web platform with secure authentication, real-time updates, and a polished, responsive user interface.',
-    gradient: 'linear-gradient(135deg, #006064 0%, #00838f 50%, #00acc1 100%)',
-    accent: '#61DAFB',
-    icon: '🌐',
+    gradient: 'linear-gradient(135deg, var(--hue-teal) 0%, var(--hue-teal) 50%, var(--hue-teal) 100%)',
+    accent: 'var(--hue-blue)',
+    Icon: Globe,
     size: 'medium',
   },
   {
@@ -65,9 +65,9 @@ const projects = [
     category: 'Generative AI',
     tags: ['Python', 'LangChain', 'OpenAI', 'Streamlit'],
     desc: 'LLM-powered application that generates creative content, answers domain-specific questions, and summarises complex documents.',
-    gradient: 'linear-gradient(135deg, #880e4f 0%, #ad1457 50%, #c2185b 100%)',
-    accent: '#FF7AA2',
-    icon: '✨',
+    gradient: 'linear-gradient(135deg, var(--hue-rose) 0%, var(--hue-rose) 50%, var(--hue-rose) 100%)',
+    accent: 'var(--hue-rose)',
+    Icon: Sparkles,
     size: 'medium',
   },
 ]
@@ -97,7 +97,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       {/* Content */}
       <div className="project-card__content">
         <div className="project-card__top">
-          <span className="project-card__icon">{project.icon}</span>
+          <span className="project-card__icon"><project.Icon size={20} strokeWidth={1.7} /></span>
           <motion.div
             className="project-card__action"
             animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : 10 }}
@@ -131,7 +131,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           transition={{ duration: 0.25 }}
         >
           {project.tags.map(tag => (
-            <span key={tag} className="tech-tag" style={{ color: project.accent, borderColor: `${project.accent}30`, background: `${project.accent}15` }}>
+            <span key={tag} className="tech-tag" style={{ color: project.accent, borderColor: `color-mix(in srgb, ${project.accent} 19%, transparent)`, background: `color-mix(in srgb, ${project.accent} 8%, transparent)` }}>
               {tag}
             </span>
           ))}

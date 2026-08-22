@@ -1,5 +1,5 @@
 .pricing-card {
-  background: rgba(17, 34, 80, 0.5);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 2rem;
@@ -11,16 +11,16 @@
 .pricing-card:hover { transform: translateY(-4px); }
 
 .pricing-card--featured {
-  border-color: var(--border-gold);
-  background: linear-gradient(160deg, rgba(245,203,112,0.08), rgba(17,34,80,0.6));
+  border-color: var(--accent-border);
+  background: linear-gradient(160deg, var(--accent-soft), var(--surface));
 }
 
 .pricing-card__badge {
   position: absolute;
   top: -0.9rem;
   left: 2rem;
-  background: var(--gold);
-  color: var(--navy);
+  background: var(--accent);
+  color: #FFFFFF;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -44,9 +44,9 @@
   align-items: flex-start;
   gap: 0.6rem;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--text);
 }
-.pricing-card__list li svg { color: var(--gold); flex-shrink: 0; margin-top: 0.15rem; }
+.pricing-card__list li svg { color: var(--accent); flex-shrink: 0; margin-top: 0.15rem; }
 
 .pricing-note {
   text-align: center;

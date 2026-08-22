@@ -1,5 +1,5 @@
 .impact-section {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 50%, var(--surface) 100%);
   position: relative;
 }
 
@@ -32,7 +32,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .impact__stat-icon {
@@ -49,12 +49,12 @@
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--ink);
   margin-bottom: 0.3rem;
 }
 
 .impact__stat-sub {
-  color: var(--charcoal-muted);
+  color: var(--text-muted);
 }
 
 /* Capabilities */
@@ -75,7 +75,7 @@
 
 .impact__cap-card:hover {
   transform: translateX(4px);
-  border-color: rgba(79,111,191,0.4);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
 }
 
 .impact__cap-icon {

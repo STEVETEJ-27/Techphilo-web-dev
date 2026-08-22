@@ -1,5 +1,5 @@
 .explorer-passport {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 50%, var(--surface) 100%);
   position: relative;
 }
 
@@ -23,8 +23,8 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.45rem 0;
-  border-bottom: 1px solid rgba(79,111,191,0.08);
-  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 8%, transparent);
+  color: var(--text);
 }
 
 /* Passport card */
@@ -32,7 +32,7 @@
   border-radius: 20px;
   padding: 1.75rem;
   box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-  border: 1px solid rgba(245,203,112,0.15);
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .passport__header {
@@ -40,7 +40,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(79,111,191,0.15);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 15%, transparent);
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -63,14 +63,14 @@
 .passport__level-bar {
   width: 100px;
   height: 4px;
-  background: rgba(255,255,255,0.1);
+  background: var(--surface-sunken);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .passport__level-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
+  background: linear-gradient(90deg, var(--brand), var(--accent));
   border-radius: 4px;
 }
 
@@ -88,8 +88,8 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.6rem 0.4rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--m-color, var(--blue));
+  background: var(--surface-alt);
+  border: 1px solid var(--m-color, var(--brand));
   border-radius: 10px;
   cursor: default;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -97,13 +97,13 @@
 
 .passport__mission:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px var(--m-color, var(--blue));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px var(--m-color, var(--brand));
 }
 
 .passport__mission-icon { font-size: 1.3rem; line-height: 1; }
 
 .passport__mission-badge {
-  color: var(--m-color, var(--blue));
+  color: var(--m-color, var(--brand));
   font-weight: 700;
   font-size: 0.58rem;
   letter-spacing: 0.05em;
@@ -114,7 +114,7 @@
 
 .passport__portfolio {
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(79,111,191,0.15);
+  border-top: 1px solid color-mix(in srgb, var(--brand) 15%, transparent);
 }
 
 @media (max-width: 1024px) {

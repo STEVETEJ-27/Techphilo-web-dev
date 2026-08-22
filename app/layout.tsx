@@ -80,7 +80,15 @@ export default function RootLayout({
                       }
                     }
                   });
-                  observer.observe(document, { attributes: true, childList: true, subtree: true });
+                  // attributeFilter is essential: without it every inline-style
+                  // write by Framer Motion (many per animation frame) queues a
+                  // mutation record and runs this callback before paint.
+                  observer.observe(document, {
+                    attributes: true,
+                    attributeFilter: ['bis_skin_checked', 'bis_register'],
+                    childList: true,
+                    subtree: true
+                  });
                 } catch(e) {}
               })();
             `,

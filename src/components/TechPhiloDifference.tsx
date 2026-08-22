@@ -1,14 +1,15 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { BarChart3, BookMarked, FileText, GraduationCap, Handshake, Laptop, Link2, Rocket, Scroll, Telescope, Trophy, Wrench } from 'lucide-react'
 import './TechPhiloDifference.css'
 
 const rows = [
-  { from: 'Coding Club', to: 'Integrated Future-Readiness Programme', fromIcon: '💻', toIcon: '🚀' },
-  { from: 'Separate Subjects', to: 'Connected, Interdisciplinary Learning', fromIcon: '📖', toIcon: '🔗' },
-  { from: 'Individual Competitions', to: 'Collaborative Practical Learning', fromIcon: '🏆', toIcon: '🤝' },
-  { from: 'Theory & Rote Learning', to: 'Experiential, Mission-Based Learning', fromIcon: '📝', toIcon: '🛠️' },
-  { from: 'Certificates Only', to: 'Explorer Passport + Grand Expo', fromIcon: '📜', toIcon: '🎓' },
-  { from: 'Limited Visibility of Progress', to: 'Data-Backed Skill Reports & Tracking', fromIcon: '🔭', toIcon: '📊' },
+  { from: 'Coding Club', to: 'Integrated Future-Readiness Programme', FromIcon: Laptop, ToIcon: Rocket },
+  { from: 'Separate Subjects', to: 'Connected, Interdisciplinary Learning', FromIcon: BookMarked, ToIcon: Link2 },
+  { from: 'Individual Competitions', to: 'Collaborative Practical Learning', FromIcon: Trophy, ToIcon: Handshake },
+  { from: 'Theory & Rote Learning', to: 'Experiential, Mission-Based Learning', FromIcon: FileText, ToIcon: Wrench },
+  { from: 'Certificates Only', to: 'Explorer Passport + Grand Expo', FromIcon: Scroll, ToIcon: GraduationCap },
+  { from: 'Limited Visibility of Progress', to: 'Data-Backed Skill Reports & Tracking', FromIcon: Telescope, ToIcon: BarChart3 },
 ]
 
 export default function TechPhiloDifference() {
@@ -53,7 +54,7 @@ export default function TechPhiloDifference() {
               transition={{ delay: i * 0.08, duration: 0.5 }}
             >
               <div className="tp-diff__cell tp-diff__cell--from">
-                <span className="tp-diff__cell-icon">{row.fromIcon}</span>
+                <span className="tp-diff__cell-icon"><row.FromIcon size={18} strokeWidth={1.7} /></span>
                 <span className="tp-diff__cell-text">{row.from}</span>
               </div>
               <div className="tp-diff__arrow">
@@ -61,7 +62,7 @@ export default function TechPhiloDifference() {
                 <span className="tp-diff__arrow-icon">→</span>
               </div>
               <div className="tp-diff__cell tp-diff__cell--to">
-                <span className="tp-diff__cell-icon tp-diff__cell-icon--to">{row.toIcon}</span>
+                <span className="tp-diff__cell-icon tp-diff__cell-icon--to"><row.ToIcon size={18} strokeWidth={1.7} /></span>
                 <span className="tp-diff__cell-text tp-diff__cell-text--to">{row.to}</span>
               </div>
             </motion.div>
@@ -80,13 +81,13 @@ export default function TechPhiloDifference() {
               transition={{ delay: i * 0.08, duration: 0.5 }}
             >
               <div className="tp-diff__mobile-from">
-                <span>{row.fromIcon}</span>
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'line-through' }}>{row.from}</span>
+                <span><row.FromIcon size={18} strokeWidth={1.7} /></span>
+                <span className="text-sm" style={{ color: 'var(--text-muted)', textDecoration: 'line-through' }}>{row.from}</span>
               </div>
               <div className="tp-diff__mobile-arrow">↓</div>
               <div className="tp-diff__mobile-to">
-                <span>{row.toIcon}</span>
-                <span className="text-sm" style={{ color: 'var(--gold)', fontWeight: 600 }}>{row.to}</span>
+                <span><row.ToIcon size={18} strokeWidth={1.7} /></span>
+                <span className="text-sm" style={{ color: 'var(--accent)', fontWeight: 600 }}>{row.to}</span>
               </div>
             </motion.div>
           ))}

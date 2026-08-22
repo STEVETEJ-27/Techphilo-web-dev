@@ -5,9 +5,10 @@
   right: 0;
   z-index: var(--z-nav);
   padding: 1rem 0;
-  background: #FFFFFF;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--surface);
+  /* No backdrop-filter here: the background is fully opaque, so the blur was
+     invisible — but it still forced the compositor to re-blur everything
+     behind the fixed bar on every frame, including the scrolling canvas. */
   /* border-bottom removed in favor of gradient ::after element */
   transition: padding 0.4s var(--ease-out), background 0.4s ease, box-shadow 0.4s ease;
 }
@@ -20,18 +21,17 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #2563EB, #F97316);
+  background: linear-gradient(90deg, var(--brand), var(--accent));
   opacity: 0.8;
   z-index: -1;
 }
 
 .navbar--scrolled {
   padding: 0.6rem 0;
-  background: #FFFFFF;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: var(--surface);
+  /* backdrop-filter removed — see .navbar above */
   /* border-bottom removed */
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--ink) 5%, transparent);
 }
 
 .navbar--scrolled::after {
@@ -62,7 +62,7 @@
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #0F172A;
+  color: var(--ink);
   margin-left: 0.4rem;
   white-space: nowrap;
 }
@@ -83,7 +83,7 @@
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 600;
-  color: #334155;
+  color: var(--ink-soft);
   padding: 0.45rem 0.75rem;
   transition: color 0.2s ease;
   white-space: nowrap;
@@ -97,13 +97,13 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #2563EB, #F97316); /* Blue to Orange */
+  background: linear-gradient(90deg, var(--brand), var(--accent)); /* Blue to Orange */
   transition: width 0.3s ease;
   border-radius: 2px;
 }
 
 .navbar__link:hover { 
-  color: #2563EB; 
+  color: var(--brand); 
 }
 
 .navbar__link:hover::after,
@@ -113,7 +113,7 @@
 
 /* Home / Active Link Accent */
 .navbar__link--active {
-  color: #F97316 !important;
+  color: var(--accent) !important;
   font-weight: 700;
 }
 
@@ -144,13 +144,13 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 240px;
-  background: #FFFFFF;
+  background: var(--surface);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.5rem;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--ink) 8%, transparent);
   z-index: calc(var(--z-nav) + 2);
 }
 
@@ -160,16 +160,16 @@
   gap: 0.15rem;
   padding: 0.65rem 0.85rem;
   border-radius: 8px;
-  color: #334155;
+  color: var(--ink-soft);
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
-.navbar__dropdown-link:hover { background: rgba(37, 99, 235, 0.06); color: #2563EB; }
-.navbar__dropdown-link strong { font-size: 0.85rem; font-weight: 600; font-family: var(--font-body); color: #0F172A; }
-.navbar__dropdown-link span { font-size: 0.72rem; color: #64748B; }
+.navbar__dropdown-link:hover { background: color-mix(in srgb, var(--brand) 6%, transparent); color: var(--brand); }
+.navbar__dropdown-link strong { font-size: 0.85rem; font-weight: 600; font-family: var(--font-body); color: var(--ink); }
+.navbar__dropdown-link span { font-size: 0.72rem; color: var(--text-muted); }
 
 /* ---- Mobile submenu ---- */
-.mobile-menu__group { border-bottom: 1px solid #E2E8F0; }
+.mobile-menu__group { border-bottom: 1px solid var(--border); }
 .mobile-menu__sublinks {
   display: flex;
   flex-direction: column;
@@ -180,13 +180,13 @@
   background: none;
   border: none;
   text-align: left;
-  color: #475569;
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 0.9rem;
   padding: 0.4rem 0;
   cursor: pointer;
 }
-.mobile-menu__sublink:hover { color: #2563EB; }
+.mobile-menu__sublink:hover { color: var(--brand); }
 
 .mobile-menu__secondary {
   display: flex;
@@ -209,9 +209,9 @@
 
 .navbar__mobile-toggle {
   display: none;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  color: #0F172A;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--ink);
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -222,12 +222,12 @@
   margin-left: auto;
   flex-shrink: 0;
 }
-.navbar__mobile-toggle:hover { background: #F1F5F9; border-color: #CBD5E1; }
+.navbar__mobile-toggle:hover { background: var(--surface-sunken); border-color: var(--border-strong); }
 
 /* Mobile Menu */
 .mobile-menu__header {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 0.5rem;
 }
 .mobile-menu__header img { border-radius: 8px; }
@@ -236,7 +236,7 @@
   position: fixed;
   inset: 0;
   z-index: calc(var(--z-nav) - 1);
-  background: #FFFFFF;
+  background: var(--surface);
   display: flex;
   flex-direction: column;
   padding-top: 5rem;
@@ -261,20 +261,20 @@
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 5vw, 2rem);
   font-weight: 700;
-  color: #0F172A;
+  color: var(--ink);
   padding: 0.65rem 0;
   text-align: left;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid var(--border);
   transition: color 0.2s, padding-left 0.2s;
   width: 100%;
 }
-.mobile-menu__link:hover { color: #2563EB; padding-left: 0.5rem; }
+.mobile-menu__link:hover { color: var(--brand); padding-left: 0.5rem; }
 
 .mobile-menu__num {
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 600;
-  color: #2563EB;
+  color: var(--brand);
   opacity: 0.8;
   letter-spacing: 0.05em;
   min-width: 1.8rem;

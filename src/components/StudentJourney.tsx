@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { BookMarked, Target, Telescope, TrendingUp, Wrench, Zap } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './StudentJourney.css'
 
@@ -8,48 +9,48 @@ const steps = [
     stage: 'DISCOVER',
     title: 'Explore new technologies and areas of interest.',
     desc: 'Begin where every great builder begins — with curiosity. Explore what technology can do and find the direction that excites you.',
-    icon: '🔭',
-    color: '#4F6FBF',
+    Icon: Telescope,
+    color: 'var(--brand)',
   },
   {
     num: '02',
     stage: 'LEARN',
     title: 'Build strong fundamentals and understand core concepts.',
     desc: 'Structured, practical learning paths designed to give you deep understanding — not just surface-level familiarity.',
-    icon: '📖',
-    color: '#5a7ac9',
+    Icon: BookMarked,
+    color: 'var(--brand-bright)',
   },
   {
     num: '03',
     stage: 'PRACTICE',
     title: 'Apply knowledge through guided activities and exercises.',
     desc: 'Assignments, challenges, and guided exercises that convert what you know into what you can actually do.',
-    icon: '⚡',
-    color: '#6585d4',
+    Icon: Zap,
+    color: 'var(--brand-bright)',
   },
   {
     num: '04',
     stage: 'DEVELOP',
     title: 'Strengthen technical thinking and problem-solving skills.',
     desc: 'Apply everything to build a strong foundation of practical skills that solve real problems.',
-    icon: '🛠️',
-    color: '#F5CB70',
+    Icon: Wrench,
+    color: 'var(--accent)',
   },
   {
     num: '05',
     stage: 'ADVANCE',
     title: 'Progress toward more advanced concepts and capabilities.',
     desc: 'Move beyond the basics, taking on complex challenges that prepare you for higher education and real careers.',
-    icon: '📈',
-    color: '#e8b84e',
+    Icon: TrendingUp,
+    color: 'var(--accent)',
   },
   {
     num: '06',
     stage: 'EXCEL',
     title: 'Build confidence and achieve a higher level of proficiency.',
     desc: 'Master the skills you need to become truly future-ready and prepared for what comes next.',
-    icon: '🎯',
-    color: '#d4a535',
+    Icon: Target,
+    color: 'var(--accent)',
   },
 ]
 
@@ -69,10 +70,10 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
         <motion.div
           className="journey__step-dot"
           style={{ borderColor: step.color, boxShadow: `0 0 0 0 ${step.color}` }}
-          animate={inView ? { boxShadow: [`0 0 0 0 ${step.color}40`, `0 0 0 10px transparent`] } : {}}
+          animate={inView ? { boxShadow: [`0 0 0 0 color-mix(in srgb, ${step.color} 25%, transparent)`, `0 0 0 10px transparent`] } : {}}
           transition={{ repeat: Infinity, duration: 2.5, delay: index * 0.2 }}
         >
-          <span>{step.icon}</span>
+          <span><step.Icon size={20} strokeWidth={1.7} /></span>
         </motion.div>
         {index < steps.length - 1 && (
           <motion.div
@@ -87,7 +88,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
       <div className="journey__step-card glass">
         <div className="journey__step-header">
           <span className="journey__step-num text-xs" style={{ color: step.color }}>{step.num}</span>
-          <span className="label-tag" style={{ color: step.color, borderColor: `${step.color}40`, background: `${step.color}15` }}>
+          <span className="label-tag" style={{ color: step.color, borderColor: `color-mix(in srgb, ${step.color} 25%, transparent)`, background: `color-mix(in srgb, ${step.color} 8%, transparent)` }}>
             {step.stage}
           </span>
         </div>

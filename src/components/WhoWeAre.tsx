@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { School, GraduationCap, ArrowRight } from 'lucide-react'
+import { ArrowRight, GraduationCap, School } from 'lucide-react'
 import { Link } from '../router'
 import './AudienceSelector.css'
 
@@ -16,7 +16,7 @@ const audiences = [
     cta: 'Explore School Programme',
     target: '/schools',
     tags: ['NEP 2020 Aligned', 'Teacher Training', 'Explorer Passport'],
-    color: '#4F6FBF',
+    color: 'var(--brand)',
   },
   {
     id: 'student',
@@ -27,7 +27,7 @@ const audiences = [
     cta: 'Explore Student Learning',
     target: '/students',
     tags: ['AI & Technology', 'Practical Learning', 'Future Skills'],
-    color: '#F5CB70',
+    color: 'var(--accent)',
   },
 ]
 
@@ -69,7 +69,7 @@ export default function WhoWeAre() {
                 <span className="audience-card__emoji" style={{ display: 'inline-flex', color: aud.color }}>
                   <aud.Icon size={30} strokeWidth={1.6} />
                 </span>
-                <div className="audience-card__badge" style={{ background: `${aud.color}20`, border: `1px solid ${aud.color}40`, color: aud.color }}>
+                <div className="audience-card__badge" style={{ background: `color-mix(in srgb, ${aud.color} 13%, transparent)`, border: `1px solid color-mix(in srgb, ${aud.color} 25%, transparent)`, color: aud.color }}>
                   Explore
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function WhoWeAre() {
 
               <div className="audience-card__tags">
                 {aud.tags.map(tag => (
-                  <span key={tag} className="audience-card__tag text-xs" style={{ color: aud.color, borderColor: `${aud.color}30`, background: `${aud.color}12` }}>
+                  <span key={tag} className="audience-card__tag text-xs" style={{ color: aud.color, borderColor: `color-mix(in srgb, ${aud.color} 19%, transparent)`, background: `color-mix(in srgb, ${aud.color} 7%, transparent)` }}>
                     {tag}
                   </span>
                 ))}
@@ -89,7 +89,7 @@ export default function WhoWeAre() {
               <Link
                 to={aud.target}
                 className="audience-card__cta btn btn-primary"
-                style={{ background: aud.color, color: aud.id === 'student' ? '#112250' : '#fff' }}
+                style={{ background: aud.color, color: aud.id === 'student' ? 'var(--ink)' : 'var(--surface)' }}
               >
                 {aud.cta} <ArrowRight size={16} />
               </Link>

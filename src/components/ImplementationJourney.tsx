@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Check, Map, Presentation, Telescope, Tent, Zap } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './ImplementationJourney.css'
 
@@ -8,45 +9,45 @@ const steps = [
     title: 'DISCOVER',
     heading: 'Understand Your School',
     desc: 'We begin by deeply understanding your school\'s vision, values, student demographics and existing strengths to design a programme that truly fits.',
-    icon: '🔭',
+    Icon: Telescope,
     details: ['School goals assessment', 'Student readiness evaluation', 'Teacher capacity review', 'Schedule & resource planning'],
-    color: '#4F6FBF',
+    color: 'var(--brand)',
   },
   {
     num: '02',
     title: 'PLAN',
     heading: 'Customise the Programme',
     desc: 'Together we design the programme structure, learning calendar and integration plan — ensuring the right content reaches the right students at the right time.',
-    icon: '🗺️',
+    Icon: Map,
     details: ['Custom curriculum mapping', 'Age-appropriate content design', 'Integration with school schedule', 'Parent communication plan'],
-    color: '#6585d4',
+    color: 'var(--brand-bright)',
   },
   {
     num: '03',
     title: 'TRAIN',
     heading: 'Equip Your Teachers',
     desc: 'Before day one, every teacher involved receives comprehensive training, detailed lesson plans, teaching resources and all materials they need to teach with confidence.',
-    icon: '🧑‍🏫',
+    Icon: Presentation,
     details: ['Hands-on teacher training', 'Detailed lesson plan handover', 'Teaching resource kit', 'Practice sessions & Q&A'],
-    color: '#43B89C',
+    color: 'var(--hue-teal)',
   },
   {
     num: '04',
     title: 'IMPLEMENT',
     heading: 'Launch with Confidence',
     desc: 'The programme rolls out smoothly with ongoing expert support, regular progress check-ins and immediate guidance whenever it is needed.',
-    icon: '⚡',
+    Icon: Zap,
     details: ['Supported programme rollout', 'Weekly progress check-ins', 'On-demand expert support', 'Student progress tracking'],
-    color: '#F5CB70',
+    color: 'var(--accent)',
   },
   {
     num: '05',
     title: 'SHOWCASE',
     heading: 'Celebrate With Grand Expo',
     desc: 'The year culminates in a Grand Expo — a school-wide celebration where students present their projects, parents engage and the community witnesses the transformation.',
-    icon: '🎪',
+    Icon: Tent,
     details: ['Full Grand Expo planning support', 'Student project presentations', 'Parent and community engagement', 'Achievement recognition & awards'],
-    color: '#FF9F43',
+    color: 'var(--hue-amber)',
   },
 ]
 
@@ -93,7 +94,7 @@ export default function ImplementationJourney() {
                 transition={{ delay: i * 0.1 + 0.1, duration: 0.5 }}
               >
                 <div className="impl__step-dot" style={{ borderColor: step.color, background: activeStep === i ? step.color : 'transparent' }}>
-                  <span>{step.icon}</span>
+                  <span><step.Icon size={20} strokeWidth={1.7} /></span>
                 </div>
                 <div className="impl__step-info">
                   <span className="impl__step-num text-xs" style={{ color: step.color }}>{step.num}</span>
@@ -113,9 +114,9 @@ export default function ImplementationJourney() {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="impl__detail-header">
-              <span className="impl__detail-icon">{active.icon}</span>
+              <span className="impl__detail-icon"><active.Icon size={20} strokeWidth={1.7} /></span>
               <div>
-                <span className="label-tag" style={{ color: active.color, borderColor: `${active.color}40`, background: `${active.color}15` }}>
+                <span className="label-tag" style={{ color: active.color, borderColor: `color-mix(in srgb, ${active.color} 25%, transparent)`, background: `color-mix(in srgb, ${active.color} 8%, transparent)` }}>
                   Step {active.num} — {active.title}
                 </span>
                 <h3 className="display-sm impl__detail-heading">{active.heading}</h3>
@@ -125,7 +126,7 @@ export default function ImplementationJourney() {
             <div className="impl__detail-list">
               {active.details.map(d => (
                 <div key={d} className="impl__detail-item">
-                  <span style={{ color: active.color }}>✓</span>
+                  <span style={{ color: active.color }}><Check size={16} strokeWidth={2} /></span>
                   <span className="text-sm">{d}</span>
                 </div>
               ))}

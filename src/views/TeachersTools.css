@@ -8,7 +8,7 @@
   width: 44px; height: 44px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1rem;
-  background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold);
+  background: var(--accent-glow); border: 1px solid var(--accent-border); color: var(--accent);
 }
 .tools-grid__item h3 { margin-bottom: 0.4rem; }
 

@@ -70,7 +70,7 @@ export default function Courses() {
                   transition={{ delay: i * 0.05, duration: 0.4 }}
                 >
                   <Link to={`/courses/${c.slug}`} className="course-card">
-                    <div className="course-card__icon" style={{ color: c.color, background: `${c.color}18`, border: `1px solid ${c.color}30` }}>
+                    <div className="course-card__icon" style={{ color: c.color, background: `color-mix(in srgb, ${c.color} 9%, transparent)`, border: `1px solid color-mix(in srgb, ${c.color} 19%, transparent)` }}>
                       <c.Icon size={22} strokeWidth={1.7} />
                     </div>
                     <span className="tech-tag">{c.categoryLabel}</span>

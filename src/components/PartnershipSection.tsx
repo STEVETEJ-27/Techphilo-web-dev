@@ -1,41 +1,42 @@
 import { useRef } from 'react'
+import { Briefcase, Globe2, GraduationCap, Handshake, Presentation, School, Star, Users } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './PartnershipSection.css'
 
 const principles = [
   {
-    icon: '🏫',
+    Icon: School,
     title: 'Custom-Built for Schools',
     desc: 'Every programme is designed to align with your school\'s vision, values, schedule and student needs. Not a one-size-fits-all product.',
-    color: '#4F6FBF',
+    color: 'var(--brand)',
   },
   {
-    icon: '🎓',
+    Icon: GraduationCap,
     title: 'Built for Educators',
     desc: 'Created with strong pedagogy, classroom practicality and teacher wellbeing at its core. We don\'t add to the burden — we reduce it.',
-    color: '#43B89C',
+    color: 'var(--hue-teal)',
   },
   {
-    icon: '⭐',
+    Icon: Star,
     title: 'Quality. Consistency. Excellence.',
     desc: 'Every session, resource, lesson plan and student experience is thoughtfully crafted and refined to the highest standard.',
-    color: '#F5CB70',
+    color: 'var(--accent)',
   },
   {
-    icon: '🤝',
+    Icon: Handshake,
     title: 'Long-Term Collaboration',
     desc: 'We don\'t deliver a package and disappear. We stay alongside your school throughout implementation, iteration and growth.',
-    color: '#7C83FD',
+    color: 'var(--hue-violet)',
   },
 ]
 
 const ecosystem = [
-  { icon: '🏫', label: 'School' },
-  { icon: '🧑‍🏫', label: 'Teachers' },
-  { icon: '🎓', label: 'Students' },
-  { icon: '👨‍👩‍👧', label: 'Parents' },
-  { icon: '🌍', label: 'Community' },
-  { icon: '💼', label: 'Future Careers' },
+  { Icon: School, label: 'School' },
+  { Icon: Presentation, label: 'Teachers' },
+  { Icon: GraduationCap, label: 'Students' },
+  { Icon: Users, label: 'Parents' },
+  { Icon: Globe2, label: 'Community' },
+  { Icon: Briefcase, label: 'Future Careers' },
 ]
 
 export default function PartnershipSection() {
@@ -89,7 +90,7 @@ export default function PartnershipSection() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 + 0.2, type: 'spring', stiffness: 180 }}
               >
-                <div className="eco-node__icon">{node.icon}</div>
+                <div className="eco-node__icon"><node.Icon size={20} strokeWidth={1.7} /></div>
                 <div className="eco-node__label text-xs">{node.label}</div>
               </motion.div>
             ))}
@@ -116,8 +117,8 @@ export default function PartnershipSection() {
               animate={principlesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12 + 0.1, duration: 0.6 }}
             >
-              <div className="principle-card__icon-wrap" style={{ background: `${p.color}18`, border: `1px solid ${p.color}30` }}>
-                <span className="principle-card__icon">{p.icon}</span>
+              <div className="principle-card__icon-wrap" style={{ background: `color-mix(in srgb, ${p.color} 9%, transparent)`, border: `1px solid color-mix(in srgb, ${p.color} 19%, transparent)` }}>
+                <span className="principle-card__icon"><p.Icon size={20} strokeWidth={1.7} /></span>
               </div>
               <h3 className="principle-card__title" style={{ color: p.color }}>{p.title}</h3>
               <p className="text-md text-muted" style={{ lineHeight: 1.65 }}>{p.desc}</p>

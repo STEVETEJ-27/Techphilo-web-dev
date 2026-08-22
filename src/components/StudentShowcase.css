@@ -1,5 +1,5 @@
 .student-showcase {
-  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--surface-alt) 0%, var(--surface) 100%);
   position: relative;
 }
 
@@ -12,7 +12,7 @@
 .showcase-card {
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(17, 34, 80, 0.5);
+  background: var(--surface);
   border: 1px solid var(--border);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
   cursor: default;
@@ -21,7 +21,7 @@
 .showcase-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  border-color: rgba(79,111,191,0.4);
+  border-color: color-mix(in srgb, var(--brand) 40%, transparent);
 }
 
 .showcase-card__visual {
@@ -73,13 +73,13 @@
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--ink);
   margin-bottom: 0.5rem;
   line-height: 1.25;
 }
 
 .showcase-card__outcome {
-  color: rgba(255,255,255,0.6);
+  color: var(--text-muted);
   margin-bottom: 1rem;
   line-height: 1.6;
 }

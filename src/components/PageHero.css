@@ -1,14 +1,21 @@
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 8rem 0 4rem;
-  background: linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 45%, #F1F5F9 100%);
+  /* Top padding must clear the fixed navbar (~70px), so it stays larger than
+     --section-py; only the bottom follows the normal section rhythm. */
+  padding: clamp(6.5rem, 9vw, 8rem) 0 clamp(2.25rem, 4vw, 3.5rem);
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-alt) 45%, var(--surface-sunken) 100%);
 }
 
+/* The content column, NOT the container. It previously carried both
+   `.container` (margin: 0 auto) and max-width:780px, which centred the whole
+   text block in the viewport so it lined up with nothing — not the navbar
+   logo, not the sections below. It now sits at the container's left edge. */
 .page-hero__inner {
   position: relative;
   z-index: 1;
   max-width: 780px;
+  margin-inline: 0;
 }
 
 .page-hero__crumbs {
@@ -21,12 +28,12 @@
 }
 
 .page-hero__crumb-link {
-  color: var(--charcoal-muted);
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.page-hero__crumb-link:hover { color: var(--gold); }
-.page-hero__crumb-sep { color: var(--charcoal-muted); margin: 0 0.4rem; opacity: 0.5; }
+.page-hero__crumb-link:hover { color: var(--accent); }
+.page-hero__crumb-sep { color: var(--text-muted); margin: 0 0.4rem; opacity: 0.5; }
 
 .page-hero__title {
   margin: 1rem 0 1.1rem;
@@ -44,5 +51,5 @@
 }
 
 @media (max-width: 640px) {
-  .page-hero { padding-top: 7rem; }
+  .page-hero { padding-top: 6.5rem; }
 }

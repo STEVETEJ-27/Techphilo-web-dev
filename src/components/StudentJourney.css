@@ -1,5 +1,5 @@
 .student-journey {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 50%, var(--surface) 100%);
   position: relative;
 }
 
@@ -38,7 +38,7 @@
   height: 52px;
   border-radius: 50%;
   border: 2px solid;
-  background: rgba(10, 23, 53, 0.9);
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +57,7 @@
 .journey__step-line {
   width: 1px;
   flex: 1;
-  background: linear-gradient(to bottom, var(--blue), rgba(79,111,191,0.15));
+  background: linear-gradient(to bottom, var(--brand), color-mix(in srgb, var(--brand) 15%, transparent));
   transform-origin: top;
   min-height: 48px;
 }
@@ -80,7 +80,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(79,111,191,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 4%, transparent) 0%, transparent 60%);
   pointer-events: none;
 }
 

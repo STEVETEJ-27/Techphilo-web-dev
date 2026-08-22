@@ -1,30 +1,30 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, GraduationCap, School } from 'lucide-react'
 import './AudienceSelector.css'
 
 const audiences = [
   {
     id: 'school',
-    emoji: '🏫',
+    Icon: School,
     title: 'School / School Leader',
     subtitle: 'Build a Future-Ready Learning Ecosystem',
     desc: 'Discover how TechPhilo partners with schools to integrate experiential, project-based learning that aligns with NEP 2020 and prepares every student for the demands of tomorrow.',
     cta: 'Explore School Programme',
     target: 'why-schools',
     tags: ['NEP 2020 Aligned', 'Teacher Training', 'Explorer Passport', 'Grand Expo', 'Assessment Included'],
-    color: '#4F6FBF',
+    color: 'var(--brand)',
   },
   {
     id: 'student',
-    emoji: '🎓',
+    Icon: GraduationCap,
     title: 'Student / Learner',
     subtitle: 'Build Skills. Develop Confidence. Master Your Future.',
     desc: 'Discover how TechPhilo empowers you with technology, AI, entrepreneurship and design thinking through practical learning that shapes your future.',
     cta: 'Explore Student Learning',
     target: 'student-experience',
     tags: ['AI & Technology', 'Practical Learning', 'Future Skills', 'Collaboration'],
-    color: '#F5CB70',
+    color: 'var(--accent)',
   },
 ]
 
@@ -71,8 +71,8 @@ export default function AudienceSelector() {
               aria-pressed={active === aud.id}
             >
               <div className="audience-card__top">
-                <span className="audience-card__emoji">{aud.emoji}</span>
-                <div className="audience-card__badge" style={{ background: `${aud.color}20`, border: `1px solid ${aud.color}40`, color: aud.color }}>
+                <span className="audience-card__emoji"><aud.Icon size={22} strokeWidth={1.7} /></span>
+                <div className="audience-card__badge" style={{ background: `color-mix(in srgb, ${aud.color} 13%, transparent)`, border: `1px solid color-mix(in srgb, ${aud.color} 25%, transparent)`, color: aud.color }}>
                   Select
                 </div>
               </div>
@@ -83,7 +83,7 @@ export default function AudienceSelector() {
 
               <div className="audience-card__tags">
                 {aud.tags.map(tag => (
-                  <span key={tag} className="audience-card__tag text-xs" style={{ color: aud.color, borderColor: `${aud.color}30`, background: `${aud.color}12` }}>
+                  <span key={tag} className="audience-card__tag text-xs" style={{ color: aud.color, borderColor: `color-mix(in srgb, ${aud.color} 19%, transparent)`, background: `color-mix(in srgb, ${aud.color} 7%, transparent)` }}>
                     {tag}
                   </span>
                 ))}
@@ -91,7 +91,7 @@ export default function AudienceSelector() {
 
               <button
                 className="audience-card__cta btn btn-primary"
-                style={{ background: aud.color, color: aud.id === 'student' ? '#112250' : '#fff' }}
+                style={{ background: aud.color, color: aud.id === 'student' ? 'var(--ink)' : 'var(--surface)' }}
                 onClick={(e) => { e.stopPropagation(); scrollTo(aud.target); }}
               >
                 {aud.cta} <ChevronRight size={16} />

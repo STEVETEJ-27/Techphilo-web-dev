@@ -36,9 +36,6 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "vite.config.ts",
-    "tsconfig.node.json",
-    "src/vite-env.d.ts"
+    "node_modules"
   ]
 }

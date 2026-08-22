@@ -11,31 +11,70 @@
 }
 
 :root {
-  /* Brand Colors — Light Theme */
-  --navy: #F8FAFC;
-  --navy-deep: #FFFFFF;
-  --navy-mid: #F1F5F9;
-  --blue: #2563EB;
-  --blue-light: #3B82F6;
-  --blue-dim: #1D4ED8;
-  --gold: #D97706;
-  --gold-dim: #B45309;
-  --gold-glow: rgba(217, 119, 6, 0.1);
-  --white: #0F172A;
-  --charcoal: #F1F5F9;
-  --charcoal-light: #E2E8F0;
-  --charcoal-muted: #64748B;
-  --surface: rgba(255, 255, 255, 0.9);
-  --surface-light: rgba(37, 99, 235, 0.05);
-  --border: rgba(203, 213, 225, 0.7);
-  --border-gold: rgba(217, 119, 6, 0.3);
+  /* ============================================================
+     COLOR SYSTEM
+     One brand hue (indigo), one warm accent (amber), one neutral ramp.
+     Nothing is pure #000 or pure #FFF except card surfaces — flat black
+     text on flat white is what made the old palette feel harsh.
+     The six --hue-* values are the ONLY approved decorative colors; they
+     sit at matched lightness/chroma so they read as one family instead of
+     the 65 unrelated hex values that used to be scattered through the CSS.
+     ============================================================ */
+
+  /* Ink & text */
+  --ink: #101B33;
+  --ink-soft: #2C3A57;
+  --text: #46536E;
+  --text-muted: #68738C;
+  --text-faint: #707C96;
+
+  /* Surfaces */
+  --canvas: #FBFCFE;
+  --surface: #FFFFFF;
+  --surface-alt: #F4F7FB;
+  --surface-sunken: #EDF1F8;
+  --border: #E3E9F3;
+  --border-strong: #CFD9E8;
+
+  /* Brand — indigo */
+  --brand: #2F55D4;
+  --brand-strong: #1E3CA6;
+  --brand-bright: #5479F2;
+  --brand-soft: #EDF1FE;
+  --brand-glow: rgba(47, 85, 212, 0.16);
+
+  /* Accent — warm amber, used sparingly */
+  /* The accent doubles as text throughout (data-driven inline styles pass it
+     straight to `color`), so the DEFAULT must be the readable one: 4.76:1 on
+     canvas. --accent-bright is the vivid version, for dots, glows and
+     gradient stops where it never carries text. */
+  --accent: #A2621B;
+  --accent-bright: #DE8F36;
+  --accent-strong: #B36F22;
+  --accent-soft: #FDF4E7;
+  --accent-glow: rgba(222, 143, 54, 0.18);
+  --accent-border: rgba(222, 143, 54, 0.32);
+
+  /* Harmonised decorative hues (categories, tech tags, charts) */
+  --hue-blue: #3B6AE1;
+  --hue-teal: #217A6F;
+  --hue-violet: #7A5AF0;
+  --hue-amber: #B4740F;
+  --hue-rose: #DC5F7F;
+  --hue-green: #3F9D5C;
 
   /* Typography */
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  /* Spacing */
-  --section-py: 7rem;
+  /* Spacing
+     --section-py is applied to BOTH edges of every .section, so the visible
+     gap between two stacked sections is twice this value. At the old flat
+     7rem that meant a 224px void at every boundary — on desktop and phone
+     alike, since it was not responsive. Fluid now: ~112px of combined gap on
+     small screens, ~176px on a wide desktop. Tune here; nothing overrides it. */
+  --section-py: clamp(3.5rem, 5.5vw, 5.5rem);
+  --heading-mb: clamp(2rem, 3.5vw, 3rem);
   --container-px: clamp(1.25rem, 5vw, 5rem);
 
   /* Transitions */
@@ -49,17 +88,46 @@
 
   /* Scroll bar */
   scrollbar-width: thin;
-  scrollbar-color: var(--blue) #F1F5F9;
+  scrollbar-color: var(--border-strong) transparent;
 }
 
+/* NOTE: native `scroll-behavior: smooth` must stay OFF — Lenis drives the
+   scroll position itself on every frame, and the browser's own smooth-scroll
+   easing fights it, producing laggy / rubber-band scrolling. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+/* Lenis (this version ships no stylesheet, so the required rules live here) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--navy-deep);
-  color: var(--white);
+  /* --canvas, not --surface: a hair off pure white so cards have something
+     to sit on. Flat #FFF on #FFF is what made the old page feel washed out. */
+  background-color: var(--canvas);
+  color: var(--ink);
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -72,7 +140,7 @@ body {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
+  background: linear-gradient(90deg, var(--brand), var(--accent));
   transform-origin: left;
   z-index: calc(var(--z-nav) + 1);
   pointer-events: none;
@@ -80,13 +148,13 @@ body {
 
 /* ---- Selection ---- */
 ::selection {
-  background: var(--gold);
-  color: var(--navy);
+  background: var(--accent);
+  color: var(--surface-alt);
 }
 
 /* ---- Focus Visible ---- */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -129,10 +197,10 @@ body {
 .text-xs { font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.06em; }
 
 /* ---- Color Utilities ---- */
-.text-gold { color: var(--gold); }
-.text-blue { color: var(--blue-light); }
-.text-muted { color: var(--charcoal-muted); }
-.text-white { color: var(--white); }
+.text-gold { color: var(--accent); }
+.text-blue { color: var(--brand-bright); }
+.text-muted { color: var(--text-muted); }
+.text-white { color: var(--ink); }
 
 /* ---- Layout ---- */
 .container {
@@ -184,34 +252,34 @@ body {
 }
 
 .btn-primary {
-  background: #2563EB;
-  color: #FFFFFF;
+  background: var(--brand);
+  color: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .btn-primary:hover {
-  background: #1D4ED8;
+  background: var(--brand-strong);
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
 }
 
 .btn-outline {
-  background: #FFFFFF;
-  color: #0F172A;
-  border: 1px solid #E2E8F0;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .btn-outline:hover {
-  background: #F8FAFC;
-  border-color: #CBD5E1;
-  color: #2563EB;
+  background: var(--surface-alt);
+  border-color: var(--border-strong);
+  color: var(--brand);
 }
 
 .btn-ghost {
   background: transparent;
-  color: #2563EB;
-  border: 1px solid #E2E8F0;
+  color: var(--brand);
+  border: 1px solid var(--border);
   padding: 0.8rem 1.75rem;
 }
 
@@ -229,16 +297,16 @@ body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--border-gold);
-  background: var(--gold-glow);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-glow);
   padding: 0.35rem 0.85rem;
   border-radius: 100px;
 }
 
 /* ---- Card ---- */
 .card {
-  background: #FFFFFF;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 2rem;
@@ -261,14 +329,14 @@ body {
 
 /* ---- Gradient Text ---- */
 .gradient-text {
-  background: linear-gradient(135deg, #0F172A 20%, #2563EB 100%);
+  background: linear-gradient(135deg, var(--ink) 20%, var(--brand) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-blue {
-  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, var(--brand-strong) 0%, var(--brand-bright) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -276,15 +344,15 @@ body {
 
 /* ---- Glass Surface ---- */
 .glass {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  background: var(--surface);
+  border: 1px solid var(--border);
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
 }
 
 /* ---- Section Heading ---- */
 .section-heading {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--heading-mb);
 }
 
 .section-heading .label-tag {
@@ -300,7 +368,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--blue-light);
+  color: var(--brand-bright);
   background: rgba(79, 111, 191, 0.15);
   border: 1px solid rgba(79, 111, 191, 0.25);
   padding: 0.3rem 0.7rem;
@@ -335,7 +403,7 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent-bright);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -349,8 +417,69 @@ body {
   display: none;
 }
 
+/* ============================================================
+   PORTED FROM src/index.css
+   These rules only ever existed in the old Vite entry stylesheet
+   (src/index.css), which nothing in the Next app imports — it is
+   reachable only from src/main.tsx, which is dead Vite code. So in the
+   running app these classes resolved to NO styles at all.
+
+   The `.orb` case was the damaging one: 16 components render decorative
+   <div className="orb orb-blue" /> elements. Without `position: absolute`
+   they were laid out as ordinary in-flow blocks, each adding hundreds of
+   pixels of empty space and pushing real content off-screen — e.g. the
+   /students page hero measured 1756px tall with its actual content
+   starting 1010px down.
+   ============================================================ */
+
+/* ---- Decorative background orbs ---- */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.orb-navy { background: radial-gradient(circle, var(--surface-sunken), transparent); }
+.orb-blue { background: radial-gradient(circle, var(--brand), transparent); }
+.orb-gold { background: radial-gradient(circle, var(--accent), transparent); opacity: 0.08; }
+
+/* ---- Grid Helpers ---- */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ---- Number counter ---- */
+.counter-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* ---- Journey step dot line ---- */
+.step-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: linear-gradient(to bottom, var(--brand), transparent);
+}
+
+/* ---- Responsive collapse (also absent from this stylesheet) ---- */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--navy-deep); }
-::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--blue-light); }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-bright); }

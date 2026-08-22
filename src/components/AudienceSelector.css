@@ -1,5 +1,5 @@
 .audience-selector {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, var(--aud-color, #4F6FBF) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 0%, var(--aud-color, var(--brand)) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
@@ -37,8 +37,8 @@
 
 .audience-card:hover, .audience-card--active {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), 0 0 0 1.5px var(--aud-color, #4F6FBF);
-  border-color: var(--aud-color, #4F6FBF);
+  box-shadow: 0 20px 40px color-mix(in srgb, var(--ink) 8%, transparent), 0 0 0 1.5px var(--aud-color, var(--brand));
+  border-color: var(--aud-color, var(--brand));
 }
 
 .audience-card:hover::before,
@@ -82,7 +82,7 @@
 }
 
 .audience-card__desc {
-  color: #64748B;
+  color: var(--text-muted);
   margin-bottom: 1.25rem;
   line-height: 1.65;
 }
@@ -117,7 +117,7 @@
 
 .audience-selector__note {
   text-align: center;
-  color: #94A3B8;
+  color: var(--text-faint);
 }
 
 @media (max-width: 700px) {

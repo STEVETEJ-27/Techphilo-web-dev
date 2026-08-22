@@ -16,7 +16,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.85);
+  color: var(--ink);
 }
 .course-detail__outcomes li svg { flex-shrink: 0; margin-top: 0.1rem; }
 
@@ -26,18 +26,18 @@
   font-size: 0.85rem;
   padding: 0.6rem 0;
   border-bottom: 1px solid var(--border);
-  color: rgba(255,255,255,0.7);
+  color: var(--text);
 }
-.course-detail__meta-row strong { margin-left: auto; color: var(--white); }
+.course-detail__meta-row strong { margin-left: auto; color: var(--ink); }
 
 .course-detail__progress { margin-top: 1.25rem; }
 .course-detail__progress-label {
   display: flex; justify-content: space-between;
-  font-size: 0.78rem; margin-bottom: 0.5rem; color: rgba(255,255,255,0.7);
+  font-size: 0.78rem; margin-bottom: 0.5rem; color: var(--text);
 }
 .course-detail__progress-bar {
   height: 7px; border-radius: 100px;
-  background: rgba(255,255,255,0.08);
+  background: var(--surface-alt);
   overflow: hidden;
 }
 .course-detail__progress-bar div { height: 100%; border-radius: 100px; }

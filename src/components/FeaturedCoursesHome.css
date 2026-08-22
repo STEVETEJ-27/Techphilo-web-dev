@@ -7,8 +7,8 @@
 .course-mini-card {
   display: block;
   height: 100%;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1.5rem;
@@ -19,8 +19,8 @@
 
 .course-mini-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(245, 203, 112, 0.35);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 .course-mini-card__icon {
@@ -41,7 +41,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.72rem;
-  color: var(--charcoal-muted);
+  color: var(--text-muted);
   border-top: 1px solid var(--border);
   padding-top: 0.85rem;
 }

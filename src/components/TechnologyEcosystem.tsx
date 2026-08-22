@@ -1,87 +1,88 @@
 import { useState, useRef } from 'react'
+import { Atom, BarChart3, Bot, Brain, Cloud, Code2, Eye, Hexagon, Leaf, Music, Search, Settings, Sparkles } from 'lucide-react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import './TechnologyEcosystem.css'
 
 const technologies = [
   {
-    id: 'python', label: 'Python', icon: '🐍', color: '#4B8BBE', category: 'Language',
+    id: 'python', label: 'Python', Icon: Code2, color: 'var(--hue-blue)', category: 'Language',
     desc: 'The foundation of modern AI and data science. Write clean, powerful code that works across every domain.',
     related: ['AI', 'ML', 'Data Science'],
     projects: ['Data Analysis Tools', 'ML Pipelines', 'Automation Scripts'],
     x: 50, y: 50,
   },
   {
-    id: 'ai', label: 'AI', icon: '🤖', color: '#F5CB70', category: 'Domain',
+    id: 'ai', label: 'AI', Icon: Bot, color: 'var(--accent)', category: 'Domain',
     desc: 'Artificial Intelligence transforms how systems learn, reason and interact. Build models that think.',
     related: ['Python', 'ML', 'Gen AI'],
     projects: ['Conversational Agents', 'Recommendation Systems', 'AI Assistants'],
     x: 20, y: 25,
   },
   {
-    id: 'ml', label: 'Machine Learning', icon: '🧠', color: '#7C83FD', category: 'Domain',
+    id: 'ml', label: 'Machine Learning', Icon: Brain, color: 'var(--hue-violet)', category: 'Domain',
     desc: 'Train models on real data to make predictions, classifications, and decisions at scale.',
     related: ['Python', 'Data Science', 'AI'],
     projects: ['Predictive Models', 'Classification Systems', 'Anomaly Detection'],
     x: 78, y: 22,
   },
   {
-    id: 'data', label: 'Data Science', icon: '📊', color: '#43B89C', category: 'Domain',
+    id: 'data', label: 'Data Science', Icon: BarChart3, color: 'var(--hue-teal)', category: 'Domain',
     desc: 'Turn raw data into insight. Analyse, visualise, and communicate findings that drive real decisions.',
     related: ['Python', 'ML', 'Cloud'],
     projects: ['Analytics Dashboards', 'Exploratory Analysis', 'Business Intelligence'],
     x: 82, y: 68,
   },
   {
-    id: 'genai', label: 'Generative AI', icon: '✨', color: '#FF7AA2', category: 'Emerging',
+    id: 'genai', label: 'Generative AI', Icon: Sparkles, color: 'var(--hue-rose)', category: 'Emerging',
     desc: 'Build applications powered by large language models, image generation, and creative AI systems.',
     related: ['AI', 'Python', 'Cloud'],
     projects: ['Content Generators', 'AI Art Tools', 'LLM Applications'],
     x: 15, y: 70,
   },
   {
-    id: 'cv', label: 'Computer Vision', icon: '👁️', color: '#FF9F43', category: 'Domain',
+    id: 'cv', label: 'Computer Vision', Icon: Eye, color: 'var(--hue-amber)', category: 'Domain',
     desc: 'Teach computers to see — object detection, facial recognition, medical imaging and more.',
     related: ['ML', 'Python', 'AI'],
     projects: ['Object Detection Apps', 'Image Classifiers', 'Video Analytics'],
     x: 50, y: 20,
   },
   {
-    id: 'react', label: 'React', icon: '⚛️', color: '#61DAFB', category: 'Frontend',
+    id: 'react', label: 'React', Icon: Atom, color: 'var(--hue-blue)', category: 'Frontend',
     desc: 'Build fast, interactive user interfaces with the world\'s most popular frontend library.',
     related: ['Node.js', 'Full Stack'],
     projects: ['Web Applications', 'Dashboards', 'Portfolio Sites'],
     x: 18, y: 50,
   },
   {
-    id: 'node', label: 'Node.js', icon: '🟢', color: '#68A063', category: 'Backend',
+    id: 'node', label: 'Node.js', Icon: Hexagon, color: 'var(--hue-green)', category: 'Backend',
     desc: 'Server-side JavaScript that scales. Build APIs, real-time apps, and backend services.',
     related: ['React', 'MongoDB', 'Full Stack'],
     projects: ['REST APIs', 'Real-time Apps', 'Microservices'],
     x: 82, y: 45,
   },
   {
-    id: 'cloud', label: 'Cloud', icon: '☁️', color: '#4F9CF9', category: 'Infrastructure',
+    id: 'cloud', label: 'Cloud', Icon: Cloud, color: 'var(--hue-blue)', category: 'Infrastructure',
     desc: 'Deploy, scale, and manage applications on cloud platforms — AWS, GCP, Azure and beyond.',
     related: ['Data Science', 'Node.js', 'Automation'],
     projects: ['Serverless Functions', 'Deployed ML Models', 'Cloud Pipelines'],
     x: 50, y: 82,
   },
   {
-    id: 'django', label: 'Django', icon: '🎸', color: '#092E20', category: 'Backend',
+    id: 'django', label: 'Django', Icon: Music, color: 'var(--hue-green)', category: 'Backend',
     desc: 'The web framework for perfectionists with deadlines. Build robust Python-powered web apps.',
     related: ['Python', 'MongoDB', 'Cloud'],
     projects: ['Web Platforms', 'REST APIs', 'Admin Systems'],
     x: 30, y: 82,
   },
   {
-    id: 'mongo', label: 'MongoDB', icon: '🍃', color: '#4DB33D', category: 'Database',
+    id: 'mongo', label: 'MongoDB', Icon: Leaf, color: 'var(--hue-green)', category: 'Database',
     desc: 'Flexible, scalable NoSQL database for modern applications that handle dynamic data.',
     related: ['Node.js', 'Django', 'Full Stack'],
     projects: ['Data Storage', 'App Backends', 'Analytics Stores'],
     x: 70, y: 82,
   },
   {
-    id: 'automation', label: 'Automation', icon: '⚙️', color: '#A78BFA', category: 'Tools',
+    id: 'automation', label: 'Automation', Icon: Settings, color: 'var(--hue-violet)', category: 'Tools',
     desc: 'Automate repetitive tasks, workflows, and deployments. Work smarter, not harder.',
     related: ['Python', 'Cloud', 'Data Science'],
     projects: ['CI/CD Pipelines', 'Data Scrapers', 'Workflow Bots'],
@@ -139,7 +140,7 @@ export default function TechnologyEcosystem() {
                 aria-pressed={active === tech.id}
                 aria-label={`${tech.label} — ${tech.category}`}
               >
-                <span className="tech-node__icon">{tech.icon}</span>
+                <span className="tech-node__icon"><tech.Icon size={20} strokeWidth={1.7} /></span>
                 <span className="tech-node__label">{tech.label}</span>
                 <span className="tech-node__category text-xs">{tech.category}</span>
               </motion.button>
@@ -159,16 +160,16 @@ export default function TechnologyEcosystem() {
                   transition={{ duration: 0.35 }}
                 >
                   <div className="tech-detail__header">
-                    <span className="tech-detail__icon">{activeTech.icon}</span>
+                    <span className="tech-detail__icon"><activeTech.Icon size={20} strokeWidth={1.7} /></span>
                     <div>
                       <h3 className="display-sm" style={{ color: activeTech.color }}>{activeTech.label}</h3>
-                      <span className="label-tag" style={{ marginTop: '0.3rem', display: 'inline-flex', color: activeTech.color, borderColor: `${activeTech.color}40`, background: `${activeTech.color}15` }}>{activeTech.category}</span>
+                      <span className="label-tag" style={{ marginTop: '0.3rem', display: 'inline-flex', color: activeTech.color, borderColor: `color-mix(in srgb, ${activeTech.color} 25%, transparent)`, background: `color-mix(in srgb, ${activeTech.color} 8%, transparent)` }}>{activeTech.category}</span>
                     </div>
                   </div>
                   <p className="text-md text-muted" style={{ margin: '1rem 0' }}>{activeTech.desc}</p>
 
                   <div className="tech-detail__section">
-                    <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: '0.6rem' }}>Related Technologies</span>
+                    <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)', display: 'block', marginBottom: '0.6rem' }}>Related Technologies</span>
                     <div className="tech-detail__tags">
                       {activeTech.related.map(r => (
                         <span key={r} className="tech-tag">{r}</span>
@@ -177,7 +178,7 @@ export default function TechnologyEcosystem() {
                   </div>
 
                   <div className="tech-detail__section" style={{ marginTop: '1rem' }}>
-                    <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', display: 'block', marginBottom: '0.6rem' }}>Example Applications</span>
+                    <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)', display: 'block', marginBottom: '0.6rem' }}>Example Applications</span>
                     <div className="tech-detail__projects">
                       {activeTech.projects.map(p => (
                         <div key={p} className="tech-detail__project">
@@ -197,7 +198,7 @@ export default function TechnologyEcosystem() {
                   exit={{ opacity: 0 }}
                 >
                   <div className="tech-detail__empty-content">
-                    <span style={{ fontSize: '2.5rem' }}>🔍</span>
+                    <span style={{ fontSize: '2.5rem' }}><Search size={16} strokeWidth={2} /></span>
                     <p className="text-md text-muted" style={{ marginTop: '1rem', textAlign: 'center' }}>
                       Hover or click a technology<br />to explore its ecosystem.
                     </p>

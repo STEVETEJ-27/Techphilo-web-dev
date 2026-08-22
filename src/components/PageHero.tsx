@@ -23,7 +23,8 @@ export default function PageHero({
     <header className="page-hero">
       <div className="orb orb-blue" style={{ width: '36vw', height: '36vw', top: '-15%', left: '-8%' }} />
       <div className="orb orb-gold" style={{ width: '24vw', height: '24vw', bottom: '-10%', right: '0%' }} />
-      <div className="container page-hero__inner">
+      <div className="container">
+        <div className="page-hero__inner">
         {breadcrumbs && (
           <nav className="page-hero__crumbs" aria-label="Breadcrumb">
             {breadcrumbs.map((c, i) => (
@@ -58,6 +59,7 @@ export default function PageHero({
             </div>
           )}
         </motion.div>
+        </div>
       </div>
     </header>
   )

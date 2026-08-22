@@ -25,7 +25,7 @@ export default function ResourcesDownloads() {
           <div className="resource-list">
             {downloads.map(d => (
               <div key={d.title} className="card resource-list__item" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-                <FileText size={28} style={{ color: 'var(--gold)', flexShrink: 0 }} />
+                <FileText size={28} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
                   <h3 className="display-sm" style={{ marginBottom: '0.3rem' }}>{d.title}</h3>
                   <p className="text-sm text-muted">{d.desc}</p>

@@ -89,7 +89,7 @@ export default function Hero() {
         <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
           <ArrowDown size={16} />
         </motion.span>
-        <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: '#94A3B8' }}>
+        <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
           Scroll to Explore
         </span>
       </motion.button>

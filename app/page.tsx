@@ -23,11 +23,15 @@ export default function HomePage() {
 
   return (
     <div style={{ backgroundColor: "#ffffff" }}>
-      {/* ─── SCROLL SEQUENCE — 320vh for 300 preloaded frames ─── */}
+      {/* ─── SCROLL SEQUENCE — 600vh for 300 preloaded frames ───
+          The sticky child eats 100vh, so this leaves ~500vh of travel:
+          roughly 18px of scroll per frame. At the old 320vh each frame got
+          under 8px, so a single wheel notch jumped a dozen frames and the
+          sequence read as a stutter rather than motion. Tune here. */}
       <section
         ref={containerRef}
         id="story"
-        style={{ height: "320vh", position: "relative" }}
+        style={{ height: "600vh", position: "relative" }}
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Layer 0: Canvas z-0, cover-fit rendering 300 preloaded frames */}

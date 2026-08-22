@@ -1,5 +1,5 @@
 .learning-experience {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
   position: relative;
 }
 
@@ -47,7 +47,7 @@
 .learning__workspace {
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 50px color-mix(in srgb, var(--ink) 10%, transparent);
   position: sticky;
   top: 100px;
 }
@@ -56,8 +56,8 @@
   display: flex;
   align-items: center;
   padding: 0.8rem 1rem;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(79,111,191,0.15);
+  background: var(--surface-alt);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 15%, transparent);
 }
 
 .learning__ws-dots {
@@ -79,8 +79,8 @@
 
 .learning__ws-sidebar {
   width: 160px;
-  background: rgba(10, 23, 53, 0.6);
-  border-right: 1px solid rgba(79,111,191,0.12);
+  background: var(--surface-sunken);
+  border-right: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
   padding: 0.75rem 0;
   flex-shrink: 0;
 }
@@ -91,19 +91,19 @@
   gap: 0.5rem;
   padding: 0.45rem 0.75rem;
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
   cursor: default;
   border-radius: 0;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .learning__ws-file:hover {
-  background: rgba(79,111,191,0.12);
-  color: rgba(255,255,255,0.85);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  color: var(--ink);
 }
 
-.learning__ws-file--progress { color: #43B89C; }
-.learning__ws-file--event { color: #F5CB70; }
+.learning__ws-file--progress { color: var(--hue-teal); }
+.learning__ws-file--event { color: var(--accent); }
 
 .learning__ws-editor {
   flex: 1;
@@ -118,7 +118,7 @@
 }
 
 .learning__ws-progress {
-  border-top: 1px solid rgba(79,111,191,0.12);
+  border-top: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
   padding-top: 1rem;
   margin-top: 1rem;
 }

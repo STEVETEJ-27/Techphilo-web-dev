@@ -13,13 +13,13 @@
   width: 46px; height: 46px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.1rem;
-  background: var(--gold-glow); border: 1px solid var(--border-gold); color: var(--gold);
+  background: var(--accent-glow); border: 1px solid var(--accent-border); color: var(--accent);
 }
 .resources-hub-card h3 { margin-bottom: 0.5rem; }
 .resources-hub-card p { margin-bottom: 1.25rem; }
 .resources-hub-card__link {
   display: inline-flex; align-items: center; gap: 0.35rem;
-  font-size: 0.85rem; font-weight: 600; color: var(--gold);
+  font-size: 0.85rem; font-weight: 600; color: var(--accent);
 }
 
 .faq__list {
@@ -30,7 +30,7 @@
   gap: 0.75rem;
 }
 .faq__item {
-  background: rgba(17, 34, 80, 0.4);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.1rem 1.4rem;
@@ -48,7 +48,7 @@
 .faq__item summary::after {
   content: '+';
   font-size: 1.2rem;
-  color: var(--gold);
+  color: var(--accent);
   margin-left: 1rem;
 }
 .faq__item[open] summary::after { content: '\2212'; }

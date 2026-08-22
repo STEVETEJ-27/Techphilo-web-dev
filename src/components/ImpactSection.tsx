@@ -1,12 +1,13 @@
 import { useRef, useEffect, useState } from 'react'
+import { BookOpen, Globe, Map, RefreshCw, Sprout, Target, TrendingUp, Wrench } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './ImpactSection.css'
 
 const stats = [
-  { value: 100, suffix: '+', label: 'Projects', subLabel: 'Built by students', icon: '🛠️' },
-  { value: 50, suffix: '+', label: 'Learning Modules', subLabel: 'Structured content', icon: '📚' },
-  { value: 10, suffix: '+', label: 'Technology Domains', subLabel: 'From AI to Full Stack', icon: '🌐' },
-  { value: 7, suffix: '', label: 'Learning Paths', subLabel: 'Tailored to your goals', icon: '🗺️' },
+  { value: 100, suffix: '+', label: 'Projects', subLabel: 'Built by students', Icon: Wrench },
+  { value: 50, suffix: '+', label: 'Learning Modules', subLabel: 'Structured content', Icon: BookOpen },
+  { value: 10, suffix: '+', label: 'Technology Domains', subLabel: 'From AI to Full Stack', Icon: Globe },
+  { value: 7, suffix: '', label: 'Learning Paths', subLabel: 'Tailored to your goals', Icon: Map },
 ]
 
 function Counter({ target, suffix, inView }: { target: number; suffix: string; inView: boolean }) {
@@ -35,10 +36,10 @@ function Counter({ target, suffix, inView }: { target: number; suffix: string; i
 }
 
 const capabilities = [
-  { icon: '🎯', title: 'Goal-Oriented Learning', desc: 'Every path is designed with a clear outcome — a skill, a project, or a portfolio piece.' },
-  { icon: '🔄', title: 'Iterative Practice', desc: 'Build, review, iterate. The same cycle used by real professionals.' },
-  { icon: '📈', title: 'Progress Tracking', desc: 'Monitor your learning velocity and understand where to focus next.' },
-  { icon: '🌱', title: 'Continuous Growth', desc: 'The learning never stops — new content added as technology evolves.' },
+  { Icon: Target, title: 'Goal-Oriented Learning', desc: 'Every path is designed with a clear outcome — a skill, a project, or a portfolio piece.' },
+  { Icon: RefreshCw, title: 'Iterative Practice', desc: 'Build, review, iterate. The same cycle used by real professionals.' },
+  { Icon: TrendingUp, title: 'Progress Tracking', desc: 'Monitor your learning velocity and understand where to focus next.' },
+  { Icon: Sprout, title: 'Continuous Growth', desc: 'The learning never stops — new content added as technology evolves.' },
 ]
 
 export default function ImpactSection() {
@@ -79,7 +80,7 @@ export default function ImpactSection() {
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ delay: i * 0.1 + 0.2, duration: 0.6 }}
             >
-              <span className="impact__stat-icon">{stat.icon}</span>
+              <span className="impact__stat-icon"><stat.Icon size={20} strokeWidth={1.7} /></span>
               <div className="impact__stat-value">
                 <Counter target={stat.value} suffix={stat.suffix} inView={inView} />
               </div>
@@ -100,7 +101,7 @@ export default function ImpactSection() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <span className="impact__cap-icon">{cap.icon}</span>
+              <span className="impact__cap-icon"><cap.Icon size={20} strokeWidth={1.7} /></span>
               <div>
                 <h3 className="impact__cap-title text-md" style={{ fontWeight: 600, marginBottom: '0.3rem' }}>{cap.title}</h3>
                 <p className="text-sm text-muted">{cap.desc}</p>

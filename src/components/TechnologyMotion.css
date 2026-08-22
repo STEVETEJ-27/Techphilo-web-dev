@@ -1,10 +1,10 @@
 .tech-motion {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 50%, var(--surface) 100%);
   padding: 3rem 0;
-  border-top: 1px solid rgba(79,111,191,0.1);
-  border-bottom: 1px solid rgba(79,111,191,0.1);
+  border-top: 1px solid color-mix(in srgb, var(--brand) 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 10%, transparent);
 }
 
 .tech-motion__fade-left,
@@ -19,12 +19,12 @@
 
 .tech-motion__fade-left {
   left: 0;
-  background: linear-gradient(to right, #0a1735, transparent);
+  background: linear-gradient(to right, var(--surface), transparent);
 }
 
 .tech-motion__fade-right {
   right: 0;
-  background: linear-gradient(to left, #0a1735, transparent);
+  background: linear-gradient(to left, var(--surface), transparent);
 }
 
 .tech-motion__row {
@@ -53,8 +53,8 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.7rem 1.4rem;
-  background: rgba(17, 34, 80, 0.6);
-  border: 1px solid rgba(79,111,191,0.2);
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
   border-radius: 100px;
   white-space: nowrap;
   cursor: default;
@@ -62,8 +62,8 @@
 }
 
 .motion-item:hover {
-  border-color: rgba(245,203,112,0.4);
-  background: rgba(245,203,112,0.06);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
   transform: scale(1.05);
 }
 
@@ -77,7 +77,7 @@
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.8);
+  color: var(--text);
   letter-spacing: 0.01em;
 }
 
@@ -85,7 +85,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent-bright);
   opacity: 0.5;
   margin-left: 0.25rem;
 }

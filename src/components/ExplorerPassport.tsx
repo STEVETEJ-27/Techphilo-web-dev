@@ -1,16 +1,17 @@
 import { useRef } from 'react'
+import { Brain, Crown, Handshake, Map, MessagesSquare, Palette, Rocket, Sparkle, Telescope, Wallet } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './ExplorerPassport.css'
 
 const missions = [
-  { icon: '🔭', title: 'Discovery Mission', badge: 'Explorer', color: '#4F6FBF' },
-  { icon: '🧠', title: 'AI & Technology', badge: 'Innovator', color: '#7C83FD' },
-  { icon: '💰', title: 'Financial Literacy', badge: 'Money-Smart', color: '#F5CB70' },
-  { icon: '🚀', title: 'Entrepreneurship', badge: 'Founder', color: '#FF9F43' },
-  { icon: '🎨', title: 'Design Thinking', badge: 'Creator', color: '#FF7AA2' },
-  { icon: '🗣️', title: 'Communication', badge: 'Communicator', color: '#43B89C' },
-  { icon: '👑', title: 'Leadership', badge: 'Leader', color: '#F5CB70' },
-  { icon: '🤝', title: 'Collaboration', badge: 'Team Player', color: '#61DAFB' },
+  { Icon: Telescope, title: 'Discovery Mission', badge: 'Explorer', color: 'var(--brand)' },
+  { Icon: Brain, title: 'AI & Technology', badge: 'Innovator', color: 'var(--hue-violet)' },
+  { Icon: Wallet, title: 'Financial Literacy', badge: 'Money-Smart', color: 'var(--accent)' },
+  { Icon: Rocket, title: 'Entrepreneurship', badge: 'Founder', color: 'var(--hue-amber)' },
+  { Icon: Palette, title: 'Design Thinking', badge: 'Creator', color: 'var(--hue-rose)' },
+  { Icon: MessagesSquare, title: 'Communication', badge: 'Communicator', color: 'var(--hue-teal)' },
+  { Icon: Crown, title: 'Leadership', badge: 'Leader', color: 'var(--accent)' },
+  { Icon: Handshake, title: 'Collaboration', badge: 'Team Player', color: 'var(--hue-blue)' },
 ]
 
 export default function ExplorerPassport() {
@@ -44,7 +45,7 @@ export default function ExplorerPassport() {
             <div className="explorer__features">
               {['Missions & Challenges', 'Skill Badges', 'Achievement Certificates', 'Skill Demonstrations', 'Progress Tracking', 'Grand Expo Highlights'].map(f => (
                 <div key={f} className="explorer__feature">
-                  <span style={{ color: 'var(--gold)' }}>✦</span>
+                  <span style={{ color: 'var(--accent)' }}><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="text-sm">{f}</span>
                 </div>
               ))}
@@ -62,14 +63,14 @@ export default function ExplorerPassport() {
             {/* Passport header */}
             <div className="passport__header">
               <div className="passport__logo-area">
-                <span style={{ fontSize: '1.5rem' }}>🗺️</span>
+                <span style={{ fontSize: '1.5rem' }}><Map size={16} strokeWidth={2} /></span>
                 <div>
-                  <div className="text-xs" style={{ color: 'var(--gold)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Explorer Passport</div>
+                  <div className="text-xs" style={{ color: 'var(--accent)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Explorer Passport</div>
                   <div className="text-xs text-muted">TechPhilo Learning Journey</div>
                 </div>
               </div>
               <div className="passport__level">
-                <span className="text-xs" style={{ color: 'var(--gold)' }}>Level 3</span>
+                <span className="text-xs" style={{ color: 'var(--accent)' }}>Level 3</span>
                 <div className="passport__level-bar">
                   <motion.div
                     style={{ width: 0 }}
@@ -95,7 +96,7 @@ export default function ExplorerPassport() {
                     transition={{ delay: 0.4 + i * 0.08, type: 'spring', stiffness: 200 }}
                     title={m.title}
                   >
-                    <span className="passport__mission-icon">{m.icon}</span>
+                    <span className="passport__mission-icon"><m.Icon size={20} strokeWidth={1.7} /></span>
                     <span className="passport__mission-badge text-xs">{m.badge}</span>
                   </motion.div>
                 ))}

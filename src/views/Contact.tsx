@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Mail, Instagram, Youtube, Send, MapPin } from 'lucide-react'
+import { Mail, Instagram, Youtube, Send, MapPin, CalendarCheck, ArrowRight } from 'lucide-react'
 import PageHero from '../components/PageHero'
+import { Link } from '../router'
 import './Contact.css'
 
 export default function Contact() {
@@ -19,10 +20,20 @@ export default function Contact() {
 
       <section className="section">
         <div className="container contact__grid">
+          <div className="contact__form-col">
+            <Link to="/book-demo" className="contact__divert">
+              <span className="contact__divert-icon" aria-hidden="true"><CalendarCheck size={18} /></span>
+              <span className="contact__divert-copy">
+                <strong>Want to see the programme first?</strong>
+                <span className="text-sm text-muted">Book a 30-minute walkthrough for your school instead.</span>
+              </span>
+              <ArrowRight size={16} className="contact__divert-arrow" />
+            </Link>
+
           <div className="contact__form-wrap card">
             {sent ? (
               <div className="contact__success">
-                <Send size={28} style={{ color: 'var(--gold)' }} />
+                <Send size={28} style={{ color: 'var(--accent)' }} />
                 <h3 className="display-sm">Message sent</h3>
                 <p className="text-sm text-muted">Thanks for reaching out — our team will get back to you shortly.</p>
               </div>
@@ -53,31 +64,32 @@ export default function Contact() {
               </form>
             )}
           </div>
+          </div>
 
           <div className="contact__info">
             <div className="card contact__info-card">
-              <Mail size={20} style={{ color: 'var(--gold)' }} />
+              <Mail size={20} style={{ color: 'var(--accent)' }} />
               <div>
                 <h4>Email</h4>
                 <a href="mailto:itstechphilo@gmail.com">itstechphilo@gmail.com</a>
               </div>
             </div>
             <div className="card contact__info-card">
-              <Instagram size={20} style={{ color: 'var(--gold)' }} />
+              <Instagram size={20} style={{ color: 'var(--accent)' }} />
               <div>
                 <h4>Instagram</h4>
                 <a href="https://instagram.com/itstechphilo" target="_blank" rel="noopener noreferrer">@itstechphilo</a>
               </div>
             </div>
             <div className="card contact__info-card">
-              <Youtube size={20} style={{ color: 'var(--gold)' }} />
+              <Youtube size={20} style={{ color: 'var(--accent)' }} />
               <div>
                 <h4>YouTube</h4>
                 <a href="https://youtube.com/@itstechphilo" target="_blank" rel="noopener noreferrer">@itstechphilo</a>
               </div>
             </div>
             <div className="card contact__info-card">
-              <MapPin size={20} style={{ color: 'var(--gold)' }} />
+              <MapPin size={20} style={{ color: 'var(--accent)' }} />
               <div>
                 <h4>Working With Schools</h4>
                 <span className="text-sm text-muted">Partnering with schools across India</span>
