@@ -11,6 +11,7 @@ export interface Course {
   color: string
   summary: string
   outcomes: string[]
+  image?: string
 }
 
 export const courses: Course[] = [
@@ -25,6 +26,7 @@ export const courses: Course[] = [
     color: 'var(--brand)',
     summary: 'A foundation in coding, AI and modern technology — built around real, hands-on projects rather than theory alone.',
     outcomes: ['Write and debug real code confidently', 'Understand core AI & data concepts', 'Ship a working project end-to-end', 'Build a portfolio-ready case study'],
+    image: '/images/course-coder.png',
   },
   {
     slug: 'financial-literacy',
@@ -37,6 +39,7 @@ export const courses: Course[] = [
     color: 'var(--accent)',
     summary: 'Practical, real-scenario money skills — budgeting, saving and decision-making that students actually use.',
     outcomes: ['Build and manage a simple budget', 'Understand saving vs. spending trade-offs', 'Evaluate basic financial decisions', 'Apply concepts to a real-life scenario'],
+    image: '/images/course-financial-literacy.png',
   },
   {
     slug: 'entrepreneurship-innovation',
@@ -49,6 +52,7 @@ export const courses: Course[] = [
     color: 'var(--hue-amber)',
     summary: 'Turn an idea into a pitch-ready venture concept, learning validation, positioning and storytelling along the way.',
     outcomes: ['Validate a real problem worth solving', 'Build a simple business model canvas', 'Pitch an idea with confidence', 'Learn from iteration and feedback'],
+    image: '/images/course-innovation.png',
   },
   {
     slug: 'communication',
@@ -61,6 +65,7 @@ export const courses: Course[] = [
     color: 'var(--hue-teal)',
     summary: 'Clear, confident expression — written, verbal and presentation skills built through real practice.',
     outcomes: ['Structure a clear, persuasive argument', 'Present ideas confidently to a group', 'Give and receive constructive feedback', 'Adapt tone for different audiences'],
+    image: '/images/course-communication.png',
   },
   {
     slug: 'design-thinking',
@@ -73,6 +78,7 @@ export const courses: Course[] = [
     color: 'var(--hue-rose)',
     summary: 'Human-centred problem solving — empathise, define, ideate, prototype and test, applied to real challenges.',
     outcomes: ['Run a structured empathy interview', 'Reframe a problem before solving it', 'Prototype a solution quickly', 'Test and iterate based on feedback'],
+    image: '/images/course-DesignThinking.png',
   },
   {
     slug: 'leadership',
@@ -85,6 +91,7 @@ export const courses: Course[] = [
     color: 'var(--hue-violet)',
     summary: 'Collaboration and ownership built through team projects, not lectures — learning to lead by doing.',
     outcomes: ['Lead a small project team', 'Navigate disagreement constructively', 'Take ownership of outcomes', 'Support and mentor peers'],
+    image: '/images/course-leadership.png',
   },
 ]
 

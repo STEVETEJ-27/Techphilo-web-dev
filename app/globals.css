@@ -12,81 +12,103 @@
 
 :root {
   /* ============================================================
-     COLOR SYSTEM
-     One brand hue (indigo), one warm accent (amber), one neutral ramp.
-     Nothing is pure #000 or pure #FFF except card surfaces — flat black
-     text on flat white is what made the old palette feel harsh.
-     The six --hue-* values are the ONLY approved decorative colors; they
-     sit at matched lightness/chroma so they read as one family instead of
-     the 65 unrelated hex values that used to be scattered through the CSS.
+     TECHPHILO — BRAND DESIGN SYSTEM
+     "Ivory · Forest · Emerald · Sage · Antique Gold"
+     IVORY    #F2EBDD — canvas, surfaces, main bg
+     SAGE     #78947F — secondary brand, soft accents
+     EMERALD  #185844 — primary brand (headings, brand moments)
+     FOREST   #102F27 — deepest ink, main titles, dark surfaces
+     ANTIQUE GOLD #B08A4F — highlights, achievement, premium
      ============================================================ */
 
-  /* Ink & text */
-  --ink: #101B33;
-  --ink-soft: #2C3A57;
-  --text: #46536E;
-  --text-muted: #68738C;
-  --text-faint: #707C96;
+  /* BRAND — Emerald / Forest */
+  --brand:        #185844;
+  --brand-strong: #102F27;
+  --brand-bright: #78947F;
+  --brand-soft:   #E8EFE9;
+  --brand-glow:   rgba(24, 88, 68, 0.16);
 
-  /* Surfaces */
-  --canvas: #FBFCFE;
-  --surface: #FFFFFF;
-  --surface-alt: #F4F7FB;
-  --surface-sunken: #EDF1F8;
-  --border: #E3E9F3;
-  --border-strong: #CFD9E8;
+  /* ACCENT — Antique Gold
+     Sparingly — achievement, finance, value, key metrics, premium moments */
+  --accent:        #B08A4F;
+  --accent-bright: #CDA96B;
+  --accent-strong: #8A6A36;
+  --accent-soft:   #F2EBDD;
+  --accent-glow:   rgba(176, 138, 79, 0.18);
+  --accent-border: rgba(176, 138, 79, 0.38);
 
-  /* Brand — indigo */
-  --brand: #2F55D4;
-  --brand-strong: #1E3CA6;
-  --brand-bright: #5479F2;
-  --brand-soft: #EDF1FE;
-  --brand-glow: rgba(47, 85, 212, 0.16);
+  /* CATEGORY HUES — muted, harmonious, palette-matched */
+  --hue-blue:   #4F7475;
+  --hue-teal:   #185844;
+  --hue-violet: #746D68;
+  --hue-amber:  #B08A4F;
+  --hue-rose:   #A9786B;
+  --hue-green:  #78947F;
 
-  /* Accent — warm amber, used sparingly */
-  /* The accent doubles as text throughout (data-driven inline styles pass it
-     straight to `color`), so the DEFAULT must be the readable one: 4.76:1 on
-     canvas. --accent-bright is the vivid version, for dots, glows and
-     gradient stops where it never carries text. */
-  --accent: #A2621B;
-  --accent-bright: #DE8F36;
-  --accent-strong: #B36F22;
-  --accent-soft: #FDF4E7;
-  --accent-glow: rgba(222, 143, 54, 0.18);
-  --accent-border: rgba(222, 143, 54, 0.32);
+  /* TYPOGRAPHY — Forest deep, never pure black */
+  --ink:       #102F27;
+  --ink-soft:  #185844;
+  --text:      #3A5A4A;
+  --text-muted:#78947F;
+  --text-faint:#9AB0A0;
 
-  /* Harmonised decorative hues (categories, tech tags, charts) */
-  --hue-blue: #3B6AE1;
-  --hue-teal: #217A6F;
-  --hue-violet: #7A5AF0;
-  --hue-amber: #B4740F;
-  --hue-rose: #DC5F7F;
-  --hue-green: #3F9D5C;
+  /* SURFACES — Ivory canvas */
+  --canvas:         #F2EBDD;
+  --canvas-light:   #F8F4EC;
+  --surface:        #FAF7F0;
+  --surface-alt:    #EDE4D2;
+  --surface-sunken: #E5DDC8;
+  --surface-sage:   #D8E4DA;
+  --surface-dark:   #102F27;
 
-  /* Typography */
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  /* BORDERS — warm ivory-toned */
+  --border:       #D8CEBC;
+  --border-strong:#C0B49A;
 
-  /* Spacing
-     --section-py is applied to BOTH edges of every .section, so the visible
-     gap between two stacked sections is twice this value. At the old flat
-     7rem that meant a 224px void at every boundary — on desktop and phone
-     alike, since it was not responsive. Fluid now: ~112px of combined gap on
-     small screens, ~176px on a wide desktop. Tune here; nothing overrides it. */
-  --section-py: clamp(3.5rem, 5.5vw, 5.5rem);
-  --heading-mb: clamp(2rem, 3.5vw, 3rem);
+  /* ILLUSTRATION SUPPORT PALETTE */
+  --paper:         #F2EBDD;
+  --paper-shadow:  #D8CEBC;
+  --sage:          #78947F;
+  --sage-light:    #C4D4C8;
+  --deep-teal:     #185844;
+  --midnight-teal: #102F27;
+  --bronze:        #B08A4F;
+  --gold:          #CDA96B;
+  --cream:         #F2EBDD;
+  --brown:         #4C2E1D;
+
+  /* GLASS — dark cinematic */
+  --glass-dark:        rgba(16, 47, 39, 0.72);
+  --glass-dark-border: rgba(255, 255, 255, 0.16);
+
+  /* GLASS — light educational */
+  --glass-light:        rgba(242, 235, 221, 0.68);
+  --glass-light-border: rgba(255, 255, 255, 0.55);
+
+  /* FOCUS */
+  --focus-ring: rgba(24, 88, 68, 0.38);
+
+  /* TYPOGRAPHY — Chakra Petch (headings/display) · Plus Jakarta Sans (body/UI) · JetBrains Mono (code/labels) */
+  --font-display: var(--font-display), 'Chakra Petch', system-ui, sans-serif;
+  --font-body:    var(--font-label), 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-label:   var(--font-label), 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono:    var(--font-mono), 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  /* SPACING (fluid) */
+  --section-py:   clamp(3.5rem, 5.5vw, 5.5rem);
+  --heading-mb:   clamp(2rem, 3.5vw, 3rem);
   --container-px: clamp(1.25rem, 5vw, 5rem);
 
-  /* Transitions */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* TRANSITIONS */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
 
-  /* Z-index layers */
-  --z-nav: 1000;
+  /* Z-INDEX */
+  --z-nav:     1000;
   --z-overlay: 500;
-  --z-modal: 2000;
+  --z-modal:   2000;
 
-  /* Scroll bar */
+  /* SCROLLBAR */
   scrollbar-width: thin;
   scrollbar-color: var(--border-strong) transparent;
 }
@@ -140,7 +162,7 @@ body {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--brand), var(--accent));
+  background: linear-gradient(90deg, var(--brand), var(--accent-bright));
   transform-origin: left;
   z-index: calc(var(--z-nav) + 1);
   pointer-events: none;
@@ -148,47 +170,48 @@ body {
 
 /* ---- Selection ---- */
 ::selection {
-  background: var(--accent);
-  color: var(--surface-alt);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
 }
 
 /* ---- Focus Visible ---- */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ---- Typography Scale ---- */
+/* ---- Typography Scale — Chakra Petch, angular futuristic tech proportions ---- */
 .display-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 7vw, 6.5rem);
-  font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .display-lg {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
 }
 
 .display-md {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3.5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.014em;
 }
 
 .display-sm {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-size: clamp(1.35rem, 2.5vw, 2.25rem);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
 }
 
 .text-lg { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.7; }
@@ -197,8 +220,8 @@ body {
 .text-xs { font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.06em; }
 
 /* ---- Color Utilities ---- */
-.text-gold { color: var(--accent); }
-.text-blue { color: var(--brand-bright); }
+.text-gold  { color: var(--gold); }
+.text-teal  { color: var(--brand); }
 .text-muted { color: var(--text-muted); }
 .text-white { color: var(--ink); }
 
@@ -251,102 +274,203 @@ body {
   transform: translateY(0);
 }
 
+/* Primary — forest teal */
 .btn-primary {
   background: var(--brand);
   color: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 14px rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 3px rgba(16, 47, 39, 0.12), 0 4px 14px var(--brand-glow);
 }
-
 .btn-primary:hover {
   background: var(--brand-strong);
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 20px var(--brand-glow);
 }
+.btn-primary:active { background: var(--midnight-teal); }
 
+/* Outline — warm ivory */
 .btn-outline {
   background: var(--surface);
   color: var(--ink);
   border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 3px rgba(16, 47, 39, 0.05);
 }
-
 .btn-outline:hover {
-  background: var(--surface-alt);
-  border-color: var(--border-strong);
-  color: var(--brand);
+  background: var(--brand-soft);
+  border-color: var(--brand-bright);
+  color: var(--brand-strong);
 }
 
+/* Ghost / tertiary */
 .btn-ghost {
   background: transparent;
   color: var(--brand);
   border: 1px solid var(--border);
   padding: 0.8rem 1.75rem;
 }
-
 .btn-ghost:hover {
-  background: rgba(37, 99, 235, 0.06);
-  border-color: rgba(37, 99, 235, 0.3);
+  background: var(--brand-soft);
+  border-color: var(--brand-bright);
 }
 
-/* ---- Label ---- */
+/* Gold — achievement, premium, financial moments */
+.btn-gold {
+  background: var(--accent-strong);
+  color: #FFFDF8;
+  border: 1px solid var(--accent-strong);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 14px rgba(176, 138, 79, 0.24);
+}
+.btn-gold:hover {
+  background: var(--accent);
+  box-shadow: 0 4px 20px rgba(176, 138, 79, 0.3);
+}
+
+/* ---- Label tag — warm bronze with ivory fill ---- */
+/* Inter medium weight + refined tracking = clean professional tag aesthetic */
 .label-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  font-family: var(--font-label);
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-strong);
   border: 1px solid var(--accent-border);
-  background: var(--accent-glow);
-  padding: 0.35rem 0.85rem;
+  background: var(--accent-soft);
+  padding: 0.35rem 0.9rem;
   border-radius: 100px;
 }
 
-/* ---- Card ---- */
+/* ---- Card — warm ivory, paper feel ---- */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 16px rgba(16, 47, 39, 0.06);
   transition: transform 0.3s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  transform: translateY(-3px);
+  border-color: var(--brand-bright);
+  box-shadow: 0 12px 32px rgba(24, 88, 68, 0.12);
 }
 
-/* ---- Divider ---- */
+/* ---- Divider — warm paper line ---- */
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
   margin: 0 auto;
 }
 
-/* ---- Gradient Text ---- */
+/* ---- Gradient Text — teal editorial ---- */
 .gradient-text {
-  background: linear-gradient(135deg, var(--ink) 20%, var(--brand) 100%);
+  background: linear-gradient(135deg, var(--ink) 20%, var(--brand-bright) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gradient-text-blue {
+.gradient-text-teal {
   background: linear-gradient(135deg, var(--brand-strong) 0%, var(--brand-bright) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ---- Glass Surface ---- */
+.gradient-text-gold {
+  background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Light glass — educational, airy ---- */
 .glass {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
+  background: var(--glass-light);
+  border: 1px solid var(--glass-light-border);
+  backdrop-filter: blur(24px) saturate(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(110%);
+  box-shadow: 0 4px 20px rgba(16, 47, 39, 0.07), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Dark cinematic glass — teal-based ---- */
+.glass-dark {
+  background: var(--glass-dark);
+  border: 1px solid var(--glass-dark-border);
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+/* ── Storyline overlay glass cards (StoryExperience.tsx only) ── */
+/* Applied exclusively to the cinematic phase cards that float     */
+/* over the scroll-canvas animation sequence.                      */
+.cinematic-glass-card {
+  background: rgba(14, 20, 24, 0.60);
+  backdrop-filter: blur(36px) saturate(150%) brightness(0.95);
+  -webkit-backdrop-filter: blur(36px) saturate(150%) brightness(0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 20px;
+  padding: 2rem 2.25rem 2rem;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.52),
+    0 8px 24px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle iridescent sheen on the top-left corner */
+.cinematic-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    transparent 45%,
+    rgba(176, 138, 79, 0.04) 100%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Eyebrow label — Plus Jakarta Sans with refined tracking */
+.cinematic-eyebrow {
+  display: block;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(205, 169, 107, 0.90);
+  margin-bottom: 0.6rem;
+}
+
+/* Main narrative headline — Space Grotesk bold geometric */
+.cinematic-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: rgba(255, 253, 248, 0.96);
+  margin-bottom: 0.75rem;
+}
+
+/* Supporting description text */
+.cinematic-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.2vw, 0.94rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 42ch;
+  margin: 0;
 }
 
 /* ---- Section Heading ---- */
@@ -359,19 +483,20 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* ---- Tech Tag ---- */
+/* ---- Tech Tag — JetBrains Mono for a sharp terminal-code aesthetic ---- */
 .tech-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--brand-bright);
-  background: rgba(79, 111, 191, 0.15);
-  border: 1px solid rgba(79, 111, 191, 0.25);
-  padding: 0.3rem 0.7rem;
+  color: var(--brand);
+  background: var(--brand-soft);
+  border: 1px solid rgba(24, 88, 68, 0.22);
+  padding: 0.3rem 0.75rem;
   border-radius: 100px;
 }
 
@@ -412,6 +537,11 @@ body {
   50% { opacity: 0.5; transform: scale(0.7); }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 /* ---- Noise texture overlay (disabled for minimal design) ---- */
 .noise-overlay {
   display: none;
@@ -443,20 +573,47 @@ body {
 
 .orb-navy { background: radial-gradient(circle, var(--surface-sunken), transparent); }
 .orb-blue { background: radial-gradient(circle, var(--brand), transparent); }
-.orb-gold { background: radial-gradient(circle, var(--accent), transparent); opacity: 0.08; }
+.orb-gold { background: radial-gradient(circle, var(--gold), transparent); opacity: 0.06; }
+.orb-sage { background: radial-gradient(circle, var(--sage), transparent); opacity: 0.12; }
 
 /* ---- Grid Helpers ---- */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 
-/* ---- Number counter ---- */
+/* ---- Number counter — Chakra Petch, bold angular impact ---- */
 .counter-number {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(2.8rem, 5.5vw, 4.75rem);
+  font-weight: 700;
   color: var(--ink);
-  line-height: 1;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Monospace — JetBrains Mono + ui-monospace stack ---- */
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-feature-settings: "liga" 1, "calt" 1; /* enable ligatures */
+}
+
+pre {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+code:not(pre > code) {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.15em 0.45em;
+  color: var(--brand);
+  font-size: 0.82em;
 }
 
 /* ---- Journey step dot line ---- */
@@ -465,7 +622,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
-  background: linear-gradient(to bottom, var(--brand), transparent);
+  background: linear-gradient(to bottom, var(--brand-bright), transparent);
 }
 
 /* ---- Responsive collapse (also absent from this stylesheet) ---- */
@@ -478,8 +635,8 @@ body {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
 }
 
-/* ---- Scrollbar ---- */
+/* ---- Scrollbar — warm teal ---- */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--surface); }
-::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--brand-bright); }
+::-webkit-scrollbar-track { background: var(--surface-sunken); }
+::-webkit-scrollbar-thumb { background: var(--brand-bright); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }

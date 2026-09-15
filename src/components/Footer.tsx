@@ -2,6 +2,7 @@
 
 import Logo from './Logo'
 import { Link } from '../router'
+import { Mail, Instagram, Youtube } from 'lucide-react'
 import './Footer.css'
 
 const quickLinks = [
@@ -45,8 +46,17 @@ export default function Footer() {
         <div className="footer__col footer__connect">
           <div className="footer__nav-title text-xs">CONNECT</div>
           <div className="footer__nav-list">
-            <a href="mailto:info@techphilo.in" className="footer__contact-link">
-              info@techphilo.in
+            <a href="mailto:itstechphilo@gmail.com" className="footer__contact-link footer__social-link">
+              <Mail size={14} strokeWidth={2} />
+              itstechphilo@gmail.com
+            </a>
+            <a href="https://instagram.com/itstechphilo" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
+              <Instagram size={14} strokeWidth={2} />
+              @itstechphilo
+            </a>
+            <a href="https://youtube.com/@itstechphilo" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
+              <Youtube size={14} strokeWidth={2} />
+              @itstechphilo
             </a>
           </div>
         </div>

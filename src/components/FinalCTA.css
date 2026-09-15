@@ -92,11 +92,11 @@
   border-radius: 2px;
   background: linear-gradient(
     to right,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 45%, var(--border-strong)) 50%,
-    var(--brand) 100%
+    var(--brand) 0%,
+    color-mix(in srgb, var(--brand-bright) 50%, var(--accent-bright)) 50%,
+    var(--accent) 100%
   );
-  opacity: 0.45;
+  opacity: 0.42;
 }
 
 .final-cta__stage {
@@ -112,7 +112,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--accent-bright);
+  background: var(--brand-bright);
   box-shadow: 0 0 0 3px var(--surface);
   position: relative;
   z-index: 1;
@@ -120,7 +120,7 @@
 }
 
 .final-cta__stage:last-child .final-cta__stage-dot {
-  background: var(--brand);
+  background: var(--accent);
 }
 
 .final-cta__stage-label {

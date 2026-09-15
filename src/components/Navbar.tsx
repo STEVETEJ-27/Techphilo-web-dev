@@ -93,6 +93,8 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="navbar__inner container">
+          {/* Animated gradient bottom border — palette-matched */}
+          <div className="grad-divider" aria-hidden="true" />
           <Link to="/" className="navbar__logo" aria-label="TechPhilo Home">
             <Logo height={40} />
             <span className="navbar__wordmark">TechPhilo</span>
@@ -163,6 +165,11 @@ export default function Navbar() {
             </AnimatePresence>
           </button>
         </div>
+        <div
+          className="grad-divider opacity-0 transition-opacity duration-500"
+          id="navbar-divider"
+          style={{ opacity: 1 }}
+        />
       </motion.nav>
 
       <AnimatePresence>

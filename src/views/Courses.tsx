@@ -69,18 +69,45 @@ export default function Courses() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.4 }}
                 >
-                  <Link to={`/courses/${c.slug}`} className="course-card">
-                    <div className="course-card__icon" style={{ color: c.color, background: `color-mix(in srgb, ${c.color} 9%, transparent)`, border: `1px solid color-mix(in srgb, ${c.color} 19%, transparent)` }}>
-                      <c.Icon size={22} strokeWidth={1.7} />
-                    </div>
-                    <span className="tech-tag">{c.categoryLabel}</span>
-                    <h3 className="display-sm">{c.title}</h3>
-                    <p className="text-sm text-muted">{c.summary}</p>
-                    <div className="course-card__meta">
-                      <span><Clock size={13} /> {c.duration}</span>
-                      <span><BarChart3 size={13} /> {c.level}</span>
-                    </div>
-                    <span className="course-card__cta">View Course <ArrowRight size={14} /></span>
+                  <Link to={`/courses/${c.slug}`} className={`course-card ${c.image ? 'course-card--has-image' : ''}`}>
+                    {c.image ? (
+                      <>
+                        <div className="course-card__image-wrap">
+                          <img
+                            src={c.image}
+                            alt={c.title}
+                            className="course-card__image"
+                          />
+                          <div className="course-card__badge">
+                            <span className="course-card__badge-icon" style={{ color: c.color }}>
+                              <c.Icon size={13} strokeWidth={2.2} />
+                            </span>
+                            <span>{c.categoryLabel}</span>
+                          </div>
+                        </div>
+                        <div className="course-card__body">
+                          <h3 className="course-card__title">{c.title}</h3>
+                          <div className="course-card__footer">
+                            <span className="course-card__cta">View Course <ArrowRight size={14} /></span>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="course-card__body">
+                        <div>
+                          <div className="course-card__header">
+                            <div className="course-card__icon" style={{ color: c.color, background: `color-mix(in srgb, ${c.color} 9%, transparent)`, border: `1px solid color-mix(in srgb, ${c.color} 19%, transparent)` }}>
+                              <c.Icon size={20} strokeWidth={1.7} />
+                            </div>
+                            <span className="tech-tag">{c.categoryLabel}</span>
+                          </div>
+                          <h3 className="course-card__title">{c.title}</h3>
+                        </div>
+                        <div className="course-card__footer">
+                          <span className="course-card__cta">View Course <ArrowRight size={14} /></span>
+                        </div>
+                      </div>
+                    )}
                   </Link>
                 </motion.div>
               ))}

@@ -36,7 +36,7 @@
 }
 
 .footer__wordmark {
-  font-family: 'Syne', 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -88,6 +88,12 @@
 .footer__nav-link:hover, .footer__contact-link:hover { 
   color: var(--brand);
   transform: translateX(3px); 
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Bottom bar */
