@@ -1,0 +1,22 @@
+# Render Blueprint specification for TechPhilo (TPLander repository)
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: techphilo
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASS
+        sync: false
+      - key: DEMO_TO_EMAIL
+        sync: false
+      - key: CONTACT_TO_EMAIL
+        sync: false

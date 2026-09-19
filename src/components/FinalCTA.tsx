@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ChevronRight, ArrowRight } from 'lucide-react'
+import { useRouter } from '../router'
 import './FinalCTA.css'
 
 const STAGES = ['Discover', 'Learn', 'Practice', 'Develop', 'Advance', 'Excel']
@@ -10,8 +11,7 @@ const STAGES = ['Discover', 'Learn', 'Practice', 'Develop', 'Advance', 'Excel']
 export default function FinalCTA() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  const { navigate } = useRouter()
 
   return (
     <section id="cta" className="final-cta" aria-labelledby="cta-heading">
@@ -41,11 +41,12 @@ export default function FinalCTA() {
             <div className="final-cta__actions">
               <button
                 className="btn btn-primary final-cta__btn-primary"
-                onClick={() => { window.location.href = 'mailto:info@techphilo.in' }}
+                onClick={() => navigate('/contact')}
               >
                 Partner With TechPhilo <ChevronRight size={18} />
               </button>
-              <button className="btn btn-ghost" onClick={() => scrollTo('student-experience')}>
+              <button className="btn btn-ghost" onClick={() => navigate('/students')}
+              >
                 Explore Student Learning <ArrowRight size={16} />
               </button>
             </div>

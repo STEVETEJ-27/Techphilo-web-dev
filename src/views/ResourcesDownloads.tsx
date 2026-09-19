@@ -30,7 +30,7 @@ export default function ResourcesDownloads() {
                   <h3 className="display-sm" style={{ marginBottom: '0.3rem' }}>{d.title}</h3>
                   <p className="text-sm text-muted">{d.desc}</p>
                 </div>
-                <a href="mailto:itstechphilo@gmail.com?subject=Brochure%20Request" className="btn btn-outline btn-sm">
+                <a href="mailto:techphilo.tp@gmail.com?subject=Brochure%20Request" className="btn btn-outline btn-sm">
                   <Download size={14} /> Request
                 </a>
               </div>

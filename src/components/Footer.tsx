@@ -46,17 +46,17 @@ export default function Footer() {
         <div className="footer__col footer__connect">
           <div className="footer__nav-title text-xs">CONNECT</div>
           <div className="footer__nav-list">
-            <a href="mailto:itstechphilo@gmail.com" className="footer__contact-link footer__social-link">
+            <a href="mailto:techphilo.tp@gmail.com" className="footer__contact-link footer__social-link">
               <Mail size={14} strokeWidth={2} />
-              itstechphilo@gmail.com
+              techphilo.tp@gmail.com
             </a>
-            <a href="https://instagram.com/itstechphilo" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
+            <a href="https://www.instagram.com/techphilo.tp" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
               <Instagram size={14} strokeWidth={2} />
-              @itstechphilo
+              @techphilo.tp
             </a>
-            <a href="https://youtube.com/@itstechphilo" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
+            <a href="https://youtube.com/@itstechphilo-tp" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
               <Youtube size={14} strokeWidth={2} />
-              @itstechphilo
+              @itstechphilo-tp
             </a>
           </div>
         </div>
