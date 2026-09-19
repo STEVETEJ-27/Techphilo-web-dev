@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Code2, Landmark, Lightbulb, MessageSquare, PenTool, Crown, Search } from 'lucide-react'
+import { Code2, Landmark, Lightbulb, MessageSquare, PenTool, Crown, Search, CheckCircle2 } from 'lucide-react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import './TechnologyEcosystem.css'
 
@@ -11,8 +11,9 @@ const courseSkills = [
     color: 'var(--brand)',
     category: 'Technology',
     desc: 'A foundation in coding, AI and modern technology — built around real, hands-on projects rather than theory alone.',
-    related: ['AI Fundamentals', 'Web Development', 'Problem Solving'],
-    projects: ['Smart Community Care App', 'Interactive Web Portals', 'Automated School Tools'],
+    related: ['Algorithms & Logic', 'AI & Machine Learning Basics', 'Web App Building', 'Git & Code Management'],
+    outcomes: ['Write and debug real code confidently', 'Understand core AI & data concepts', 'Ship a working web project end-to-end'],
+    projects: ['Smart Community Care App', 'Interactive Quiz Platform', 'AI Task Assistant'],
   },
   {
     id: 'financial-literacy',
@@ -20,9 +21,10 @@ const courseSkills = [
     Icon: Landmark,
     color: 'var(--accent)',
     category: 'Life Skills',
-    desc: 'Practical, real-scenario money skills — budgeting, saving and decision-making that students actually use.',
-    related: ['Budgeting', 'Savings Strategy', 'Financial Decision-Making'],
-    projects: ['Student Savings Planner', 'Personal Budget Tracker', 'Resource Allocation Models'],
+    desc: 'Practical, real-scenario money skills — budgeting, saving, and financial decision-making that students actually use.',
+    related: ['Personal Budgeting', 'Savings Strategies', 'Financial Risk Assessment', 'Smart Purchasing'],
+    outcomes: ['Build and manage a personal budget', 'Understand saving vs. spending trade-offs', 'Apply financial concepts to real scenarios'],
+    projects: ['Student Budget Planner', 'Personal Savings Tracker', 'Resource Allocation Models'],
   },
   {
     id: 'entrepreneurship-innovation',
@@ -31,8 +33,9 @@ const courseSkills = [
     color: 'var(--hue-amber)',
     category: 'Innovation',
     desc: 'Turn an idea into a pitch-ready venture concept, learning validation, positioning and storytelling along the way.',
-    related: ['Problem Validation', 'Business Model Canvas', 'Pitch Storytelling'],
-    projects: ['Eco-Venture School Business', 'Social Enterprise Pitch', 'Product Concept Canvas'],
+    related: ['Problem Validation', 'Business Model Canvas', 'Market Research', 'Pitch Storytelling'],
+    outcomes: ['Validate a real problem worth solving', 'Build a 1-page business model canvas', 'Pitch an idea confidently to leaders'],
+    projects: ['Eco-Venture School Business', 'Student Social Enterprise', 'Product Launch Plan'],
   },
   {
     id: 'communication',
@@ -40,9 +43,10 @@ const courseSkills = [
     Icon: MessageSquare,
     color: 'var(--hue-teal)',
     category: 'Life Skills',
-    desc: 'Clear, confident expression — written, verbal and presentation skills built through real practice.',
-    related: ['Public Speaking', 'Persuasive Writing', 'Digital Media'],
-    projects: ['Youth Environmental Campaign', 'Persuasive Presentation Deck', 'Community Storyboard'],
+    desc: 'Clear, confident expression — written, verbal, public speaking, and presentation skills built through practice.',
+    related: ['Public Speaking', 'Persuasive Writing', 'Presentation Design', 'Audience Engagement'],
+    outcomes: ['Structure a clear, persuasive argument', 'Present ideas confidently to a group', 'Adapt communication tone for audiences'],
+    projects: ['Youth Environmental Campaign', 'Persuasive Speech Video', 'Digital Storytelling Portfolio'],
   },
   {
     id: 'design-thinking',
@@ -51,8 +55,9 @@ const courseSkills = [
     color: 'var(--hue-rose)',
     category: 'Innovation',
     desc: 'Human-centred problem solving — empathise, define, ideate, prototype and test, applied to real challenges.',
-    related: ['User Research', 'Empathy Mapping', 'Interactive Prototyping'],
-    projects: ['Campus Accessibility Redesign', 'Student Experience Prototype', 'Usability Improvement Plan'],
+    related: ['User Empathy Mapping', 'Problem Reframing', 'Wireframing & Prototyping', 'Usability Testing'],
+    outcomes: ['Run a structured empathy interview', 'Prototype a solution quickly', 'Test and iterate based on user feedback'],
+    projects: ['Campus Accessibility Redesign', 'Student Portal UX Redesign', 'Community App Prototype'],
   },
   {
     id: 'leadership',
@@ -61,8 +66,9 @@ const courseSkills = [
     color: 'var(--hue-violet)',
     category: 'Life Skills',
     desc: 'Collaboration and ownership built through team projects, not lectures — learning to lead by doing.',
-    related: ['Team Management', 'Conflict Resolution', 'Peer Coaching'],
-    projects: ['Peer Mentorship Network', 'Student Council Project', 'Community Drive Initiative'],
+    related: ['Team Management', 'Conflict Resolution', 'Peer Coaching', 'Project Ownership'],
+    outcomes: ['Lead a small project team effectively', 'Navigate disagreement constructively', 'Support and mentor peer team members'],
+    projects: ['Peer Mentorship Network', 'Freshmen Buddy Program', 'Student Action Committee'],
   },
 ]
 
@@ -91,7 +97,7 @@ export default function TechnologyEcosystem() {
             6 Core Course Pathways.<br />Every Essential Future Skill.
           </h2>
           <p className="text-lg text-muted" style={{ maxWidth: 560, margin: '1.25rem auto 0' }}>
-            Explore TechPhilo's core learning pathways. Hover or tap to discover key outcomes and real student projects.
+            Explore TechPhilo's core learning pathways. Hover or tap to discover key outcomes, essential skills, and real student projects.
           </p>
         </motion.div>
 
@@ -150,6 +156,18 @@ export default function TechnologyEcosystem() {
                   </div>
 
                   <div className="tech-detail__section" style={{ marginTop: '1rem' }}>
+                    <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)', display: 'block', marginBottom: '0.6rem' }}>Key Student Learning Outcomes</span>
+                    <div className="tech-detail__projects">
+                      {activeCourse.outcomes.map(o => (
+                        <div key={o} className="tech-detail__project" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <CheckCircle2 size={15} style={{ color: activeCourse.color, flexShrink: 0 }} />
+                          <span className="text-sm">{o}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="tech-detail__section" style={{ marginTop: '1rem' }}>
                     <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)', display: 'block', marginBottom: '0.6rem' }}>Example Course Projects</span>
                     <div className="tech-detail__projects">
                       {activeCourse.projects.map(p => (
@@ -172,7 +190,7 @@ export default function TechnologyEcosystem() {
                   <div className="tech-detail__empty-content">
                     <span style={{ fontSize: '2.5rem' }}><Search size={16} strokeWidth={2} /></span>
                     <p className="text-md text-muted" style={{ marginTop: '1rem', textAlign: 'center' }}>
-                      Hover or click a course pathway<br />to explore skills and projects.
+                      Hover or click a course pathway<br />to explore skills, outcomes and projects.
                     </p>
                   </div>
                 </motion.div>
