@@ -1,62 +1,62 @@
 import { useRef } from 'react'
-import { HeartPulse, MessageSquare, Package, PenLine, Plane, ShoppingCart } from 'lucide-react'
+import { Code2, Landmark, Lightbulb, MessageSquare, PenTool, Crown } from 'lucide-react'
 import { motion, useInView } from 'framer-motion'
 import './StudentShowcase.css'
 
 const showcaseProjects = [
   {
-    title: 'Medical Diagnosis AI',
-    domain: 'Healthcare × AI',
-    tech: ['Python', 'TensorFlow', 'Computer Vision'],
-    outcome: 'Detects anomalies in X-ray images with high accuracy',
+    title: 'Smart Community Care App',
+    domain: 'Coding & Technology',
+    tech: ['Coding', 'AI Basics', 'Web Design'],
+    outcome: 'Interactive application connecting volunteers with local community care initiatives',
     gradient: 'linear-gradient(135deg, var(--brand-strong), var(--brand))',
     accent: 'var(--brand)',
-    Icon: HeartPulse,
+    Icon: Code2,
   },
   {
-    title: 'Smart Inventory System',
-    domain: 'Retail × Machine Learning',
-    tech: ['Python', 'Scikit-learn', 'React'],
-    outcome: 'Reduces overstock by predicting demand patterns',
-    gradient: 'linear-gradient(135deg, var(--hue-green), var(--hue-green))',
+    title: 'Student Budget Planner',
+    domain: 'Financial Literacy',
+    tech: ['Budgeting', 'Savings', 'Financial Planning'],
+    outcome: 'Practical budgeting tool helping students manage allowances and plan long-term savings',
+    gradient: 'linear-gradient(135deg, var(--accent), var(--hue-teal))',
+    accent: 'var(--accent)',
+    Icon: Landmark,
+  },
+  {
+    title: 'Eco-Venture Business Model',
+    domain: 'Entrepreneurship & Innovation',
+    tech: ['Market Research', 'Business Canvas', 'Pitching'],
+    outcome: 'A pitch-ready sustainable business concept presented to local school and community leaders',
+    gradient: 'linear-gradient(135deg, var(--hue-amber), var(--hue-amber))',
+    accent: 'var(--hue-amber)',
+    Icon: Lightbulb,
+  },
+  {
+    title: 'Youth Environmental Campaign',
+    domain: 'Communication',
+    tech: ['Public Speaking', 'Persuasive Writing', 'Presentation'],
+    outcome: 'Multi-media presentation and public speaking campaign inspiring over 500 peer actions',
+    gradient: 'linear-gradient(135deg, var(--hue-teal), var(--hue-teal))',
     accent: 'var(--hue-teal)',
-    Icon: Package,
-  },
-  {
-    title: 'Sentiment Analysis Dashboard',
-    domain: 'NLP × Data Science',
-    tech: ['Python', 'BERT', 'Plotly'],
-    outcome: 'Analyses customer reviews across thousands of products',
-    gradient: 'linear-gradient(135deg, var(--hue-violet), var(--hue-violet))',
-    accent: 'var(--hue-violet)',
     Icon: MessageSquare,
   },
   {
-    title: 'Autonomous Drone Navigation',
-    domain: 'Computer Vision × Robotics',
-    tech: ['Python', 'OpenCV', 'ROS'],
-    outcome: 'Real-time obstacle avoidance for indoor environments',
-    gradient: 'linear-gradient(135deg, var(--accent-strong), var(--accent-strong))',
-    accent: 'var(--hue-amber)',
-    Icon: Plane,
-  },
-  {
-    title: 'E-Commerce Platform',
-    domain: 'Full Stack × Cloud',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    outcome: 'Full-featured platform with payments and real-time inventory',
-    gradient: 'linear-gradient(135deg, var(--hue-teal), var(--hue-teal))',
-    accent: 'var(--hue-blue)',
-    Icon: ShoppingCart,
-  },
-  {
-    title: 'AI Writing Companion',
-    domain: 'Generative AI × Productivity',
-    tech: ['Python', 'LangChain', 'Streamlit'],
-    outcome: 'Helps students draft, revise and improve written work',
+    title: 'Campus Accessibility Redesign',
+    domain: 'Design Thinking',
+    tech: ['Empathy Mapping', 'User Research', 'Prototyping'],
+    outcome: 'Redesigned school layout and interactive navigation prototype tested with diverse users',
     gradient: 'linear-gradient(135deg, var(--hue-rose), var(--hue-rose))',
     accent: 'var(--hue-rose)',
-    Icon: PenLine,
+    Icon: PenTool,
+  },
+  {
+    title: 'Peer Mentorship Network',
+    domain: 'Leadership',
+    tech: ['Team Leadership', 'Peer Coaching', 'Conflict Resolution'],
+    outcome: 'Student-led peer mentoring initiative pairing senior mentors with incoming freshmen',
+    gradient: 'linear-gradient(135deg, var(--hue-violet), var(--hue-violet))',
+    accent: 'var(--hue-violet)',
+    Icon: Crown,
   },
 ]
 
@@ -78,11 +78,11 @@ export default function StudentShowcase() {
         >
           <div className="label-tag" style={{ marginBottom: '1.25rem' }}>Student Showcase</div>
           <h2 id="showcase-heading" className="display-lg">
-            From Learners<br />
-            <span className="gradient-text">to Builders.</span>
+            Course Projects.<br />
+            <span className="gradient-text">Real Outcomes.</span>
           </h2>
           <p className="text-lg text-muted" style={{ maxWidth: 560, margin: '1.25rem auto 0' }}>
-            A glimpse at the kind of projects built inside TechPhilo. Every domain, every technology — brought to life.
+            A glimpse at the hands-on projects created by students across TechPhilo’s 6 core course pathways.
           </p>
         </motion.div>
 

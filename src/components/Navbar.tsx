@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
     label: 'Courses', href: '/courses',
     children: [
       { label: 'All Courses', desc: 'Browse the full catalog', href: '/courses' },
-      { label: 'Coding & Technology', desc: 'Python, AI & full-stack', href: '/courses?category=technology' },
+      { label: 'Coding & Technology', desc: 'Coding, AI & core tech', href: '/courses?category=technology' },
       { label: 'Entrepreneurship & Innovation', desc: 'Ideas into ventures', href: '/courses?category=entrepreneurship' },
     ],
   },

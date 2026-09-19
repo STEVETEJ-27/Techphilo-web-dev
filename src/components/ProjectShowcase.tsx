@@ -1,73 +1,73 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowUpRight, BarChart3, Car, Eye, Globe, HeartPulse, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Code2, Landmark, Lightbulb, MessageSquare, PenTool, Crown } from 'lucide-react'
 import './ProjectShowcase.css'
 
 const projects = [
   {
     id: 1,
-    name: 'AI Healthcare Assistant',
-    category: 'Artificial Intelligence',
-    tags: ['Python', 'NLP', 'Machine Learning'],
-    desc: 'An intelligent assistant that helps patients understand symptoms, schedule consultations, and navigate healthcare information using natural language.',
-    gradient: 'linear-gradient(135deg, var(--brand-strong) 0%, var(--brand-strong) 40%, var(--brand) 100%)',
+    name: 'Smart Community Care Web App',
+    category: 'Coding & Technology',
+    tags: ['Coding', 'AI Basics', 'Web App'],
+    desc: 'An interactive application designed by students to connect volunteers with local community care initiatives.',
+    gradient: 'linear-gradient(135deg, var(--brand-strong) 0%, var(--brand) 100%)',
     accent: 'var(--brand)',
-    Icon: HeartPulse,
+    Icon: Code2,
     size: 'large',
   },
   {
     id: 2,
-    name: 'Taxi Fare Prediction',
-    category: 'Machine Learning',
-    tags: ['Python', 'Scikit-learn', 'Pandas'],
-    desc: 'Predictive model trained on ride data to accurately forecast taxi fares using regression and feature engineering techniques.',
-    gradient: 'linear-gradient(135deg, var(--hue-green) 0%, var(--hue-green) 60%, var(--hue-green) 100%)',
-    accent: 'var(--hue-teal)',
-    Icon: Car,
+    name: 'Student Savings & Financial Planner',
+    category: 'Financial Literacy',
+    tags: ['Budgeting', 'Savings', 'Money Skills'],
+    desc: 'A real-scenario budgeting system that helps teenagers track goals, manage allowances, and evaluate financial choices.',
+    gradient: 'linear-gradient(135deg, var(--accent) 0%, var(--hue-teal) 100%)',
+    accent: 'var(--accent)',
+    Icon: Landmark,
     size: 'medium',
   },
   {
     id: 3,
-    name: 'Data Analytics Platform',
-    category: 'Data Science',
-    tags: ['Python', 'Plotly', 'Dash', 'SQL'],
-    desc: 'Interactive analytics dashboard that visualises business metrics, sales trends, and KPI performance in real-time.',
-    gradient: 'linear-gradient(135deg, var(--hue-violet) 0%, var(--hue-violet) 50%, var(--hue-violet) 100%)',
-    accent: 'var(--hue-violet)',
-    Icon: BarChart3,
+    name: 'Zero-Waste Campus Venture Pitch',
+    category: 'Entrepreneurship & Innovation',
+    tags: ['Market Validation', 'Business Canvas', 'Pitch Deck'],
+    desc: 'A validated business model and pitch deck presented to school administrators to implement sustainable recycling.',
+    gradient: 'linear-gradient(135deg, var(--hue-amber) 0%, var(--hue-amber) 100%)',
+    accent: 'var(--hue-amber)',
+    Icon: Lightbulb,
     size: 'medium',
   },
   {
     id: 4,
-    name: 'Computer Vision Application',
-    category: 'Computer Vision',
-    tags: ['Python', 'OpenCV', 'TensorFlow', 'YOLO'],
-    desc: 'Real-time object detection and image classification system capable of identifying objects in live video streams.',
-    gradient: 'linear-gradient(135deg, var(--accent-strong) 0%, var(--hue-amber) 50%, var(--hue-amber) 100%)',
-    accent: 'var(--hue-amber)',
-    Icon: Eye,
+    name: 'Youth Environmental Action Campaign',
+    category: 'Communication',
+    tags: ['Public Speaking', 'Persuasive Writing', 'Presentation'],
+    desc: 'A multi-channel communication initiative featuring speeches, written proposals, and digital presentations.',
+    gradient: 'linear-gradient(135deg, var(--hue-teal) 0%, var(--hue-teal) 100%)',
+    accent: 'var(--hue-teal)',
+    Icon: MessageSquare,
     size: 'large',
   },
   {
     id: 5,
-    name: 'Full Stack Web Application',
-    category: 'Full Stack',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express'],
-    desc: 'End-to-end web platform with secure authentication, real-time updates, and a polished, responsive user interface.',
-    gradient: 'linear-gradient(135deg, var(--hue-teal) 0%, var(--hue-teal) 50%, var(--hue-teal) 100%)',
-    accent: 'var(--hue-blue)',
-    Icon: Globe,
+    name: 'Campus Accessibility Navigation System',
+    category: 'Design Thinking',
+    tags: ['Empathy Mapping', 'User Research', 'Prototyping'],
+    desc: 'A human-centred redesign of school navigation and physical signage built through student empathy interviews.',
+    gradient: 'linear-gradient(135deg, var(--hue-rose) 0%, var(--hue-rose) 100%)',
+    accent: 'var(--hue-rose)',
+    Icon: PenTool,
     size: 'medium',
   },
   {
     id: 6,
-    name: 'Generative AI Application',
-    category: 'Generative AI',
-    tags: ['Python', 'LangChain', 'OpenAI', 'Streamlit'],
-    desc: 'LLM-powered application that generates creative content, answers domain-specific questions, and summarises complex documents.',
-    gradient: 'linear-gradient(135deg, var(--hue-rose) 0%, var(--hue-rose) 50%, var(--hue-rose) 100%)',
-    accent: 'var(--hue-rose)',
-    Icon: Sparkles,
+    name: 'Student Mentorship & Leadership Network',
+    category: 'Leadership',
+    tags: ['Team Leadership', 'Peer Coaching', 'Ownership'],
+    desc: 'A student-driven community leadership framework pairing senior student leaders with incoming freshmen.',
+    gradient: 'linear-gradient(135deg, var(--hue-violet) 0%, var(--hue-violet) 100%)',
+    accent: 'var(--hue-violet)',
+    Icon: Crown,
     size: 'medium',
   },
 ]
@@ -157,13 +157,13 @@ export default function ProjectShowcase() {
           animate={headInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <div className="label-tag" style={{ marginBottom: '1.25rem' }}>Project Showcase</div>
+          <div className="label-tag" style={{ marginBottom: '1.25rem' }}>Student Project Showcase</div>
           <h2 className="display-lg">
-            Don't Just Learn Technology.<br />
-            <span className="gradient-text">Build With It.</span>
+            Don't Just Learn Concepts.<br />
+            <span className="gradient-text">Build Real Projects.</span>
           </h2>
           <p className="text-lg text-muted" style={{ maxWidth: 560, margin: '1.25rem auto 0' }}>
-            Every project is a step forward. Real problems, real technology, real outcomes.
+            Explore practical student projects developed across TechPhilo’s 6 core course pathways.
           </p>
         </motion.div>
 
