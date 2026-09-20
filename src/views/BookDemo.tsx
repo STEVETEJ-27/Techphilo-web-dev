@@ -189,9 +189,18 @@ export default function BookDemo() {
                   </div>
 
                   {error && (
-                    <p style={{ fontSize: '0.84rem', color: '#A9786B', background: 'rgba(169,120,107,0.08)', border: '1px solid rgba(169,120,107,0.22)', borderRadius: '8px', padding: '0.65rem 1rem', margin: 0 }}>
-                      {error}
-                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '0.5rem' }}>
+                      <p style={{ fontSize: '0.84rem', color: 'var(--hue-terracotta)', background: 'rgba(192,96,63,0.08)', border: '1px solid rgba(192,96,63,0.22)', borderRadius: '8px', padding: '0.65rem 1rem', margin: 0 }}>
+                        {error}
+                      </p>
+                      <a
+                        href="mailto:techphilo.tp@gmail.com?subject=Book%20Demo%20Request"
+                        className="btn btn-outline btn-sm"
+                        style={{ justifyContent: 'center', width: '100%' }}
+                      >
+                        Or Email Us Directly (techphilo.tp@gmail.com)
+                      </a>
+                    </div>
                   )}
 
                   <button type="submit" className="btn btn-primary book-demo__submit" disabled={loading} style={{ opacity: loading ? 0.75 : 1 }}>

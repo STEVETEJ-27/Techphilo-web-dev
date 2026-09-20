@@ -94,9 +94,18 @@ export default function Contact() {
                     <textarea id="message" name="message" rows={5} required placeholder="Tell us a bit about what you're looking for" />
                   </div>
                   {error && (
-                    <p style={{ fontSize: '0.84rem', color: '#A9786B', background: 'rgba(169,120,107,0.08)', border: '1px solid rgba(169,120,107,0.22)', borderRadius: '8px', padding: '0.65rem 1rem', margin: 0 }}>
-                      {error}
-                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '0.5rem' }}>
+                      <p style={{ fontSize: '0.84rem', color: 'var(--hue-terracotta)', background: 'rgba(192,96,63,0.08)', border: '1px solid rgba(192,96,63,0.22)', borderRadius: '8px', padding: '0.65rem 1rem', margin: 0 }}>
+                        {error}
+                      </p>
+                      <a
+                        href="mailto:techphilo.tp@gmail.com?subject=Partner%20With%20Us%20Inquiry"
+                        className="btn btn-outline btn-sm"
+                        style={{ justifyContent: 'center', width: '100%' }}
+                      >
+                        Or Email Us Directly (techphilo.tp@gmail.com)
+                      </a>
+                    </div>
                   )}
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', opacity: loading ? 0.75 : 1 }} disabled={loading}>
                     {loading ? (
