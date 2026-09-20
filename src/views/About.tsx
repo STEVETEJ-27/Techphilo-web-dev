@@ -1,3 +1,5 @@
+"use client";
+
 import { Compass } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import WhyEvolve from '../components/WhyEvolve'

@@ -74,6 +74,15 @@
   line-height: 1.2;
 }
 
+/* Headline replaces the old title + subtitle pattern */
+.audience-card__headline {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+
 .audience-card__subtitle {
   font-size: 0.85rem;
   font-weight: 600;

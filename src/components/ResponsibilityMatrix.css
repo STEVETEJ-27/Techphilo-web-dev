@@ -1,0 +1,121 @@
+.resp-matrix {
+  position: relative;
+  overflow: hidden;
+}
+
+.resp-matrix__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .resp-matrix__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.resp-card {
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.resp-card:hover {
+  transform: translateY(-4px);
+}
+
+.resp-card--techphilo {
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  background: linear-gradient(145deg, rgba(74, 222, 128, 0.04) 0%, rgba(13, 20, 24, 0.6) 100%);
+}
+
+.resp-card--school {
+  border: 1px solid rgba(233, 201, 126, 0.2);
+  background: linear-gradient(145deg, rgba(233, 201, 126, 0.04) 0%, rgba(13, 20, 24, 0.6) 100%);
+}
+
+.resp-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resp-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resp-card__icon--tp {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.resp-card__icon--school {
+  background: rgba(233, 201, 126, 0.12);
+  color: #E9C97E;
+  border: 1px solid rgba(233, 201, 126, 0.3);
+}
+
+.resp-card__badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #4ADE80;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.resp-card__badge--school {
+  color: #E9C97E;
+}
+
+.resp-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.resp-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.resp-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(242, 235, 221, 0.82);
+}
+
+.resp-card__check {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.resp-card__check--tp {
+  color: #4ADE80;
+}
+
+.resp-card__check--school {
+  color: #E9C97E;
+}

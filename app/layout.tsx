@@ -32,21 +32,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TechPhilo — Empowering the Next Generation of Tech Leaders",
+  title: "TechPhilo — One Ecosystem. Infinite Potential.",
   description:
-    "A multi-page premium EdTech SaaS platform equipping schools, teachers, and students with AI, Coding, Robotics, and futuristic STEM learning ecosystems.",
+    "TechPhilo is a future-readiness ecosystem for schools and students. Six integrated programs — Coding & Technology, Financial Literacy, Entrepreneurship, Communication, Design Thinking and Leadership — delivered in partnership with schools across India.",
   keywords: [
     "TechPhilo",
     "EdTech",
-    "AI Education",
+    "Future-Ready Schools",
+    "Coding for Students",
+    "Financial Literacy Program",
+    "Entrepreneurship Education",
+    "Design Thinking for Schools",
+    "School Programs India",
+    "NEP 2020 Aligned",
+    "Partner With Schools",
+    "Student Programs",
     "STEM Learning",
-    "Coding for Kids",
-    "School Curriculum",
   ],
   openGraph: {
-    title: "TechPhilo — Empowering the Next Generation of Tech Leaders",
+    title: "TechPhilo — One Ecosystem. Infinite Potential.",
     description:
-      "Transforming education through AI, Coding, and Robotics programs.",
+      "One integrated future-readiness ecosystem — built for schools, designed around students. Six programs. Real skills. Lasting impact.",
     type: "website",
   },
 };
@@ -109,9 +115,10 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <SmoothScrollProvider>
+          <a href="#main-content" className="skip-link">Skip to main content</a>
           <div className="noise-overlay" aria-hidden="true" suppressHydrationWarning />
           <Navbar />
-          <main style={{ minHeight: "80vh" }} suppressHydrationWarning>{children}</main>
+          <main id="main-content" style={{ minHeight: "80vh" }} suppressHydrationWarning>{children}</main>
           <Footer />
         </SmoothScrollProvider>
       </body>

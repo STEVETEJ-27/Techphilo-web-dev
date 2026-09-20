@@ -3,15 +3,14 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ChevronRight, ArrowRight } from 'lucide-react'
-import { useRouter } from '../router'
+import Link from 'next/link'
 import './FinalCTA.css'
 
-const STAGES = ['Discover', 'Learn', 'Practice', 'Develop', 'Advance', 'Excel']
+const STAGES = ['Explore', 'Build', 'Solve', 'Communicate', 'Create', 'Grow']
 
 export default function FinalCTA() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const { navigate } = useRouter()
 
   return (
     <section id="cta" className="final-cta" aria-labelledby="cta-heading">
@@ -26,11 +25,12 @@ export default function FinalCTA() {
           <div className="final-cta__main">
             <div className="final-cta__copy">
               <span className="label-tag final-cta__eyebrow">
-                <span className="dot-pulse" /> Build Future-Ready Schools
+                One Ecosystem. Two Journeys.
               </span>
 
               <h2 id="cta-heading" className="display-md final-cta__headline">
-                Learn today, <span className="final-cta__headline-accent">lead tomorrow.</span>
+                Learn today,{' '}
+                <span className="final-cta__headline-accent">lead tomorrow.</span>
               </h2>
 
               <p className="text-md text-muted final-cta__sub">
@@ -39,16 +39,18 @@ export default function FinalCTA() {
             </div>
 
             <div className="final-cta__actions">
-              <button
+              <Link
+                href="/contact"
                 className="btn btn-primary final-cta__btn-primary"
-                onClick={() => navigate('/contact')}
               >
-                Partner With TechPhilo <ChevronRight size={18} />
-              </button>
-              <button className="btn btn-ghost" onClick={() => navigate('/students')}
+                Partner With TechPhilo <ChevronRight size={18} aria-hidden="true" />
+              </Link>
+              <Link
+                href="/courses"
+                className="btn btn-ghost"
               >
-                Explore Student Learning <ArrowRight size={16} />
-              </button>
+                Explore Programs <ArrowRight size={16} aria-hidden="true" />
+              </Link>
             </div>
           </div>
 

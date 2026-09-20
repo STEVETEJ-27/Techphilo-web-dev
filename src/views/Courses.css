@@ -42,11 +42,14 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.courses-catalog__pill:hover { border-color: color-mix(in srgb, var(--accent) 40%, transparent); color: var(--ink); }
+.courses-catalog__pill:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--ink);
+}
 .courses-catalog__pill--active {
   background: var(--brand);
   border-color: var(--brand);
-  color: #FFFFFF;
+  color: var(--surface);
 }
 
 .courses-catalog__grid {
@@ -101,6 +104,7 @@
     0 0 0 1px rgba(88, 110, 100, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
+
 /* ── Icon card layout ─────────────────────────────────────────── */
 /* Header row: icon pill + category tag sit side-by-side          */
 .course-card__header {

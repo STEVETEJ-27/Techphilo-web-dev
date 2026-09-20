@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, FormEvent } from 'react'
 import { Mail, Instagram, Youtube, Send, MapPin, CalendarCheck, ArrowRight, Loader2 } from 'lucide-react'
 import PageHero from '../components/PageHero'

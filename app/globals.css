@@ -13,80 +13,84 @@
 :root {
   /* ============================================================
      TECHPHILO — BRAND DESIGN SYSTEM
-     "Ivory · Forest · Emerald · Sage · Antique Gold"
-     IVORY    #F2EBDD — canvas, surfaces, main bg
-     SAGE     #78947F — secondary brand, soft accents
-     EMERALD  #185844 — primary brand (headings, brand moments)
-     FOREST   #102F27 — deepest ink, main titles, dark surfaces
-     ANTIQUE GOLD #B08A4F — highlights, achievement, premium
+     "Midnight Navy × Royal Gold × Warm Ivory"
+     NAVY     #19304D — primary brand navy, authoritative & intelligent
+     MIDNIGHT #10243D — deepest navy, main headings, dark backgrounds
+     GOLD     #B08A4F — Royal Gold accent (metrics, badges, highlights)
+     DEEPGOLD #8A6835 — Deep Gold for readable text on light backgrounds
+     IVORY    #F1E9D9 — primary light canvas & surfaces
      ============================================================ */
 
-  /* BRAND — Emerald / Forest */
-  --brand:        #185844;
-  --brand-strong: #102F27;
-  --brand-bright: #78947F;
-  --brand-soft:   #E8EFE9;
-  --brand-glow:   rgba(24, 88, 68, 0.16);
+  /* BRAND — Midnight Navy / Deep Navy */
+  --brand:        #19304D;
+  --brand-strong: #10243D;
+  --brand-bright: #4F6782;
+  --brand-soft:   #E5EBF0;
+  --brand-glow:   rgba(25, 48, 77, 0.16);
 
-  /* ACCENT — Antique Gold
-     Sparingly — achievement, finance, value, key metrics, premium moments */
+  /* ACCENT — Royal Gold */
   --accent:        #B08A4F;
-  --accent-bright: #CDA96B;
-  --accent-strong: #8A6A36;
-  --accent-soft:   #F2EBDD;
+  --accent-bright: #C9A15B;
+  --accent-strong: #8A6835;
+  --accent-soft:   #F1E7D3;
   --accent-glow:   rgba(176, 138, 79, 0.18);
   --accent-border: rgba(176, 138, 79, 0.38);
 
-  /* CATEGORY HUES — muted, harmonious, palette-matched */
-  --hue-blue:   #4F7475;
-  --hue-teal:   #185844;
-  --hue-violet: #746D68;
-  --hue-amber:  #B08A4F;
-  --hue-rose:   #A9786B;
-  --hue-green:  #78947F;
+  /* COURSE PATHWAY & CATEGORY HUES */
+  --hue-blue:       #2F6690;
+  --hue-gold:       #B08A4F;
+  --hue-terracotta: #C0603F;
+  --hue-teal:       #2E7D7A;
+  --hue-plum:       #7E4B6E;
+  --hue-forest:     #4F7A4B;
+  --hue-slate:      #4F6782;
 
-  /* TYPOGRAPHY — Forest deep, never pure black */
-  --ink:       #102F27;
-  --ink-soft:  #185844;
-  --text:      #3A5A4A;
-  --text-muted:#78947F;
-  --text-faint:#9AB0A0;
+  /* Aliases for component compatibility */
+  --hue-amber:  #C0603F;
+  --hue-rose:   #7E4B6E;
+  --hue-violet: #7E4B6E;
+  --hue-green:  #4F7A4B;
 
-  /* SURFACES — Ivory canvas */
-  --canvas:         #F2EBDD;
-  --canvas-light:   #F8F4EC;
-  --surface:        #FAF7F0;
-  --surface-alt:    #EDE4D2;
-  --surface-sunken: #E5DDC8;
-  --surface-sage:   #D8E4DA;
-  --surface-dark:   #102F27;
+  /* TYPOGRAPHY — Navy deep, never pure black */
+  --ink:        #10243D;
+  --ink-soft:   #19304D;
+  --text:       #40566B;
+  --text-muted: #566577;
+  --text-faint: #7A8999;
+  --text-bright:#F1E9D9;
+
+  /* SURFACES — Warm Ivory Stone System */
+  --canvas:         #F1E9D9;
+  --canvas-light:   #F8F5EE;
+  --surface:        #FBF8F1;
+  --surface-alt:    #E8DFCF;
+  --surface-sunken: #E0D6C4;
+  --surface-sage:   #D7DDCF;
+  --surface-dark:   #10243D;
 
   /* BORDERS — warm ivory-toned */
-  --border:       #D8CEBC;
-  --border-strong:#C0B49A;
+  --border:        #D7CDBB;
+  --border-strong: #BFAF93;
 
-  /* ILLUSTRATION SUPPORT PALETTE */
-  --paper:         #F2EBDD;
-  --paper-shadow:  #D8CEBC;
-  --sage:          #78947F;
-  --sage-light:    #C4D4C8;
-  --deep-teal:     #185844;
-  --midnight-teal: #102F27;
-  --bronze:        #B08A4F;
-  --gold:          #CDA96B;
-  --cream:         #F2EBDD;
-  --brown:         #4C2E1D;
+  /* ILLUSTRATION & GLASS PALETTE */
+  --paper:          #F1E9D9;
+  --paper-shadow:   #D7CDBB;
+  --slate-blue:     #4F6782;
+  --midnight-navy:  #10243D;
+  --royal-gold:     #B08A4F;
+  --deep-gold:      #8A6835;
+  --cream-ivory:    #FBF8F1;
 
   /* GLASS — dark cinematic */
-  --glass-dark:        rgba(16, 47, 39, 0.72);
+  --glass-dark:        rgba(16, 36, 61, 0.50);
   --glass-dark-border: rgba(255, 255, 255, 0.16);
 
   /* GLASS — light educational */
-  --glass-light:        rgba(242, 235, 221, 0.68);
+  --glass-light:        rgba(241, 233, 217, 0.68);
   --glass-light-border: rgba(255, 255, 255, 0.55);
 
-  /* FOCUS */
-  --focus-ring: rgba(24, 88, 68, 0.38);
+  /* FOCUS RING */
+  --focus-ring: rgba(16, 36, 61, 0.60);
 
   /* TYPOGRAPHY — Chakra Petch (headings/display) · Plus Jakarta Sans (body/UI) · JetBrains Mono (code/labels) */
   --font-display: var(--font-display), 'Chakra Petch', system-ui, sans-serif;
@@ -640,3 +644,265 @@ code:not(pre > code) {
 ::-webkit-scrollbar-track { background: var(--surface-sunken); }
 ::-webkit-scrollbar-thumb { background: var(--brand-bright); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+
+/* ============================================================
+   ACCESSIBILITY UTILITIES
+   ============================================================ */
+
+/* Screen-reader-only text — visually hidden but announced */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Minimum touch target size — WCAG 2.5.5 (44×44px) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Skip to main content — keyboard navigation */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: calc(var(--z-modal) + 10);
+  padding: 0.75rem 1.5rem;
+  background: var(--brand);
+  color: var(--surface);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================================
+   HOMEPAGE — NEW SECTION STYLES (page.tsx inline components)
+   ============================================================ */
+
+/* ── Programs Preview ──────────────────────────────────────── */
+.programs-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.program-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+
+.program-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.program-card:hover .program-card__icon {
+  transform: scale(1.08);
+}
+
+.program-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.program-card__desc {
+  line-height: 1.6;
+  flex: 1;
+}
+
+.program-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brand);
+  margin-top: auto;
+  transition: gap 0.2s var(--ease-out);
+}
+
+.program-card:hover .program-card__cta {
+  gap: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .programs-preview__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .programs-preview__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Student Journey Home ──────────────────────────────────── */
+.journey-home__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.journey-home__step {
+  background: var(--canvas-light);
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.25s ease;
+}
+
+.journey-home__step:hover {
+  background: var(--surface);
+}
+
+.journey-home__num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.journey-home__step-title {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem) !important;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1.2 !important;
+}
+
+@media (max-width: 900px) {
+  .journey-home__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .journey-home__grid {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 12px;
+  }
+  .journey-home__step {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* ── School Value Home ─────────────────────────────────────── */
+.school-value__pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.school-value__pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.school-value__pillar:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: color-mix(in srgb, var(--sv-color, var(--brand)) 30%, transparent);
+}
+
+.school-value__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--sv-color, var(--brand)) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sv-color, var(--brand)) 26%, transparent);
+  color: var(--sv-color, var(--brand));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.school-value__pillar:hover .school-value__icon {
+  transform: scale(1.06);
+}
+
+.school-value__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(242, 235, 221, 0.92);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.005em;
+}
+
+.school-value__desc {
+  font-size: 0.82rem;
+  color: rgba(242, 235, 221, 0.52);
+  line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+  .school-value__pillars {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .school-value__pillar {
+    padding: 1.25rem;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY & REDUCED MOTION SUPPORT
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

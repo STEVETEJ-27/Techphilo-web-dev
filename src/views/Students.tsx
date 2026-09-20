@@ -1,3 +1,5 @@
+"use client";
+
 import { GraduationCap } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import StudentJourney from '../components/StudentJourney'

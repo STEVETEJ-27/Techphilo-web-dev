@@ -1,6 +1,7 @@
 import { Route } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import ImplementationJourney from '../components/ImplementationJourney'
+import SchoolReadiness from '../components/SchoolReadiness'
 import PartnershipSection from '../components/PartnershipSection'
 import FinalCTA from '../components/FinalCTA'
 
@@ -17,6 +18,7 @@ export default function SchoolsImplementation() {
         primaryCta={{ label: 'Book a Demo', href: '/book-demo' }}
       />
       <ImplementationJourney />
+      <SchoolReadiness />
       <PartnershipSection />
       <FinalCTA />
     </>

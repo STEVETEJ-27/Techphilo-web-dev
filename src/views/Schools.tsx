@@ -1,7 +1,10 @@
+"use client";
+
 import { Building2 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import WhySchools from '../components/WhySchools'
 import TechPhiloDifference from '../components/TechPhiloDifference'
+import ResponsibilityMatrix from '../components/ResponsibilityMatrix'
 import PartnershipSection from '../components/PartnershipSection'
 import GrandExpo from '../components/GrandExpo'
 import FinalCTA from '../components/FinalCTA'
@@ -21,6 +24,7 @@ export default function Schools() {
       />
       <WhySchools />
       <TechPhiloDifference />
+      <ResponsibilityMatrix />
       <PartnershipSection />
       <GrandExpo />
       <FinalCTA />

@@ -1,32 +1,29 @@
 "use client";
 
-import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, ChevronRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import './Hero.css'
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-
   return (
-    <section id="home" className="hero" ref={containerRef}>
+    <section id="home" className="hero">
       {/* Subtle background accent */}
-      <div className="hero__bg-layer">
+      <div className="hero__bg-layer" aria-hidden="true">
         <div className="hero__bg-gradient" />
       </div>
 
-      {/* Main content — centered, minimal */}
+      {/* Main content */}
       <div className="hero__content container">
-        {/* Brand pill */}
+
+        {/* Eyebrow */}
         <motion.div
           className="hero__label-row"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <span className="label-tag">Future-Ready Education</span>
+          <span className="label-tag">Six Programs · One Ecosystem</span>
         </motion.div>
 
         {/* Headline */}
@@ -36,11 +33,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          Learn.
-          <br />
-          <span className="gradient-text">Create.</span>
-          <br />
-          <span className="hero__headline-accent">Lead.</span>
+          Real skills.<br />
+          <span className="gradient-text">Built in your</span><br />
+          <span className="hero__headline-accent">classroom.</span>
         </motion.h1>
 
         {/* Subheading */}
@@ -50,49 +45,41 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.6 }}
         >
-          One integrated programme designed to help schools build future-ready
-          learning ecosystems and empower students with the skills, confidence
-          and capabilities to thrive beyond the classroom.
+          TechPhilo brings Coding, Design Thinking, Entrepreneurship, Financial
+          Literacy, Communication and Leadership into school — structured,
+          teacher-ready, and built around students.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs — direct links, no scrollTo fighting Lenis */}
         <motion.div
           className="hero__ctas"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
         >
-          <button
-            className="btn btn-primary hero__cta-primary"
-            onClick={() => scrollTo('cta')}
-          >
-            Partner With Us <ChevronRight size={18} />
-          </button>
-          <button
-            className="btn btn-outline"
-            onClick={() => scrollTo('who-we-are')}
-          >
-            Explore Programme
-          </button>
+          <Link href="/schools" className="btn btn-primary hero__cta-primary">
+            Explore for Schools <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+          <Link href="/students" className="btn btn-outline">
+            Explore Learning
+          </Link>
+        </motion.div>
+
+        {/* Program names strip */}
+        <motion.div
+          className="hero__program-strip"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          aria-label="Our programs"
+        >
+          {['Coding & Technology', 'Financial Literacy', 'Entrepreneurship', 'Communication', 'Design Thinking', 'Leadership'].map((p, i) => (
+            <span key={p} className="hero__program-item">
+              {p}{i < 5 && <span className="hero__program-dot" aria-hidden="true" />}
+            </span>
+          ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.button
-        className="hero__scroll-indicator"
-        onClick={() => scrollTo('who-we-are')}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        aria-label="Scroll to explore"
-      >
-        <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
-          <ArrowDown size={16} />
-        </motion.span>
-        <span className="text-xs" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
-          Scroll to Explore
-        </span>
-      </motion.button>
     </section>
   )
 }

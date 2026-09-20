@@ -8,21 +8,10 @@ export interface Phase {
   description: string;
 }
 
-export interface Program {
-  title: string;
-  description: string;
-}
-
-export interface Feature {
-  number: string;
-  title: string;
-  description: string;
-}
-
 export const storyData = {
   brand: "TechPhilo",
-  tagline: "Inspire. Educate. Transform.",
-  headline: "Empowering the Next Generation of Tech Leaders",
+  tagline: "Learn today. Lead tomorrow.",
+  headline: "One Ecosystem. Two Journeys.",
 
   phases: [
     {
@@ -31,39 +20,39 @@ export const storyData = {
       label: "01",
       eyebrow: "THE START",
       title: "Every journey starts with curiosity.",
-      subtitle: "STRUCTURE MEETS INNOVATION",
+      subtitle: "WHERE LEARNING BEGINS",
       description:
-        "Every learner begins with core STEM & AI fundamentals — structured for futuristic education.",
+        "Students don't arrive with a blank slate — they arrive with questions. TechPhilo builds from there.",
     },
     {
-      id: "independence",
+      id: "build",
       scrollRange: [0.22, 0.44] as [number, number],
       label: "02",
-      eyebrow: "THE SHIFT",
-      title: "Learning moves beyond boundaries.",
-      subtitle: "YOUR PACE, YOUR FUTURE",
+      eyebrow: "THE WORK",
+      title: "Learning moves from theory into practice.",
+      subtitle: "HANDS ON FROM DAY ONE",
       description:
-        "From foundational modules to self-driven creation, students master technology at their own pace.",
+        "Every program is built around doing — coding real projects, pitching real ideas, solving real problems.",
     },
     {
       id: "toolkit",
       scrollRange: [0.44, 0.66] as [number, number],
       label: "03",
-      eyebrow: "THE TOOLKIT",
+      eyebrow: "THE SKILLS",
       title: "Build what you imagine.",
-      subtitle: "AI & ROBOTICS CREATION",
+      subtitle: "SIX PILLARS OF FUTURE-READINESS",
       description:
-        "Code, design, and engineer real-world hardware and software solutions with modern AI tools.",
+        "Coding, Design Thinking, Entrepreneurship, Financial Literacy, Communication, Leadership — woven together.",
     },
     {
       id: "horizon",
       scrollRange: [0.66, 0.85] as [number, number],
       label: "04",
-      eyebrow: "THE HORIZON",
-      title: "Empowering next-gen leaders.",
-      subtitle: "GLOBAL EDUCATIONAL ECOSYSTEM",
+      eyebrow: "THE OUTCOME",
+      title: "Schools and students, growing together.",
+      subtitle: "ONE ECOSYSTEM",
       description:
-        "Connecting schools, educators, and students into one unified ecosystem for future impact.",
+        "TechPhilo partners with schools to bring future-readiness into every classroom — not as an add-on, but as a programme.",
     },
     {
       id: "ending",
@@ -75,10 +64,4 @@ export const storyData = {
       description: "",
     },
   ] satisfies Phase[],
-
-  stats: [
-    { value: "50,000+", label: "Students Reached" },
-    { value: "120+", label: "Courses Available" },
-    { value: "30+", label: "Countries" },
-  ],
 } as const;

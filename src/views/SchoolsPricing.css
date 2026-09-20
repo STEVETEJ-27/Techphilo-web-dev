@@ -20,7 +20,7 @@
   top: -0.9rem;
   left: 2rem;
   background: var(--accent);
-  color: #FFFFFF;
+  color: var(--surface);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;

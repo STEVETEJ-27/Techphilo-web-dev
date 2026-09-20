@@ -19,9 +19,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 65% 55% at 85% 15%, rgba(176, 138, 79, 0.16) 0%, transparent 50%),
-    radial-gradient(ellipse 55% 50% at 10% 80%, rgba(24, 88, 68, 0.10) 0%, transparent 50%),
-    linear-gradient(160deg, #F2EBDD 0%, #F8F4EC 60%, #EDE4D2 100%);
+    radial-gradient(ellipse 65% 55% at 85% 15%, var(--accent-glow) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 50% at 10% 80%, var(--brand-glow) 0%, transparent 50%),
+    linear-gradient(160deg, var(--canvas) 0%, var(--canvas-light) 60%, var(--surface-alt) 100%);
 }
 
 /* Main content — centered */
@@ -68,7 +68,7 @@
   padding: 1.1rem 2.75rem;
 }
 
-/* Scroll indicator */
+/* Scroll indicator — kept for reference, no longer rendered */
 .hero__scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
@@ -87,6 +87,39 @@
 }
 .hero__scroll-indicator:hover { color: var(--brand); }
 
+/* Program strip — all six programs listed as a subtle row */
+.hero__program-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+  justify-content: center;
+  margin-top: 2.5rem;
+  max-width: 640px;
+}
+
+.hero__program-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.hero__program-dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  margin-left: 0.4rem;
+  flex-shrink: 0;
+}
+
 /* ── Responsive ─────────────────────────── */
 @media (max-width: 768px) {
   .hero__content {
@@ -101,11 +134,18 @@
     width: 100%;
     justify-content: center;
   }
+  .hero__program-strip {
+    gap: 0.35rem 0;
+    font-size: 0.72rem;
+  }
 }
 
 @media (max-width: 480px) {
   .hero__cta-primary {
     font-size: 0.9rem;
     padding: 0.8rem 1.75rem;
+  }
+  .hero__program-strip {
+    display: none; /* too cluttered on small phones */
   }
 }

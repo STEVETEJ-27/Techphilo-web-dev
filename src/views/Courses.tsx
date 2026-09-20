@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Clock, BarChart3, ArrowRight, BookOpen } from 'lucide-react'

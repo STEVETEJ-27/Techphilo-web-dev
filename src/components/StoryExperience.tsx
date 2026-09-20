@@ -65,15 +65,16 @@ export default function StoryExperience({
 
   return (
     <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-      {/* Top Progress Bar */}
+      {/* Top Progress Bar — brand token gradient instead of Tailwind blue */}
       <div
         className="absolute top-0 left-0 right-0 h-[2px] z-30"
-        style={{ backgroundColor: "rgba(255, 255, 255, 0.12)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.10)" }}
       >
         <div
           ref={progressBarRef}
-          className="h-full bg-gradient-to-r from-blue-500 to-amber-400"
           style={{
+            height: "100%",
+            background: `linear-gradient(to right, var(--brand), var(--accent-bright))`,
             transformOrigin: "left",
             transform: "scaleX(0)",
             willChange: "transform",
@@ -81,30 +82,53 @@ export default function StoryExperience({
         />
       </div>
 
-      {/* Top Right Story Indicator */}
+      {/* Top Right — TechPhilo brand label */}
       <div className="absolute top-8 right-6 md:right-12 z-30 flex items-center gap-3">
-        <span className="font-sans text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/60 font-semibold">
-          AI & EdTech Canvas
+        <span
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.7rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.55)",
+            fontWeight: 600,
+          }}
+        >
+          TechPhilo
         </span>
       </div>
 
-      {/* Scroll Prompt — initial viewport */}
+      {/* Scroll Prompt — initial viewport only */}
       <div
         ref={scrollIndicatorRef}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30"
         style={{ transition: "opacity 0.4s ease", willChange: "opacity" }}
       >
         <motion.div
-          className="w-[1px] h-7 bg-amber-300/80"
+          style={{
+            width: "1px",
+            height: "1.75rem",
+            background: "var(--accent-bright)",
+            opacity: 0.8,
+          }}
           animate={{ scaleY: [0.3, 1, 0.3] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         />
-        <span className="font-sans text-[10px] tracking-[0.25em] font-semibold text-white/70 uppercase">
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.6rem",
+            letterSpacing: "0.25em",
+            fontWeight: 600,
+            color: "rgba(255,255,255,0.65)",
+            textTransform: "uppercase",
+          }}
+        >
           Scroll to Explore
         </span>
       </div>
 
-      {/* PHASE CONTENT — Original position: vertically centered & left-aligned layout */}
+      {/* PHASE CONTENT — left-aligned cinematic card */}
       <div className="absolute inset-0 flex items-center px-6 md:px-12 lg:px-20 container mx-auto pointer-events-none">
         <AnimatePresence mode="wait">
           {phase.title && (
@@ -116,7 +140,7 @@ export default function StoryExperience({
               exit="exit"
               className="cinematic-glass-card max-w-xl w-full pointer-events-auto"
             >
-              {/* Small Story Eyebrow Label */}
+              {/* Eyebrow */}
               <span className="cinematic-eyebrow">
                 {phase.eyebrow}
               </span>
@@ -126,7 +150,7 @@ export default function StoryExperience({
                 {phase.title}
               </h2>
 
-              {/* Optional Short Supporting Text */}
+              {/* Supporting description */}
               {phase.description && (
                 <p className="cinematic-desc">
                   {phase.description}
@@ -137,23 +161,37 @@ export default function StoryExperience({
         </AnimatePresence>
       </div>
 
-      {/* SUBTLE STORY PROGRESSION STEPS (01 — 02 — 03 — 04) */}
+      {/* Story progression steps */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
         {storyData.phases
           .filter((p) => p.title)
           .map((p, idx) => (
             <div key={p.id} className="flex items-center gap-2">
               <span
-                className={`font-mono text-[10px] md:text-xs transition-colors duration-400 ${
-                  idx === activePhase
-                    ? "text-[#F5CB70] font-bold"
-                    : "text-white/40 font-medium"
-                }`}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  fontWeight: idx === activePhase ? 700 : 500,
+                  color:
+                    idx === activePhase
+                      ? "var(--accent-bright)"
+                      : "rgba(255,255,255,0.35)",
+                  transition: "color 0.4s ease",
+                }}
               >
                 {p.label}
               </span>
               {idx < storyData.phases.filter((p) => p.title).length - 1 && (
-                <span className="w-3 h-[1px] bg-white/20" />
+                <span
+                  style={{
+                    width: "0.75rem",
+                    height: "1px",
+                    background: "rgba(255,255,255,0.18)",
+                    display: "block",
+                  }}
+                />
               )}
             </div>
           ))}

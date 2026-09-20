@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Presentation, FileText, BadgeCheck, LineChart, Users2, GraduationCap, ArrowRight, LayoutDashboard } from 'lucide-react'

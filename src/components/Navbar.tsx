@@ -11,45 +11,51 @@ interface SubLink { label: string; desc: string; href: string }
 interface NavItem { label: string; href: string; children?: SubLink[] }
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '/' },
   {
-    label: 'Courses', href: '/courses',
+    label: 'Programs', href: '/courses',
     children: [
-      { label: 'All Courses', desc: 'Browse the full catalog', href: '/courses' },
-      { label: 'Coding & Technology', desc: 'Coding, AI & core tech', href: '/courses?category=technology' },
-      { label: 'Entrepreneurship & Innovation', desc: 'Ideas into ventures', href: '/courses?category=entrepreneurship' },
+      { label: 'Coding & Technology',        desc: 'Coding, AI & core tech skills',        href: '/courses?category=technology' },
+      { label: 'Financial Literacy',          desc: 'Real-world money skills',               href: '/courses?category=finance' },
+      { label: 'Entrepreneurship',            desc: 'Ideas into ventures',                   href: '/courses?category=entrepreneurship' },
+      { label: 'Communication',              desc: 'Written, verbal & presentation',         href: '/courses?category=communication' },
+      { label: 'Design Thinking',            desc: 'Human-centred problem solving',          href: '/courses?category=design' },
+      { label: 'Leadership',                 desc: 'Collaboration & ownership in action',    href: '/courses?category=leadership' },
     ],
   },
   {
-    label: 'Schools', href: '/schools',
+    label: 'For Schools', href: '/schools',
     children: [
-      { label: 'Overview', desc: 'Why schools choose TechPhilo', href: '/schools' },
-      { label: 'Implementation Journey', desc: 'Our 5-step rollout process', href: '/schools/implementation' },
-      { label: 'Pricing', desc: 'Plans built around your school', href: '/schools/pricing' },
+      { label: 'Overview',               desc: 'Why schools choose TechPhilo',         href: '/schools' },
+      { label: 'Implementation Journey', desc: 'Our 5-step rollout process',            href: '/schools/implementation' },
+      { label: 'Teacher Support',        desc: 'Tools, training & resources',           href: '/teachers' },
+      { label: 'Pricing & Partnership',  desc: 'Plans built around your school',        href: '/schools/pricing' },
+      { label: 'Book a Demo',            desc: 'See TechPhilo in action',               href: '/book-demo' },
     ],
   },
   {
-    label: 'Teachers', href: '/teachers',
+    label: 'For Students', href: '/students',
     children: [
-      { label: 'Overview', desc: 'Support for every educator', href: '/teachers' },
-      { label: 'Teaching Tools', desc: 'Lesson plans & dashboards', href: '/teachers/tools' },
+      { label: 'Learning Journey',        desc: 'The student experience at TechPhilo',  href: '/students' },
+      { label: 'Projects',               desc: 'Real-world builds & showcases',         href: '/students/projects' },
+      { label: 'Certificates & Badges',  desc: 'Explorer Passport & achievements',      href: '/students/certificates' },
     ],
   },
   {
-    label: 'Students', href: '/students',
+    label: 'Resources', href: '/resources',
     children: [
-      { label: 'Overview', desc: 'The student learning journey', href: '/students' },
-      { label: 'Certificates', desc: 'Explorer Passport & badges', href: '/students/certificates' },
+      { label: 'Blog',       desc: 'Ideas & perspectives on future-ready education', href: '/resources/blog' },
+      { label: 'Events',     desc: 'Workshops, webinars & Grand Expo dates',         href: '/resources/events' },
+      { label: 'Downloads',  desc: 'Brochures, guides & program one-pagers',         href: '/resources/downloads' },
+      { label: 'FAQs',       desc: 'Common questions, clearly answered',             href: '/resources#faq' },
     ],
   },
   {
     label: 'About', href: '/about',
     children: [
       { label: 'Our Story', desc: 'Vision, mission & values', href: '/about' },
-      { label: 'Team', desc: 'The people behind TechPhilo', href: '/about/team' },
+      { label: 'Team',      desc: 'The people behind TechPhilo', href: '/about/team' },
     ],
   },
-  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -67,12 +73,21 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-
   useEffect(() => {
     setMenuOpen(false)
     setOpenDesktopItem(null)
     setOpenMobileGroup(null)
   }, [path])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
 
   const openItem = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -93,9 +108,9 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="navbar__inner container">
-          {/* Animated gradient bottom border — palette-matched */}
+          {/* Animated gradient bottom border */}
           <div className="grad-divider" aria-hidden="true" />
-          <Link to="/" className="navbar__logo" aria-label="TechPhilo Home">
+          <Link to="/" className="navbar__logo" aria-label="TechPhilo — Go to homepage">
             <Logo height={40} />
             <span className="navbar__wordmark">TechPhilo</span>
           </Link>
@@ -111,9 +126,11 @@ export default function Navbar() {
                 <Link
                   to={item.href}
                   className={`navbar__link navbar__link-trigger ${isActivePath(path, item.href) ? 'navbar__link--active' : ''}`}
+                  aria-haspopup={item.children ? 'true' : undefined}
+                  aria-expanded={item.children ? openDesktopItem === item.label : undefined}
                 >
                   {item.label}
-                  {item.children && <ChevronDown size={13} />}
+                  {item.children && <ChevronDown size={13} aria-hidden="true" />}
                 </Link>
 
                 {item.children && (
@@ -121,13 +138,15 @@ export default function Navbar() {
                     {openDesktopItem === item.label && (
                       <motion.div
                         className="navbar__dropdown"
+                        role="menu"
+                        aria-label={`${item.label} submenu`}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                       >
                         {item.children.map(child => (
-                          <Link key={child.label} to={child.href} className="navbar__dropdown-link">
+                          <Link key={child.label} to={child.href} className="navbar__dropdown-link" role="menuitem">
                             <strong>{child.label}</strong>
                             <span>{child.desc}</span>
                           </Link>
@@ -141,8 +160,8 @@ export default function Navbar() {
           </nav>
 
           <div className="navbar__actions">
-            <Link to="/book-demo" className="btn btn-primary btn-sm">
-              Book Demo <ArrowRight size={14} />
+            <Link to="/contact" className="btn btn-primary btn-sm">
+              Partner With Us <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>
 
@@ -150,23 +169,24 @@ export default function Navbar() {
             className="navbar__mobile-toggle"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-nav-menu"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <AnimatePresence mode="wait">
               {menuOpen ? (
                 <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <X size={22} />
+                  <X size={22} aria-hidden="true" />
                 </motion.span>
               ) : (
                 <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <Menu size={22} />
+                  <Menu size={22} aria-hidden="true" />
                 </motion.span>
               )}
             </AnimatePresence>
           </button>
         </div>
         <div
-          className="grad-divider opacity-0 transition-opacity duration-500"
+          className="grad-divider"
           id="navbar-divider"
           style={{ opacity: 1 }}
         />
@@ -175,11 +195,15 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-nav-menu"
             className="mobile-menu"
             initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
             animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
             exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            role="dialog"
+            aria-label="Navigation menu"
+            aria-modal="true"
           >
             <div className="mobile-menu__content">
               <div className="mobile-menu__header">
@@ -198,6 +222,8 @@ export default function Navbar() {
                 >
                   <button
                     className="mobile-menu__link"
+                    aria-expanded={openMobileGroup === item.label}
+                    aria-controls={item.children ? `mobile-submenu-${item.label.replace(/\s+/g, '-').toLowerCase()}` : undefined}
                     onClick={() => {
                       if (item.children) {
                         setOpenMobileGroup(openMobileGroup === item.label ? null : item.label)
@@ -211,6 +237,7 @@ export default function Navbar() {
                     {item.children && (
                       <ChevronDown
                         size={18}
+                        aria-hidden="true"
                         style={{
                           marginLeft: 'auto',
                           transform: openMobileGroup === item.label ? 'rotate(180deg)' : 'none',
@@ -222,6 +249,7 @@ export default function Navbar() {
                   <AnimatePresence>
                     {item.children && openMobileGroup === item.label && (
                       <motion.div
+                        id={`mobile-submenu-${item.label.replace(/\s+/g, '-').toLowerCase()}`}
                         className="mobile-menu__sublinks"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
@@ -244,8 +272,11 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => navigate('/book-demo')}>
-                  Book Demo <ArrowRight size={16} />
+                <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} onClick={() => navigate('/contact')}>
+                  Partner With Us <ArrowRight size={16} aria-hidden="true" />
+                </button>
+                <button className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }} onClick={() => navigate('/book-demo')}>
+                  Book a Demo <ArrowRight size={16} aria-hidden="true" />
                 </button>
               </motion.div>
             </div>
