@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Clock, BarChart3, ArrowRight, BookOpen } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import { Link } from '../router'
 import { courses, categories, Course } from '../data/courses'
 import './Courses.css'
@@ -117,8 +116,6 @@ export default function Courses() {
           )}
         </div>
       </section>
-
-      <FinalCTA />
     </>
   )
 }

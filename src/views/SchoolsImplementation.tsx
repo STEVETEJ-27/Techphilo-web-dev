@@ -3,7 +3,6 @@ import PageHero from '../components/PageHero'
 import ImplementationJourney from '../components/ImplementationJourney'
 import SchoolReadiness from '../components/SchoolReadiness'
 import PartnershipSection from '../components/PartnershipSection'
-import FinalCTA from '../components/FinalCTA'
 
 export default function SchoolsImplementation() {
   return (
@@ -20,7 +19,6 @@ export default function SchoolsImplementation() {
       <ImplementationJourney />
       <SchoolReadiness />
       <PartnershipSection />
-      <FinalCTA />
     </>
   )
 }

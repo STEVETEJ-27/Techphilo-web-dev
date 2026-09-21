@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Tag, Check, ArrowRight } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import { Link } from '../router'
 import './SchoolsPricing.css'
 
@@ -71,8 +70,6 @@ export default function SchoolsPricing() {
           </p>
         </div>
       </section>
-
-      <FinalCTA />
     </>
   )
 }

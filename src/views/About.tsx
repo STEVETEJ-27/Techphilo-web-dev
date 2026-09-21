@@ -5,7 +5,6 @@ import PageHero from '../components/PageHero'
 import WhyEvolve from '../components/WhyEvolve'
 import GlobalInspiration from '../components/GlobalInspiration'
 import PartnershipSection from '../components/PartnershipSection'
-import FinalCTA from '../components/FinalCTA'
 import './About.css'
 
 export default function About() {
@@ -32,7 +31,6 @@ export default function About() {
       <WhyEvolve />
       <GlobalInspiration />
       <PartnershipSection />
-      <FinalCTA />
     </>
   )
 }

@@ -1,6 +1,5 @@
 import { Wrench, FileText, ClipboardCheck, FolderDown, Sparkles } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import './TeachersTools.css'
 
 const tools = [
@@ -34,7 +33,6 @@ export default function TeachersTools() {
           </div>
         </div>
       </section>
-      <FinalCTA />
     </>
   )
 }

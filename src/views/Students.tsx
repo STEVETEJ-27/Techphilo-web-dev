@@ -5,7 +5,6 @@ import PageHero from '../components/PageHero'
 import StudentJourney from '../components/StudentJourney'
 import TechnologyEcosystem from '../components/TechnologyEcosystem'
 import LearningExperience from '../components/LearningExperience'
-import FinalCTA from '../components/FinalCTA'
 
 export default function Students() {
   return (
@@ -23,7 +22,6 @@ export default function Students() {
       <StudentJourney />
       <TechnologyEcosystem />
       <LearningExperience />
-      <FinalCTA />
     </>
   )
 }

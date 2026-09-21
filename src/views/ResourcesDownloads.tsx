@@ -1,6 +1,5 @@
 import { Download, FileText } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import './ResourcesList.css'
 
 const downloads = [
@@ -38,7 +37,6 @@ export default function ResourcesDownloads() {
           </div>
         </div>
       </section>
-      <FinalCTA />
     </>
   )
 }

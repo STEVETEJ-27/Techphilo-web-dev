@@ -1,6 +1,5 @@
-import { Newspaper } from 'lucide-react'
+import { Newspaper, Linkedin, ArrowRight } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import './ResourcesList.css'
 
 const posts = [
@@ -30,10 +29,30 @@ export default function ResourcesBlog() {
                 <p className="text-sm text-muted">{p.excerpt}</p>
               </article>
             ))}
+
+            <article className="card resource-list__item glass" style={{ borderLeft: '4px solid #0077b5', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0077b5', fontWeight: 600, fontSize: '0.85rem' }}>
+                <Linkedin size={18} /> TechPhilo Official Feed
+              </div>
+              <h3 className="display-sm" style={{ margin: 0 }}>Latest Updates & Posts on LinkedIn</h3>
+              <p className="text-sm text-muted" style={{ margin: 0 }}>
+                Explore our official LinkedIn feed for recent articles, classroom moments, school showcases, and educational announcements.
+              </p>
+              <div>
+                <a
+                  href="https://www.linkedin.com/company/techphilo/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-sm"
+                  style={{ marginTop: '0.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  Read All Posts on LinkedIn <ArrowRight size={14} />
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
-      <FinalCTA />
     </>
   )
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from 'react'
-import { Mail, Instagram, Youtube, Send, MapPin, CalendarCheck, ArrowRight, Loader2 } from 'lucide-react'
+import { Mail, Instagram, Youtube, Linkedin, Send, MapPin, CalendarCheck, ArrowRight, Loader2 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Link } from '../router'
 import './Contact.css'
@@ -125,6 +125,13 @@ export default function Contact() {
               <div>
                 <h4>Email</h4>
                 <a href="mailto:techphilo.tp@gmail.com">techphilo.tp@gmail.com</a>
+              </div>
+            </div>
+            <div className="card contact__info-card">
+              <Linkedin size={20} style={{ color: 'var(--accent)' }} />
+              <div>
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/company/techphilo/posts/?feedView=all" target="_blank" rel="noopener noreferrer">TechPhilo</a>
               </div>
             </div>
             <div className="card contact__info-card">

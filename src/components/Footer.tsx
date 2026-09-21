@@ -2,7 +2,7 @@
 
 import Logo from './Logo'
 import { Link } from '../router'
-import { Mail, Instagram, Youtube } from 'lucide-react'
+import { Mail, Instagram, Youtube, Linkedin } from 'lucide-react'
 import './Footer.css'
 
 const programLinks = [
@@ -77,6 +77,10 @@ export default function Footer() {
             <a href="mailto:techphilo.tp@gmail.com" className="footer__contact-link footer__social-link">
               <Mail size={14} strokeWidth={2} aria-hidden="true" />
               techphilo.tp@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/company/techphilo/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
+              <Linkedin size={14} strokeWidth={2} aria-hidden="true" />
+              TechPhilo on LinkedIn
             </a>
             <a href="https://www.instagram.com/techphilo.tp" target="_blank" rel="noopener noreferrer" className="footer__contact-link footer__social-link">
               <Instagram size={14} strokeWidth={2} aria-hidden="true" />

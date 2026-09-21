@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Presentation, FileText, BadgeCheck, LineChart, Users2, GraduationCap, ArrowRight, LayoutDashboard } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import { Link } from '../router'
 import './Teachers.css'
 
@@ -95,8 +94,6 @@ export default function Teachers() {
           </div>
         </div>
       </section>
-
-      <FinalCTA />
     </>
   )
 }

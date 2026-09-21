@@ -2,7 +2,6 @@ import { Award } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import ExplorerPassport from '../components/ExplorerPassport'
 import GrandExpo from '../components/GrandExpo'
-import FinalCTA from '../components/FinalCTA'
 
 export default function StudentsCertificates() {
   return (
@@ -17,7 +16,6 @@ export default function StudentsCertificates() {
       />
       <ExplorerPassport />
       <GrandExpo />
-      <FinalCTA />
     </>
   )
 }

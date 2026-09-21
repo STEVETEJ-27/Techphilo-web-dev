@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { BookOpen, Newspaper, CalendarDays, Download, ArrowRight, HelpCircle } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import { Link } from '../router'
 import './Resources.css'
 
@@ -77,8 +76,6 @@ export default function Resources() {
           </div>
         </div>
       </section>
-
-      <FinalCTA />
     </>
   )
 }

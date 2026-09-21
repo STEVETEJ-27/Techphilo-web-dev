@@ -1,6 +1,5 @@
 import { Clock, BarChart3, CheckCircle2, ArrowRight, GraduationCap, Award, Rocket, Layers } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import NotFound from './NotFound'
 import { Link, useParams } from '../router'
 import { courses } from '../data/courses'
@@ -117,8 +116,6 @@ export default function CourseDetail() {
           </aside>
         </div>
       </section>
-
-      <FinalCTA />
     </>
   )
 }

@@ -7,7 +7,6 @@ import TechPhiloDifference from '../components/TechPhiloDifference'
 import ResponsibilityMatrix from '../components/ResponsibilityMatrix'
 import PartnershipSection from '../components/PartnershipSection'
 import GrandExpo from '../components/GrandExpo'
-import FinalCTA from '../components/FinalCTA'
 
 export default function Schools() {
   return (
@@ -27,7 +26,6 @@ export default function Schools() {
       <ResponsibilityMatrix />
       <PartnershipSection />
       <GrandExpo />
-      <FinalCTA />
     </>
   )
 }

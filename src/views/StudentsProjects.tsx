@@ -2,7 +2,6 @@ import { FolderKanban } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import ProjectShowcase from '../components/ProjectShowcase'
 import StudentShowcase from '../components/StudentShowcase'
-import FinalCTA from '../components/FinalCTA'
 
 export default function StudentsProjects() {
   return (
@@ -17,7 +16,6 @@ export default function StudentsProjects() {
       />
       <ProjectShowcase />
       <StudentShowcase />
-      <FinalCTA />
     </>
   )
 }

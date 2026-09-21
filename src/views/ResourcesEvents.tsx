@@ -1,6 +1,5 @@
 import { CalendarDays, Clock } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import FinalCTA from '../components/FinalCTA'
 import './ResourcesList.css'
 
 const events = [
@@ -35,7 +34,6 @@ export default function ResourcesEvents() {
           </div>
         </div>
       </section>
-      <FinalCTA />
     </>
   )
 }
