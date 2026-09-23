@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
 /**
  * POST /api/send-contact
  *
  * Receives the Contact page form submission and sends a formatted
- * email notification to the TechPhilo inbox via Nodemailer + Gmail.
+ * email notification to the TechPhilo inbox via Resend.
  *
- * Required environment variables (add to .env.local):
- *   GMAIL_USER       — your Gmail address, e.g. itstechphilo@gmail.com
- *   GMAIL_APP_PASS   — a 16-char Gmail App Password (NOT your normal password)
- *   CONTACT_TO_EMAIL — recipient address (defaults to GMAIL_USER if omitted)
+ * Required environment variables (add to .env.local & Render dashboard):
+ *   RESEND_API_KEY   — API key from resend.com
+ *   CONTACT_FROM     — verified sender address, e.g. noreply@techphilo.in
+ *   CONTACT_TO_EMAIL — recipient address for contact notifications
  */
 
 export async function POST(req: NextRequest) {
@@ -26,30 +26,23 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const gmailUser = process.env.GMAIL_USER
-    const gmailPass = process.env.GMAIL_APP_PASS
-
-    if (!gmailUser || !gmailPass) {
-      console.error('GMAIL_USER or GMAIL_APP_PASS env vars not set.')
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('RESEND_API_KEY env var not set.')
       return NextResponse.json(
         { error: 'Email service not configured. Please contact us directly.' },
         { status: 503 }
       )
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: gmailUser,
-        pass: gmailPass,
-      },
-    })
+    const resend = new Resend(apiKey)
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || gmailUser
+    const from = process.env.CONTACT_FROM || 'TechPhilo Website <noreply@techphilo.in>'
+    const to = process.env.CONTACT_TO_EMAIL || 'techphilo.tp@gmail.com'
 
-    const mailOptions = {
-      from: `"TechPhilo Website" <${gmailUser}>`,
-      to: toEmail,
+    await resend.emails.send({
+      from,
+      to,
       replyTo: email,
       subject: `✉️ New Contact Message — ${name}${school ? ` (${school})` : ''}`,
       html: `
@@ -90,9 +83,7 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
       `,
-    }
-
-    await transporter.sendMail(mailOptions)
+    })
 
     return NextResponse.json({ success: true })
   } catch (error) {
