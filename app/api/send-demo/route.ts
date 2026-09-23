@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 
 /**
  * POST /api/send-demo
  *
  * Receives the Book Demo form submission and sends a formatted
- * email notification to the TechPhilo inbox via Resend.
+ * email notification to the TechPhilo inbox via Nodemailer + Gmail.
  *
- * Required environment variables (add to .env.local & Render dashboard):
- *   RESEND_API_KEY — API key from resend.com
- *   DEMO_FROM      — verified sender address, e.g. noreply@techphilo.in
- *   DEMO_TO_EMAIL  — recipient address for demo notifications
+ * Required environment variables (add to .env.local):
+ *   GMAIL_USER     — your Gmail address, e.g. itstechphilo@gmail.com
+ *   GMAIL_APP_PASS — a 16-char Gmail App Password (NOT your normal password)
+ *   DEMO_TO_EMAIL  — recipient address (defaults to GMAIL_USER if omitted)
  */
 
 export async function POST(req: NextRequest) {
@@ -26,23 +26,30 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const apiKey = process.env.RESEND_API_KEY
-    if (!apiKey) {
-      console.error('RESEND_API_KEY env var not set.')
+    const gmailUser = process.env.GMAIL_USER
+    const gmailPass = process.env.GMAIL_APP_PASS
+
+    if (!gmailUser || !gmailPass) {
+      console.error('GMAIL_USER or GMAIL_APP_PASS env vars not set.')
       return NextResponse.json(
         { error: 'Email service not configured. Please contact us directly.' },
         { status: 503 }
       )
     }
 
-    const resend = new Resend(apiKey)
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: gmailUser,
+        pass: gmailPass,
+      },
+    })
 
-    const from = process.env.DEMO_FROM || 'TechPhilo Website <noreply@techphilo.in>'
-    const to = process.env.DEMO_TO_EMAIL || 'techphilo.tp@gmail.com'
+    const toEmail = process.env.DEMO_TO_EMAIL || gmailUser
 
-    await resend.emails.send({
-      from,
-      to,
+    const mailOptions = {
+      from: `"TechPhilo Website" <${gmailUser}>`,
+      to: toEmail,
       replyTo: email,
       subject: `📅 New Demo Request — ${school} (${name})`,
       html: `
@@ -96,7 +103,9 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
       `,
-    })
+    }
+
+    await transporter.sendMail(mailOptions)
 
     return NextResponse.json({ success: true })
   } catch (error) {
