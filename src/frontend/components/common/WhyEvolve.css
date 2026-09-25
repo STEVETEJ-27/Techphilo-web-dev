@@ -1,0 +1,106 @@
+.why-evolve {
+  background: linear-gradient(180deg, var(--surface-alt) 0%, var(--surface) 100%);
+  position: relative;
+}
+
+.why-evolve__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.why-evolve__intro {
+  max-width: 560px;
+  margin: 1.25rem auto 0;
+  color: var(--text-muted);
+}
+
+.why-evolve__challenges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.challenge-card {
+  border-radius: 16px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.challenge-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.challenge-card__icon { font-size: 1.5rem; line-height: 1; }
+
+.challenge-card__body {}
+
+.challenge-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.challenge-card__line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.challenge-card:hover .challenge-card__line { opacity: 1; }
+
+/* Pull quote */
+.why-evolve__quote {
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.why-evolve__quote-mark {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.3;
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.why-evolve__quote-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .why-evolve__challenges { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .why-evolve__challenges { grid-template-columns: 1fr; }
+  .challenge-card { padding: 1.35rem; }
+  .why-evolve__quote { padding: 1.75rem 1.25rem; }
+}

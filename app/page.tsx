@@ -218,19 +218,19 @@ const schoolPillars = [
     Icon: BookOpen,
     title: "Practical Learning",
     desc: "Every session is hands-on. Students build, make and present — not just listen.",
-    color: "var(--brand-bright)",
+    color: "var(--accent)",
   },
   {
     Icon: ClipboardList,
     title: "Ready to Implement",
     desc: "Structured lesson plans, age-appropriate content, ready before day one.",
-    color: "var(--accent-bright)",
+    color: "var(--accent)",
   },
   {
     Icon: Wrench,
     title: "Teacher Support",
     desc: "Full training, teaching tools, and a dedicated point of contact throughout the year.",
-    color: "var(--sage)",
+    color: "var(--accent)",
   },
   {
     Icon: BarChart3,

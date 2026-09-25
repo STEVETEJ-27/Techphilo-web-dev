@@ -13,7 +13,7 @@ export default function Courses() {
   const [activeCategory, setActiveCategory] = useState<Course['category'] | 'all'>('all')
 
   const filtered = useMemo(() => {
-    return courses.filter(c => {
+    return courses.filter((c: Course) => {
       const matchesCategory = activeCategory === 'all' || c.category === activeCategory
       const matchesQuery = c.title.toLowerCase().includes(query.toLowerCase()) || c.summary.toLowerCase().includes(query.toLowerCase())
       return matchesCategory && matchesQuery
@@ -45,7 +45,7 @@ export default function Courses() {
               />
             </div>
             <div className="courses-catalog__pills">
-              {categories.map(cat => (
+              {categories.map((cat: any) => (
                 <button
                   key={cat.id}
                   className={`courses-catalog__pill ${activeCategory === cat.id ? 'courses-catalog__pill--active' : ''}`}
@@ -63,7 +63,7 @@ export default function Courses() {
             </p>
           ) : (
             <div className="courses-catalog__grid">
-              {filtered.map((c, i) => (
+              {filtered.map((c: Course, i: number) => (
                 <motion.div
                   key={c.slug}
                   initial={{ opacity: 0, y: 20 }}

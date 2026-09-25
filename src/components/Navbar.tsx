@@ -111,8 +111,7 @@ export default function Navbar() {
           {/* Animated gradient bottom border */}
           <div className="grad-divider" aria-hidden="true" />
           <Link to="/" className="navbar__logo" aria-label="TechPhilo — Go to homepage">
-            <Logo height={40} />
-            <span className="navbar__wordmark">TechPhilo</span>
+            <Logo height={36.5} showTitle={true} />
           </Link>
 
           <nav className="navbar__links" aria-label="Site navigation">
@@ -207,9 +206,8 @@ export default function Navbar() {
           >
             <div className="mobile-menu__content">
               <div className="mobile-menu__header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Logo height={38} />
-                  <span className="navbar__wordmark" style={{ fontSize: '1.4rem' }}>TechPhilo</span>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Logo height={32.5} showTitle={true} />
                 </div>
               </div>
               {navItems.map((item, i) => (

@@ -1,0 +1,16 @@
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.team-card { text-align: center; padding: 2rem 1.5rem; }
+.team-card__avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  margin: 0 auto 1.25rem;
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  opacity: 0.85;
+}
+.team-card h3 { margin-bottom: 0.5rem; }
+
+@media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }

@@ -34,8 +34,7 @@ export default function Footer() {
         {/* Brand Col */}
         <div className="footer__col footer__brand">
           <div className="footer__brand-logo">
-            <Logo height={44} />
-            <span className="footer__wordmark">TechPhilo</span>
+            <Logo height={42.5} showTitle={true} />
           </div>
           <p className="footer__tagline">
             One ecosystem. Two journeys.<br />

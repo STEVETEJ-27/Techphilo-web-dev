@@ -1,0 +1,277 @@
+/* ============================================================
+   WHY SCHOOLS — Reworked Premium Design
+   Deep forest dark section with cohesive emerald + gold accent
+   ============================================================ */
+
+.why-schools {
+  background: var(--surface-dark);          /* deep midnight-teal #102F27 */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Section-level decorative orbs ── */
+.why-schools::before,
+.why-schools::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.why-schools::before {
+  width: 700px;
+  height: 700px;
+  top: -180px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(24,88,68,0.35) 0%, transparent 70%);
+}
+.why-schools::after {
+  width: 500px;
+  height: 500px;
+  bottom: -120px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(176,138,79,0.12) 0%, transparent 70%);
+}
+
+/* ── Section heading overrides for dark bg ── */
+.why-schools .section-heading h2 { color: #F8F4EC; }
+.why-schools .section-heading p  { color: rgba(242,235,221,0.60); }
+.why-schools .label-tag {
+  background: rgba(176,138,79,0.12);
+  border-color: rgba(176,138,79,0.32);
+  color: var(--accent-bright);
+}
+
+/* ── gradient-text override for dark surface ── */
+.why-schools .gradient-text {
+  background: linear-gradient(135deg, #F2EBDD 20%, var(--accent-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   PILLARS GRID
+   ============================================================ */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;                                 /* hairline gap = single pixel dividers */
+  background: rgba(255,255,255,0.06);       /* the gap itself becomes the border */
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: var(--heading-mb);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Each card: dark glass surface */
+.pillar-card {
+  background: rgba(10, 28, 22, 0.72);
+  backdrop-filter: blur(20px) saturate(110%);
+  -webkit-backdrop-filter: blur(20px) saturate(110%);
+  padding: 1.75rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+  /* NO individual border-radius — grid clips the outer corners */
+}
+
+.pillar-card:hover {
+  background: rgba(24, 58, 44, 0.80);
+}
+
+/* Top accent bar — the only color expression per card */
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.6rem;
+  right: 1.6rem;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--pillar-color, var(--brand)) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.pillar-card:hover::before { opacity: 1; }
+
+.pillar-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pillar-card__icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.pillar-card:hover .pillar-card__icon-wrap {
+  background: color-mix(in srgb, var(--pillar-color, var(--brand)) 14%, transparent);
+  border-color: color-mix(in srgb, var(--pillar-color, var(--brand)) 28%, transparent);
+}
+
+/* Icon always uses pillar-color on hover, muted ivory at rest */
+.pillar-card__icon-wrap svg {
+  color: rgba(242,235,221,0.50) !important;
+  transition: color 0.3s ease;
+}
+.pillar-card:hover .pillar-card__icon-wrap svg {
+  color: var(--pillar-color, var(--brand)) !important;
+}
+
+.pillar-card__num {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  color: rgba(242,235,221,0.22);
+  font-size: 0.7rem;
+  transition: color 0.3s ease;
+}
+.pillar-card:hover .pillar-card__num {
+  color: var(--pillar-color, var(--brand));
+}
+
+.pillar-card__title {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+  color: #F2EBDD;
+  transition: color 0.3s ease;
+}
+.pillar-card:hover .pillar-card__title {
+  color: #fff;
+}
+
+.pillar-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(242,235,221,0.48);
+  transition: color 0.3s ease;
+}
+.pillar-card:hover .pillar-card__desc {
+  color: rgba(242,235,221,0.68);
+}
+
+/* Glow — removed, replaced by top bar ::before */
+.pillar-card__glow { display: none; }
+
+
+/* ============================================================
+   SCHOOL OUTCOMES — clean ivory panel on the dark section
+   ============================================================ */
+.school-outcomes {
+  background: rgba(242, 235, 221, 0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 24px;
+  padding: 3rem 3rem 3rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Subtle inner glow top edge */
+.school-outcomes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.04) 0%,
+    transparent 50%,
+    rgba(176,138,79,0.03) 100%
+  );
+  pointer-events: none;
+}
+
+.school-outcomes__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.school-outcomes__header h3 { color: #F2EBDD; }
+.school-outcomes__header p  { color: rgba(242,235,221,0.55); }
+
+/* gradient-text-blue doesn't exist in this dark context — override locally */
+.school-outcomes .gradient-text-blue {
+  background: linear-gradient(135deg, var(--accent-bright) 0%, #F2EBDD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.school-outcomes__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.outcome-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.outcome-item:hover {
+  background: rgba(176,138,79,0.08);
+  border-color: rgba(176,138,79,0.22);
+  transform: translateY(-2px);
+}
+
+.outcome-item__icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(176,138,79,0.12);
+  border: 1px solid rgba(176,138,79,0.20);
+}
+
+.outcome-item span.text-sm {
+  color: rgba(242,235,221,0.70);
+  line-height: 1.5;
+  font-size: 0.82rem;
+}
+.outcome-item:hover span.text-sm {
+  color: rgba(242,235,221,0.90);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .school-outcomes__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .school-outcomes { padding: 2rem 1.5rem; }
+  .school-outcomes__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar-card { padding: 1.4rem 1.25rem; }
+}

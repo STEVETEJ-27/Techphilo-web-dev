@@ -164,8 +164,8 @@ export default function StoryExperience({
       {/* Story progression steps */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
         {storyData.phases
-          .filter((p) => p.title)
-          .map((p, idx) => (
+          .filter((p: any) => p.title)
+          .map((p: any, idx: number) => (
             <div key={p.id} className="flex items-center gap-2">
               <span
                 style={{
@@ -183,7 +183,7 @@ export default function StoryExperience({
               >
                 {p.label}
               </span>
-              {idx < storyData.phases.filter((p) => p.title).length - 1 && (
+              {idx < storyData.phases.filter((p: any) => p.title).length - 1 && (
                 <span
                   style={{
                     width: "0.75rem",

@@ -1,0 +1,229 @@
+/* Book a Demo — a qualification page, not a general contact form.
+   Two columns: what the demo is and what happens next on the left, the
+   request form on the right. The previous version was a bare 480px card
+   floating on an empty page, which read as a signup form for nothing in
+   particular and gave a principal no reason to fill it in. */
+
+.book-demo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+/* ---- Left column ---- */
+
+.book-demo__aside {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  position: sticky;
+  top: 110px;
+}
+
+.book-demo__block-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.book-demo__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.book-demo__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--ink);
+}
+
+.book-demo__check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.book-demo__steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.book-demo__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.book-demo__step-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--brand);
+}
+
+.book-demo__step-title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.book-demo__switch {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+.book-demo__switch strong { color: var(--ink); }
+
+.book-demo__switch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  transition: gap 0.2s var(--ease-out);
+}
+.book-demo__switch-link:hover { gap: 0.65rem; }
+
+/* ---- Right column: the form ---- */
+
+.book-demo__form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 16px 44px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.book-demo__form-head {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.book-demo__form-head h2 { margin-bottom: 0.35rem; }
+
+.book-demo__form { gap: 1rem; }
+
+.book-demo__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* selects inherit the shared field styling, plus a chevron */
+.book-demo__form select {
+  appearance: none;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 2.25rem 0.75rem 1rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2368738C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+}
+.book-demo__form select:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+.book-demo__form select:invalid { color: var(--text-muted); }
+
+.book-demo__form input:focus,
+.book-demo__form textarea:focus {
+  border-color: var(--brand);
+}
+
+.book-demo__submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.25rem;
+  box-shadow: 0 6px 20px var(--brand-glow);
+}
+
+.book-demo__assurances {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.25rem;
+}
+.book-demo__assurances li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+.book-demo__assurances svg { color: var(--brand); flex-shrink: 0; }
+
+/* ---- Success ---- */
+
+.book-demo__success {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+}
+
+.book-demo__success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--surface);
+  background: var(--brand);
+  margin-bottom: 0.35rem;
+}
+
+.book-demo__success p { max-width: 38ch; }
+.book-demo__success .btn { margin-top: 0.75rem; }
+
+@media (max-width: 960px) {
+  .book-demo__grid { grid-template-columns: 1fr; }
+  .book-demo__aside { position: static; order: 2; }
+  .book-demo__form-card { order: 1; }
+}
+
+@media (max-width: 560px) {
+  .book-demo__row { grid-template-columns: 1fr; }
+}

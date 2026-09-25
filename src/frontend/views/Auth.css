@@ -1,0 +1,49 @@
+.auth {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+}
+.auth__container { display: flex; justify-content: center; }
+.auth__card {
+  max-width: 420px;
+  width: 100%;
+  padding: 2.5rem;
+  text-align: left;
+}
+.auth__icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  background: var(--accent-glow); border: 1px solid var(--accent-border); color: var(--accent);
+}
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+}
+.auth__form .contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.auth__form .contact__field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.auth__form .contact__field input {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  width: 100%;
+}
+.auth__form .contact__field input:focus { outline: none; border-color: var(--accent); }
+.auth__footer { margin-top: 1.5rem; text-align: center; }
+.auth__footer a { color: var(--accent); text-decoration: none; }
+.auth__footer a:hover { text-decoration: underline; }

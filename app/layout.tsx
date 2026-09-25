@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Chakra_Petch, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Chakra_Petch, Plus_Jakarta_Sans, JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -31,6 +31,14 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+// Outfit — stylish, vibrant, modern student-tech font
+const outfitFont = Outfit({
+  subsets: ["latin"],
+  variable: "--font-student",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: "TechPhilo — One Ecosystem. Infinite Potential.",
   description:
@@ -55,6 +63,9 @@ export const metadata: Metadata = {
       "One integrated future-readiness ecosystem — built for schools, designed around students. Six programs. Real skills. Lasting impact.",
     type: "website",
   },
+  icons: {
+    icon: "/TPlogo01.svg",
+  },
 };
 
 export default function RootLayout({
@@ -63,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${chakraPetch.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${chakraPetch.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${outfitFont.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

@@ -1,0 +1,55 @@
+.pricing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s ease;
+}
+.pricing-card:hover { transform: translateY(-4px); }
+
+.pricing-card--featured {
+  border-color: var(--accent-border);
+  background: linear-gradient(160deg, var(--accent-soft), var(--surface));
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -0.9rem;
+  left: 2rem;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+}
+
+.pricing-card__tagline { margin: 0.5rem 0 1.5rem; min-height: 2.6em; }
+
+.pricing-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+.pricing-card__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.pricing-card__list li svg { color: var(--accent); flex-shrink: 0; margin-top: 0.15rem; }
+
+.pricing-note {
+  text-align: center;
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+}

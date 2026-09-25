@@ -16,7 +16,7 @@ const audiences = [
     cta: 'Explore for Schools',
     target: '/schools',
     tags: ['NEP 2020 Aligned', 'Teacher-Ready', 'Measurable Outcomes'],
-    color: 'var(--brand)',
+    color: 'var(--accent)',
   },
   {
     id: 'student',

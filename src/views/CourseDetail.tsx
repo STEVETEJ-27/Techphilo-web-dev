@@ -7,7 +7,7 @@ import './CourseDetail.css'
 
 export default function CourseDetail() {
   const { slug } = useParams<{ slug: string }>('/courses/:slug')
-  const course = courses.find(c => c.slug === slug)
+  const course = courses.find((c: any) => c.slug === slug)
 
   if (!course) return <NotFound />
 
@@ -33,7 +33,7 @@ export default function CourseDetail() {
             <div className="course-detail__section">
               <h2 className="display-md course-detail__heading">Learning Outcomes</h2>
               <ul className="course-detail__outcomes">
-                {course.outcomes.map(o => (
+                {course.outcomes.map((o: any) => (
                   <li key={o}>
                     <CheckCircle2 size={18} style={{ color: course.color, flexShrink: 0, marginTop: '2px' }} />
                     <span>{o}</span>
@@ -48,7 +48,7 @@ export default function CourseDetail() {
                 <div className="label-tag" style={{ marginBottom: '1rem' }}><Layers size={13} /> Curriculum Framework</div>
                 <h2 className="display-md course-detail__heading">4-Module Syllabus</h2>
                 <div className="course-detail__modules">
-                  {course.modules.map(m => (
+                  {course.modules.map((m: any) => (
                     <div key={m.num} className="course-module-card glass">
                       <div className="course-module-card__header">
                         <span className="course-module-card__num" style={{ color: course.color }}>Module {m.num}</span>

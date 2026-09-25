@@ -1,0 +1,158 @@
+.technology-ecosystem {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
+  position: relative;
+}
+
+.tech-ecosystem__layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Grid of tech nodes */
+.tech-ecosystem__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.tech-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.4rem 1rem;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s var(--ease-out), border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-node::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--node-color, var(--brand)) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tech-node:hover, .tech-node--active {
+  transform: translateY(-5px) scale(1.03);
+  border-color: var(--node-color, var(--brand));
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 1px var(--node-color, var(--brand));
+}
+
+.tech-node:hover::before, .tech-node--active::before {
+  opacity: 0.06;
+}
+
+.tech-node__icon {
+  font-size: 2rem;
+  line-height: 1;
+  display: block;
+}
+
+.tech-node__label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.tech-node__category {
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Detail panel */
+.tech-ecosystem__panel {
+  position: sticky;
+  top: 100px;
+}
+
+.tech-detail {
+  border-radius: 18px;
+  padding: 2rem;
+  min-height: 320px;
+}
+
+.tech-detail--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.tech-detail__empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.tech-detail__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-detail__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+.tech-detail__section {
+  margin-top: 1.25rem;
+}
+
+.tech-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-detail__projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tech-detail__project {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 10%, transparent);
+}
+
+@media (max-width: 1024px) {
+  .tech-ecosystem__layout {
+    grid-template-columns: 1fr;
+  }
+  .tech-ecosystem__panel {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-ecosystem__grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.75rem;
+  }
+  .tech-node {
+    padding: 1rem 0.75rem;
+  }
+  .tech-node__icon { font-size: 1.6rem; }
+}
