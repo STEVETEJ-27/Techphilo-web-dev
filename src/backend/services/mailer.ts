@@ -5,22 +5,25 @@ import nodemailer from 'nodemailer'
  * and sending outgoing automated email notifications.
  */
 export function getMailTransporter() {
-  const gmailUser = process.env.GMAIL_USER
-  const gmailPass = process.env.GMAIL_APP_PASS
+  const gmailUser = process.env.GMAIL_USER || process.env.EMAIL_USER
+  const gmailPass = process.env.GMAIL_APP_PASS || process.env.EMAIL_PASS
 
   if (!gmailUser || !gmailPass) {
     return null
   }
 
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // Use true for port 465
     auth: {
       user: gmailUser,
       pass: gmailPass,
     },
-  })
+    family: 4, // Forces Nodemailer to use IPv4 and bypasses Gmail connection timeouts on Render
+  } as any)
 }
 
 export function getRecipientEmail(): string {
-  return process.env.CONTACT_TO_EMAIL || process.env.GMAIL_USER || ''
+  return process.env.CONTACT_TO_EMAIL || process.env.GMAIL_USER || process.env.EMAIL_USER || ''
 }

@@ -25,8 +25,9 @@ export async function processContactSubmission(payload: ContactPayload) {
 
   const toEmail = getRecipientEmail()
 
+  const senderEmail = process.env.GMAIL_USER || process.env.EMAIL_USER
   const mailOptions = {
-    from: `"TechPhilo Contact Form" <${process.env.GMAIL_USER}>`,
+    from: `"TechPhilo Contact Form" <${senderEmail}>`,
     to: toEmail,
     replyTo: email,
     subject: `[TechPhilo Web] New Contact Message from ${name}`,

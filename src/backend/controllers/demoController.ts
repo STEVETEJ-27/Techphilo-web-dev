@@ -29,8 +29,9 @@ export async function processDemoSubmission(payload: DemoPayload) {
 
   const toEmail = getRecipientEmail()
 
+  const senderEmail = process.env.GMAIL_USER || process.env.EMAIL_USER
   const mailOptions = {
-    from: `"TechPhilo Demo Booking" <${process.env.GMAIL_USER}>`,
+    from: `"TechPhilo Demo Booking" <${senderEmail}>`,
     to: toEmail,
     replyTo: email,
     subject: `[TechPhilo Web] Demo Request from ${name} (${school})`,
